@@ -7,7 +7,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 
-
 :root {
 
     --primary:#2563eb;
@@ -23,7 +22,6 @@
     0 15px 35px rgba(0,0,0,.08);
 
 }
-
 
 
 
@@ -102,10 +100,8 @@ section {
 
 
 
-
-
 /* =====================================================
-   NAVBAR
+   NAVIGATION
 ===================================================== */
 
 
@@ -118,6 +114,7 @@ header {
     left:50%;
 
     transform:translateX(-50%);
+
 
     width:90%;
 
@@ -148,6 +145,7 @@ nav {
     justify-content:space-between;
 
     align-items:center;
+
 
     padding:20px 35px;
 
@@ -220,7 +218,7 @@ nav {
 
 
 /* =====================================================
-   HERO
+   HERO SECTION
 ===================================================== */
 
 
@@ -230,7 +228,7 @@ nav {
 
     linear-gradient(
     135deg,
-    white,
+    #ffffff,
     #eff6ff
     );
 
@@ -378,7 +376,6 @@ nav {
 
 
 
-
 /* HERO IMAGE */
 
 
@@ -406,6 +403,7 @@ nav {
 
     border-radius:50%;
 
+
     background:
 
     linear-gradient(
@@ -416,6 +414,7 @@ nav {
 
 
     opacity:.15;
+
 
     animation:
     floatCircle 6s infinite;
@@ -428,9 +427,9 @@ nav {
 
     width:420px;
 
-    z-index:2;
-
     position:relative;
+
+    z-index:2;
 
 
     animation:
@@ -468,8 +467,6 @@ transform:translate(20px,-20px);
 }
 
 }
-
-
 
 
 
@@ -526,8 +523,6 @@ transform:translate(20px,-20px);
 
 
 
-
-
 /* =====================================================
    SECTION TITLE
 ===================================================== */
@@ -555,16 +550,8 @@ transform:translate(20px,-20px);
 
     color:var(--gray);
 
-}
-
-
-
-
-
-
-
-/* =====================================================
-   ABOUT
+   /* =====================================================
+   ABOUT SECTION
 ===================================================== */
 
 
@@ -572,7 +559,8 @@ transform:translate(20px,-20px);
 
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+    1fr 1fr;
 
     gap:60px;
 
@@ -596,6 +584,22 @@ transform:translate(20px,-20px);
 
     width:320px;
 
+    filter:
+
+    drop-shadow(
+    0 20px 30px rgba(0,0,0,.15)
+    );
+
+}
+
+
+
+.about-text h3 {
+
+    font-size:30px;
+
+    margin-bottom:20px;
+
 }
 
 
@@ -614,8 +618,10 @@ transform:translate(20px,-20px);
 
 
 
+
+
 /* =====================================================
-   EDUCATION
+   EDUCATION SECTION
 ===================================================== */
 
 
@@ -623,7 +629,9 @@ transform:translate(20px,-20px);
 
     display:grid;
 
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:
+
+    repeat(3,1fr);
 
     gap:30px;
 
@@ -637,11 +645,13 @@ transform:translate(20px,-20px);
 
     padding:35px;
 
-    text-align:center;
-
     border-radius:25px;
 
-    box-shadow:var(--shadow);
+    text-align:center;
+
+    box-shadow:
+
+    var(--shadow);
 
     transition:.3s;
 
@@ -651,7 +661,8 @@ transform:translate(20px,-20px);
 
 .education-card:hover {
 
-    transform:translateY(-10px);
+    transform:
+    translateY(-10px);
 
 }
 
@@ -661,6 +672,34 @@ transform:translate(20px,-20px);
 
     font-size:45px;
 
+    margin-bottom:15px;
+
+}
+
+
+
+.education-card h3 {
+
+    font-size:20px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.education-card h4 {
+
+    color:var(--primary);
+
+}
+
+
+
+.education-card p {
+
+    color:var(--gray);
+
 }
 
 
@@ -669,8 +708,10 @@ transform:translate(20px,-20px);
 
 
 
+
+
 /* =====================================================
-   SKILLS
+   SKILLS SECTION
 ===================================================== */
 
 
@@ -678,7 +719,9 @@ transform:translate(20px,-20px);
 
     display:grid;
 
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:
+
+    repeat(4,1fr);
 
     gap:25px;
 
@@ -692,11 +735,13 @@ transform:translate(20px,-20px);
 
     padding:35px;
 
-    text-align:center;
-
     border-radius:25px;
 
-    box-shadow:var(--shadow);
+    text-align:center;
+
+    box-shadow:
+
+    var(--shadow);
 
     transition:.3s;
 
@@ -706,7 +751,8 @@ transform:translate(20px,-20px);
 
 .skill-card:hover {
 
-    transform:translateY(-10px);
+    transform:
+    translateY(-10px);
 
 }
 
@@ -716,7 +762,19 @@ transform:translate(20px,-20px);
 
     font-size:45px;
 
+    margin-bottom:15px;
+
 }
+
+
+
+.skill-card p {
+
+    color:var(--gray);
+
+}
+
+
 
 
 
@@ -753,9 +811,10 @@ transform:translate(20px,-20px);
 
     top:0;
 
+    width:3px;
+
     height:100%;
 
-    width:3px;
 
     background:
 
@@ -765,6 +824,8 @@ transform:translate(20px,-20px);
     );
 
 }
+
+
 
 
 
@@ -780,9 +841,11 @@ transform:translate(20px,-20px);
 
     border-radius:25px;
 
-    box-shadow:var(--shadow);
+    box-shadow:
 
-    transition:.3s;
+    var(--shadow);
+
+    transition:.4s;
 
 }
 
@@ -790,7 +853,9 @@ transform:translate(20px,-20px);
 
 .experience-card:hover {
 
-    transform:translateX(10px);
+    transform:
+
+    translateX(10px);
 
 }
 
@@ -814,8 +879,9 @@ transform:translate(20px,-20px);
 
     justify-content:center;
 
+    background:
 
-    background:var(--primary);
+    var(--primary);
 
     color:white;
 
@@ -837,7 +903,9 @@ transform:translate(20px,-20px);
 
 .experience-card h4 {
 
-    color:var(--primary);
+    color:
+
+    var(--primary);
 
 }
 
@@ -845,11 +913,13 @@ transform:translate(20px,-20px);
 
 .date {
 
+    display:inline-block;
+
     background:#eff6ff;
 
-    color:var(--primary);
+    color:
 
-    display:inline-block;
+    var(--primary);
 
     padding:6px 15px;
 
@@ -875,16 +945,34 @@ transform:translate(20px,-20px);
 
 
 
+
+
 /* =====================================================
-   PROJECTS
+   PROJECTS SECTION - FIXED
 ===================================================== */
+
+
+#projects {
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #ffffff,
+    #f8fafc
+    );
+
+}
+
 
 
 .project-grid {
 
     display:grid;
 
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+
+    repeat(2,1fr);
 
     gap:30px;
 
@@ -894,15 +982,47 @@ transform:translate(20px,-20px);
 
 .project-card {
 
+    position:relative;
+
     background:white;
 
-    padding:35px;
+    padding:40px;
 
     border-radius:25px;
 
-    box-shadow:var(--shadow);
+    box-shadow:
 
-    transition:.3s;
+    var(--shadow);
+
+    overflow:hidden;
+
+    transition:.4s;
+
+}
+
+
+
+.project-card::before {
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:6px;
+
+    height:100%;
+
+
+    background:
+
+    linear-gradient(
+    #2563eb,
+    #60a5fa
+    );
 
 }
 
@@ -910,7 +1030,37 @@ transform:translate(20px,-20px);
 
 .project-card:hover {
 
-    transform:translateY(-8px);
+    transform:
+
+    translateY(-10px);
+
+}
+
+
+
+.project-card h3 {
+
+    font-size:24px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.project-card h3::before {
+
+    content:"💻";
+
+    margin-right:10px;
+
+}
+
+
+
+.project-card p {
+
+    color:var(--gray);
 
 }
 
@@ -918,13 +1068,25 @@ transform:translate(20px,-20px);
 
 .technology {
 
+    display:inline-block;
+
     margin-top:15px;
 
-    color:var(--primary);
+    padding:10px 18px;
+
+    border-radius:20px;
+
+    background:#eff6ff;
+
+    color:
+
+    var(--primary);
 
     font-weight:600;
 
 }
+
+
 
 
 
@@ -941,7 +1103,9 @@ transform:translate(20px,-20px);
 
     display:grid;
 
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:
+
+    repeat(4,1fr);
 
     gap:25px;
 
@@ -955,11 +1119,22 @@ transform:translate(20px,-20px);
 
     padding:30px;
 
-    text-align:center;
-
     border-radius:25px;
 
-    box-shadow:var(--shadow);
+    text-align:center;
+
+    box-shadow:
+
+    var(--shadow);
+
+}
+
+
+
+.certification-card:hover {
+
+    transform:
+    translateY(-8px);
 
 }
 
@@ -977,6 +1152,8 @@ transform:translate(20px,-20px);
 
 
 
+
+
 /* =====================================================
    AFFILIATIONS
 ===================================================== */
@@ -986,7 +1163,9 @@ transform:translate(20px,-20px);
 
     display:grid;
 
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+
+    repeat(2,1fr);
 
     gap:30px;
 
@@ -1002,9 +1181,13 @@ transform:translate(20px,-20px);
 
     border-radius:25px;
 
-    box-shadow:var(--shadow);
+    box-shadow:
+
+    var(--shadow);
 
 }
+
+
 
 
 
@@ -1021,7 +1204,9 @@ transform:translate(20px,-20px);
 
     display:grid;
 
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:
+
+    repeat(3,1fr);
 
     gap:30px;
 
@@ -1037,7 +1222,20 @@ transform:translate(20px,-20px);
 
     overflow:hidden;
 
-    box-shadow:var(--shadow);
+    box-shadow:
+
+    var(--shadow);
+
+    transition:.4s;
+
+}
+
+
+
+.portfolio-card:hover {
+
+    transform:
+    translateY(-10px);
 
 }
 
@@ -1047,9 +1245,9 @@ transform:translate(20px,-20px);
 
     height:250px;
 
-    overflow:hidden;
-
     position:relative;
+
+    overflow:hidden;
 
 }
 
@@ -1062,6 +1260,18 @@ transform:translate(20px,-20px);
     height:100%;
 
     object-fit:cover;
+
+    transition:.5s;
+
+}
+
+
+
+.portfolio-card:hover img {
+
+    transform:
+
+    scale(1.1);
 
 }
 
@@ -1077,20 +1287,22 @@ transform:translate(20px,-20px);
 
     rgba(37,99,235,.85);
 
-
     display:flex;
-
-    justify-content:center;
 
     align-items:center;
 
+    justify-content:center;
+
     opacity:0;
+
+    transition:.4s;
 
 }
 
 
 
-.portfolio-card:hover .portfolio-overlay {
+.portfolio-card:hover 
+.portfolio-overlay {
 
     opacity:1;
 
@@ -1102,13 +1314,19 @@ transform:translate(20px,-20px);
 
     background:white;
 
+    color:
+
+    var(--primary);
+
     padding:12px 25px;
 
     border-radius:50px;
 
-    color:var(--primary);
+    font-weight:600;
 
 }
+
+
 
 
 
@@ -1125,9 +1343,19 @@ transform:translate(20px,-20px);
 
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+
+    1fr 1fr;
 
     gap:50px;
+
+}
+
+
+
+.contact-item {
+
+    margin:20px 0;
 
 }
 
@@ -1154,7 +1382,11 @@ textarea {
 
     border-radius:15px;
 
-    box-shadow:var(--shadow);
+    box-shadow:
+
+    var(--shadow);
+
+    font-family:inherit;
 
 }
 
@@ -1172,8 +1404,10 @@ textarea {
 
 
 
+
+
 /* =====================================================
-   RESUME FOOTER
+   RESUME + FOOTER
 ===================================================== */
 
 
@@ -1187,7 +1421,9 @@ textarea {
 
 footer {
 
-    background:var(--dark);
+    background:
+
+    var(--dark);
 
     color:white;
 
@@ -1203,8 +1439,10 @@ footer {
 
 
 
+
+
 /* =====================================================
-   ANIMATION
+   SCROLL REVEAL
 ===================================================== */
 
 
@@ -1212,9 +1450,11 @@ footer {
 
     opacity:0;
 
-    transform:translateY(40px);
+    transform:
 
-    transition:.8s;
+    translateY(40px);
+
+    transition:.8s ease;
 
 }
 
@@ -1224,9 +1464,13 @@ footer {
 
     opacity:1;
 
-    transform:translateY(0);
+    transform:
+
+    translateY(0);
 
 }
+
+
 
 
 
@@ -1244,9 +1488,9 @@ footer {
 
 .hero {
 
-flex-direction:column;
+    flex-direction:column;
 
-text-align:center;
+    text-align:center;
 
 }
 
@@ -1254,7 +1498,15 @@ text-align:center;
 
 .hero h1 {
 
-font-size:40px;
+    font-size:42px;
+
+}
+
+
+
+.profile-photo {
+
+    width:300px;
 
 }
 
@@ -1263,7 +1515,19 @@ font-size:40px;
 .about-grid,
 .contact-grid {
 
-grid-template-columns:1fr;
+    grid-template-columns:
+
+    1fr;
+
+}
+
+
+
+.education-grid {
+
+    grid-template-columns:
+
+    1fr;
 
 }
 
@@ -1271,34 +1535,49 @@ grid-template-columns:1fr;
 
 .skills-grid {
 
-grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+
+    repeat(2,1fr);
 
 }
 
 
 
-.education-grid,
-.certification-grid,
+.project-grid {
+
+    grid-template-columns:
+
+    1fr;
+
+}
+
+
+
+.certification-grid {
+
+    grid-template-columns:
+
+    repeat(2,1fr);
+
+}
+
+
+
 .portfolio-grid {
 
-grid-template-columns:1fr;
+    grid-template-columns:
+
+    1fr;
 
 }
 
 
 
-.project-grid,
 .affiliation-list {
 
-grid-template-columns:1fr;
+    grid-template-columns:
 
-}
-
-
-
-.profile-photo {
-
-width:300px;
+    1fr;
 
 }
 
@@ -1306,7 +1585,7 @@ width:300px;
 
 .nav-links {
 
-display:none;
+    display:none;
 
 }
 
@@ -1314,12 +1593,13 @@ display:none;
 
 .menu-btn {
 
-display:block;
+    display:block;
 
 }
 
 
 }
+
 
 
 
@@ -1330,7 +1610,19 @@ display:block;
 
 .skills-grid {
 
-grid-template-columns:1fr;
+    grid-template-columns:
+
+    1fr;
+
+}
+
+
+
+.certification-grid {
+
+    grid-template-columns:
+
+    1fr;
 
 }
 
@@ -1338,7 +1630,7 @@ grid-template-columns:1fr;
 
 .hero h1 {
 
-font-size:32px;
+    font-size:32px;
 
 }
 
@@ -1346,13 +1638,25 @@ font-size:32px;
 
 .experience-number {
 
-width:40px;
+    width:40px;
 
-height:40px;
+    height:40px;
 
-left:-50px;
+    left:-50px;
+
+    font-size:12px;
 
 }
 
+
+
+.timeline {
+
+    padding-left:25px;
+
+}
+
+
+}
 
 }
