@@ -1,1 +1,505 @@
+```css
+/* =========================================================
+   JUSTINE KYLE PALMA - PORTFOLIO
+   Professional Portfolio Styling
+   ========================================================= */
+
+/* ---------- GENERAL ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #222;
+    background: #f8f9fc;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+
+/* ---------- NAVIGATION ---------- */
+
+nav {
+    background: #ffffff;
+    padding: 18px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h2 {
+    font-size: 22px;
+    color: #2563eb;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li a {
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #2563eb;
+}
+
+
+/* ---------- HERO ---------- */
+
+#home,
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #eef4ff, #ffffff);
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+    font-size: 52px;
+    line-height: 1.15;
+    margin-bottom: 15px;
+    color: #111827;
+}
+
+.hero-text h1 span {
+    color: #2563eb;
+}
+
+.hero-text h2 {
+    font-size: 25px;
+    color: #4b5563;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 18px;
+    color: #6b7280;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 8px solid #ffffff;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ---------- BUTTONS ---------- */
+
+.btn {
+    display: inline-block;
+    padding: 13px 28px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 2px solid #2563eb;
+    color: #2563eb;
+}
+
+.btn-outline:hover {
+    background: #2563eb;
+    color: white;
+}
+
+
+/* ---------- SECTIONS ---------- */
+
+section {
+    padding: 90px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 36px;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #6b7280;
+}
+
+
+/* ---------- ABOUT ---------- */
+
+#about {
+    background: #ffffff;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #111827;
+}
+
+.about-text p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+
+/* ---------- SERVICES ---------- */
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.service-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+    transition: 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.service-card h3 {
+    color: #2563eb;
+    margin-bottom: 12px;
+}
+
+.service-card p {
+    color: #666;
+}
+
+
+/* ---------- SKILLS ---------- */
+
+#skills {
+    background: #ffffff;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.skill {
+    margin-bottom: 20px;
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.skill-bar {
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    background: #2563eb;
+    border-radius: 10px;
+}
+
+
+/* ---------- PORTFOLIO ---------- */
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.portfolio-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-7px);
+}
+
+.portfolio-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+.portfolio-info {
+    padding: 22px;
+}
+
+.portfolio-info h3 {
+    margin-bottom: 8px;
+}
+
+.portfolio-info p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+
+/* ---------- PROJECTS ---------- */
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.project-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+}
+
+.project-card h3 {
+    color: #2563eb;
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    color: #666;
+}
+
+
+/* ---------- CONTACT ---------- */
+
+#contact {
+    background: #111827;
+    color: white;
+}
+
+#contact .section-title h2 {
+    color: white;
+}
+
+#contact .section-title p {
+    color: #d1d5db;
+}
+
+.contact-content {
+    text-align: center;
+}
+
+.contact-content p {
+    margin-bottom: 15px;
+    color: #d1d5db;
+}
+
+.contact-links {
+    margin-top: 30px;
+}
+
+.contact-links a {
+    display: inline-block;
+    margin: 8px;
+    padding: 12px 20px;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.contact-links a:hover {
+    background: white;
+    color: #111827;
+}
+
+
+/* ---------- FOOTER ---------- */
+
+footer {
+    background: #0b1120;
+    color: #9ca3af;
+    text-align: center;
+    padding: 25px;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+
+@media (max-width: 900px) {
+
+    .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-text h1 {
+        font-size: 42px;
+    }
+
+    .about-content {
+        flex-direction: column;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    nav .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #home,
+    .hero {
+        min-height: auto;
+        padding: 80px 0;
+    }
+
+    .hero-text h1 {
+        font-size: 35px;
+    }
+
+    .hero-text h2 {
+        font-size: 21px;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+    }
+
+    .hero-image img {
+        width: 220px;
+        height: 220px;
+    }
+
+    section {
+        padding: 65px 0;
+    }
+
+    .section-title h2 {
+        font-size: 30px;
+    }
+
+    .services-grid,
+    .portfolio-grid,
+    .skills-container,
+    .projects {
+        grid-template-columns: 1fr;
+    }
+
+    .btn {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+    }
+}
+```
 
