@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,682 +10,110 @@
     <meta name="description"
           content="Justine Kyle Palma - Social Media Manager, Data Entry Specialist, Virtual Assistant, and Computer Engineering Graduate.">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.6;
-            color: #222;
-            background: #f8f9fb;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(255,255,255,0.95);
-            border-bottom: 1px solid #e5e5e5;
-            backdrop-filter: blur(10px);
-        }
-
-        nav {
-            max-width: 1150px;
-            margin: auto;
-            padding: 18px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: 800;
-        }
-
-        .logo span {
-            color: #4f46e5;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-size: 14px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #4f46e5;
-        }
-
-        .menu-btn {
-            display: none;
-            font-size: 26px;
-            cursor: pointer;
-        }
-
-        /* =========================
-           GENERAL
-        ========================= */
-
-        section {
-            padding: 90px 25px;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
-            color: #666;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 13px 22px;
-            border-radius: 8px;
-            font-weight: 700;
-            margin: 5px;
-            transition: 0.3s;
-        }
-
-        .btn-primary {
-            background: #4f46e5;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #3730a3;
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            border: 2px solid #4f46e5;
-            color: #4f46e5;
-        }
-
-        .btn-outline:hover {
-            background: #4f46e5;
-            color: white;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        #home {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #eef2ff, #ffffff);
-        }
-
-        .hero {
-            max-width: 1100px;
-            width: 100%;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .hero h1 {
-            font-size: 55px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: #4f46e5;
-        }
-
-        .hero h3 {
-            font-size: 22px;
-            color: #555;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            max-width: 650px;
-            color: #666;
-            font-size: 17px;
-            margin-bottom: 25px;
-        }
-
-        .hero-image {
-            display: flex;
-            justify-content: center;
-        }
-
-        .profile-placeholder {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: #e0e7ff;
-            border: 8px solid white;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #4f46e5;
-            font-weight: bold;
-            padding: 30px;
-        }
-
-        /* =========================
-           ABOUT
-        ========================= */
-
-        #about {
-            background: white;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-image {
-            min-height: 350px;
-            background: #eef2ff;
-            border-radius: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #4f46e5;
-            font-weight: bold;
-        }
-
-        .about-text h3 {
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
-
-        .about-text p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        /* =========================
-           SKILLS
-        ========================= */
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .skill-card {
-            background: white;
-            padding: 30px 20px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid #eee;
-            transition: 0.3s;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-        }
-
-        .skill-icon {
-            font-size: 35px;
-            margin-bottom: 12px;
-        }
-
-        .skill-card h3 {
-            margin-bottom: 8px;
-        }
-
-        .skill-card p {
-            color: #666;
-            font-size: 14px;
-        }
-
-        /* =========================
-           EXPERIENCE
-        ========================= */
-
-        #experience {
-            background: white;
-        }
-
-        .timeline {
-            max-width: 850px;
-            margin: auto;
-        }
-
-        .experience-card {
-            border-left: 4px solid #4f46e5;
-            padding: 5px 0 30px 30px;
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        .experience-card::before {
-            content: "";
-            width: 15px;
-            height: 15px;
-            background: #4f46e5;
-            border-radius: 50%;
-            position: absolute;
-            left: -9px;
-            top: 5px;
-        }
-
-        .experience-card h3 {
-            font-size: 22px;
-        }
-
-        .experience-card .company {
-            color: #4f46e5;
-            font-weight: bold;
-        }
-
-        .experience-card .date {
-            color: #888;
-            font-size: 14px;
-            margin: 5px 0 12px;
-        }
-
-        .experience-card ul {
-            padding-left: 20px;
-            color: #666;
-        }
-
-        /* =========================
-           SAMPLE WORKS
-        ========================= */
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .portfolio-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #eee;
-            transition: 0.3s;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-        }
-
-        .portfolio-image {
-            height: 220px;
-            background: #e5e7eb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #666;
-            padding: 20px;
-        }
-
-        .portfolio-content {
-            padding: 22px;
-        }
-
-        .portfolio-content h3 {
-            margin-bottom: 8px;
-        }
-
-        .portfolio-content p {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .tag {
-            display: inline-block;
-            background: #eef2ff;
-            color: #4f46e5;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            margin-top: 12px;
-        }
-
-        /* =========================
-           PROJECTS
-        ========================= */
-
-        #projects {
-            background: white;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .project-card {
-            padding: 30px;
-            background: #f8f9fb;
-            border-radius: 15px;
-            border: 1px solid #eee;
-        }
-
-        .project-card h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .project-card p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .technology {
-            font-size: 14px;
-            font-weight: bold;
-            color: #4f46e5;
-        }
-
-        /* =========================
-           SERVICES
-        ========================= */
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .service-card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid #eee;
-        }
-
-        .service-card h3 {
-            margin-bottom: 10px;
-        }
-
-        .service-card p {
-            color: #666;
-        }
-
-        /* =========================
-           RESUME
-        ========================= */
-
-        #resume {
-            background: #eef2ff;
-            text-align: center;
-        }
-
-        #resume p {
-            max-width: 650px;
-            margin: 0 auto 25px;
-            color: #666;
-        }
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        #contact {
-            background: white;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-
-        .contact-info h3 {
-            font-size: 26px;
-            margin-bottom: 15px;
-        }
-
-        .contact-info p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .contact-item {
-            margin: 15px 0;
-        }
-
-        .contact-item strong {
-            display: block;
-            margin-bottom: 3px;
-        }
-
-        .contact-item a {
-            color: #4f46e5;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 15px;
-        }
-
-        textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        button {
-            border: none;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            background: #111827;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        footer p {
-            color: #aaa;
-            font-size: 14px;
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 900px) {
-
-            .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .portfolio-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 650px) {
-
-            .menu-btn {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 65px;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                padding: 20px;
-                border-bottom: 1px solid #eee;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 40px;
-            }
-
-            .section-title h2 {
-                font-size: 30px;
-            }
-
-            .skills-grid,
-            .portfolio-grid,
-            .project-grid,
-            .services-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 70px 20px;
-            }
-
-            .profile-placeholder {
-                width: 230px;
-                height: 230px;
-            }
-        }
-    </style>
+    <!-- External CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =========================
+<!-- =====================================================
      NAVIGATION
-========================= -->
+===================================================== -->
 
 <header>
+
     <nav>
 
+        <!-- LOGO -->
         <a href="#home" class="logo">
             Justine <span>Palma</span>
         </a>
 
-        <div class="menu-btn" onclick="toggleMenu()">
+        <!-- MOBILE MENU BUTTON -->
+        <div class="menu-btn"
+             onclick="toggleMenu()"
+             aria-label="Open navigation menu">
             ☰
         </div>
 
+        <!-- NAVIGATION LINKS -->
         <ul class="nav-links" id="navLinks">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#works">Sample Works</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
+
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#skills">Skills</a>
+            </li>
+
+            <li>
+                <a href="#experience">Experience</a>
+            </li>
+
+            <li>
+                <a href="#works">Sample Works</a>
+            </li>
+
+            <li>
+                <a href="#projects">Projects</a>
+            </li>
+
+            <li>
+                <a href="#services">Services</a>
+            </li>
+
+            <li>
+                <a href="#resume">Resume</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
         </ul>
 
     </nav>
+
 </header>
 
 
-<!-- =========================
-     HOME
-========================= -->
+<!-- =====================================================
+     HOME / HERO
+===================================================== -->
 
 <section id="home">
 
     <div class="hero">
 
+        <!-- HERO TEXT -->
         <div>
 
             <h1>
-                Hi, I'm <span>Justine Kyle Palma</span>
+                Hi, I'm
+                <span>Justine Kyle Palma</span>
             </h1>
 
             <h3>
-                Social Media Manager | Data Entry Specialist | Virtual Assistant
+                Social Media Manager |
+                Data Entry Specialist |
+                Virtual Assistant
             </h3>
 
             <p>
-                I help businesses stay organized, build their online presence,
-                manage content, and handle administrative tasks efficiently.
+                I help businesses stay organized, build their
+                online presence, manage content, and handle
+                administrative tasks efficiently.
+            </p>
+
+            <p>
+                With a background in Computer Engineering, I
+                combine creativity, organization, and technical
+                skills to provide reliable digital support.
             </p>
 
             <a href="#works" class="btn btn-primary">
@@ -697,22 +126,35 @@
 
         </div>
 
+
+        <!-- HERO PHOTO -->
         <div class="hero-image">
 
             <!--
-                REPLACE THIS WITH YOUR PHOTO LATER.
+                =================================================
+                PHOTO PLACEHOLDER
 
-                Example:
+                Upload your photo to:
 
-                <img src="images/profile.jpg"
-                     alt="Justine Kyle Palma"
-                     class="profile-placeholder">
+                images/profile.jpg
+
+                Then this image will automatically appear.
+                =================================================
             -->
 
-            <div class="profile-placeholder">
+            <img src="images/profile.jpg"
+                 alt="Justine Kyle Palma"
+                 class="profile-placeholder"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+            <!-- Fallback if photo doesn't exist -->
+            <div class="profile-placeholder"
+                 style="display:none;">
+
                 YOUR<br>
                 PROFESSIONAL<br>
                 PHOTO
+
             </div>
 
         </div>
@@ -722,62 +164,82 @@
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      ABOUT ME
-========================= -->
+===================================================== -->
 
 <section id="about">
 
     <div class="container">
 
         <div class="section-title">
+
             <h2>About Me</h2>
-            <p>Get to know me</p>
+
+            <p>
+                Get to know me
+            </p>
+
         </div>
+
 
         <div class="about-grid">
 
+            <!-- ABOUT PHOTO -->
             <div class="about-image">
 
                 <!--
-                    PLACEHOLDER FOR YOUR PHOTO.
+                    Upload your second photo to:
 
-                    Replace this entire div with:
-
-                    <img src="images/about.jpg"
-                         alt="Justine Kyle Palma">
+                    images/about.jpg
                 -->
 
-                ABOUT ME<br>
-                PHOTO
+                <img src="images/about.jpg"
+                     alt="Justine Kyle Palma"
+                     onerror="this.style.display='none'; this.parentElement.innerHTML='ABOUT ME PHOTO';">
 
             </div>
 
+
+            <!-- ABOUT TEXT -->
             <div class="about-text">
 
-                <h3>Hello! I'm Justine.</h3>
+                <h3>
+                    Hello! I'm Justine.
+                </h3>
 
                 <p>
-                    I am a graduate of Bachelor of Science in Computer Engineering
-                    with an interest in social media management, virtual assistance,
-                    data entry, lead generation, and administrative support.
+                    I am a graduate of Bachelor of Science in
+                    Computer Engineering with an interest in
+                    social media management, virtual assistance,
+                    data entry, lead generation, and
+                    administrative support.
                 </p>
 
                 <p>
-                    I enjoy combining creativity and technology to help businesses
-                    organize their operations, improve their online presence, and
+                    I enjoy combining creativity and technology
+                    to help businesses organize their operations,
+                    improve their online presence, and
                     communicate effectively with their audience.
                 </p>
 
                 <p>
-                    I am continuously developing my skills in digital tools,
-                    content creation, graphic design, data management, and
-                    software development.
+                    I am continuously developing my skills in
+                    digital tools, content creation, graphic
+                    design, data management, and software
+                    development.
                 </p>
 
-                <!-- EDIT THIS -->
                 <p>
-                    <strong>Location:</strong> YOUR LOCATION
+                    I am detail-oriented, organized, willing to
+                    learn, and comfortable working with both
+                    creative and technical tasks.
+                </p>
+
+                <!-- EDIT LOCATION -->
+                <p>
+                    <strong>Location:</strong>
+                    YOUR LOCATION
                 </p>
 
             </div>
@@ -789,91 +251,176 @@
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      SKILLS
-========================= -->
+===================================================== -->
 
 <section id="skills">
 
     <div class="container">
 
         <div class="section-title">
+
             <h2>My Skills</h2>
-            <p>Tools and skills I can offer</p>
+
+            <p>
+                Tools and skills I can offer
+            </p>
+
         </div>
+
 
         <div class="skills-grid">
 
+            <!-- SKILL 1 -->
             <div class="skill-card">
-                <div class="skill-icon">📱</div>
-                <h3>Social Media</h3>
+
+                <div class="skill-icon">
+                    📱
+                </div>
+
+                <h3>
+                    Social Media
+                </h3>
+
                 <p>
                     Content planning, posting, engagement,
                     captions, and social media management.
                 </p>
+
             </div>
 
+
+            <!-- SKILL 2 -->
             <div class="skill-card">
-                <div class="skill-icon">🎨</div>
-                <h3>Canva Design</h3>
+
+                <div class="skill-icon">
+                    🎨
+                </div>
+
+                <h3>
+                    Canva Design
+                </h3>
+
                 <p>
                     Social media graphics, promotional materials,
                     presentations, and branding content.
                 </p>
+
             </div>
 
+
+            <!-- SKILL 3 -->
             <div class="skill-card">
-                <div class="skill-icon">📊</div>
-                <h3>Data Entry</h3>
+
+                <div class="skill-icon">
+                    📊
+                </div>
+
+                <h3>
+                    Data Entry
+                </h3>
+
                 <p>
                     Accurate data entry, spreadsheets,
                     organization, and data management.
                 </p>
+
             </div>
 
+
+            <!-- SKILL 4 -->
             <div class="skill-card">
-                <div class="skill-icon">🔎</div>
-                <h3>Lead Generation</h3>
+
+                <div class="skill-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    Lead Generation
+                </h3>
+
                 <p>
                     Web research, prospect research,
                     data collection, and lead organization.
                 </p>
+
             </div>
 
+
+            <!-- SKILL 5 -->
             <div class="skill-card">
-                <div class="skill-icon">💻</div>
-                <h3>Computer Skills</h3>
+
+                <div class="skill-icon">
+                    💻
+                </div>
+
+                <h3>
+                    Computer Skills
+                </h3>
+
                 <p>
                     Microsoft Office, Google Workspace,
                     spreadsheets, and digital tools.
                 </p>
+
             </div>
 
+
+            <!-- SKILL 6 -->
             <div class="skill-card">
-                <div class="skill-icon">⚙️</div>
-                <h3>Virtual Assistance</h3>
+
+                <div class="skill-icon">
+                    ⚙️
+                </div>
+
+                <h3>
+                    Virtual Assistance
+                </h3>
+
                 <p>
                     Administrative support, organization,
                     research, and task management.
                 </p>
+
             </div>
 
+
+            <!-- SKILL 7 -->
             <div class="skill-card">
-                <div class="skill-icon">🖥️</div>
-                <h3>Web Development</h3>
+
+                <div class="skill-icon">
+                    🖥️
+                </div>
+
+                <h3>
+                    Web Development
+                </h3>
+
                 <p>
                     Basic HTML, CSS, JavaScript,
                     and website development.
                 </p>
+
             </div>
 
+
+            <!-- SKILL 8 -->
             <div class="skill-card">
-                <div class="skill-icon">🧑‍💻</div>
-                <h3>VB.NET</h3>
+
+                <div class="skill-icon">
+                    🧑‍💻
+                </div>
+
+                <h3>
+                    VB.NET
+                </h3>
+
                 <p>
                     Windows Forms applications,
                     databases, and system development.
                 </p>
+
             </div>
 
         </div>
@@ -883,114 +430,161 @@
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      WORK EXPERIENCE
-========================= -->
+===================================================== -->
 
 <section id="experience">
 
     <div class="container">
 
         <div class="section-title">
-            <h2>Work Experience</h2>
-            <p>My professional experience</p>
+
+            <h2>
+                Work Experience
+            </h2>
+
+            <p>
+                My professional and project experience
+            </p>
+
         </div>
+
 
         <div class="timeline">
 
 
-            <!-- EXPERIENCE 1 -->
+            <!-- =================================================
+                 EXPERIENCE 1
+            ================================================= -->
 
             <div class="experience-card">
 
-                <h3>YOUR JOB TITLE</h3>
+                <h3>
+                    Waiter
+                </h3>
 
                 <div class="company">
-                    COMPANY / CLIENT NAME
+                    Alodia's Place
                 </div>
 
                 <div class="date">
-                    MONTH YEAR – MONTH YEAR
+                    December 2020 – January 2023
                 </div>
 
                 <ul>
+
                     <li>
-                        Add your main responsibility here.
+                        Provided customer service and assisted
+                        customers with their orders and requests.
                     </li>
 
                     <li>
-                        Add another responsibility or achievement.
+                        Maintained accurate order information
+                        and coordinated with team members.
                     </li>
 
                     <li>
-                        Add tools or software you used.
+                        Helped maintain an organized and
+                        professional work environment.
                     </li>
 
                     <li>
-                        Add a measurable result if available.
+                        Developed communication, teamwork,
+                        time-management, and customer-service skills.
                     </li>
+
                 </ul>
 
             </div>
 
 
-            <!-- EXPERIENCE 2 -->
+            <!-- =================================================
+                 EXPERIENCE 2
+            ================================================= -->
 
             <div class="experience-card">
 
-                <h3>YOUR SECOND JOB TITLE</h3>
+                <h3>
+                    Community & Youth Organization Experience
+                </h3>
 
                 <div class="company">
-                    COMPANY / CLIENT NAME
+                    SK / Community Leadership
                 </div>
 
                 <div class="date">
-                    MONTH YEAR – MONTH YEAR
+                    Community-Based Experience
                 </div>
 
                 <ul>
+
                     <li>
-                        Add your responsibility here.
+                        Assisted with youth-focused activities,
+                        programs, and community initiatives.
                     </li>
 
                     <li>
-                        Add another responsibility.
+                        Helped organize documents, records,
+                        activities, and administrative information.
                     </li>
 
                     <li>
-                        Add an achievement or result.
+                        Participated in planning and coordination
+                        of community activities.
                     </li>
+
+                    <li>
+                        Developed organizational, communication,
+                        leadership, and administrative skills.
+                    </li>
+
                 </ul>
 
             </div>
 
 
-            <!-- EXPERIENCE 3 -->
+            <!-- =================================================
+                 EXPERIENCE 3
+            ================================================= -->
 
             <div class="experience-card">
 
-                <h3>FREELANCE / PROJECT EXPERIENCE</h3>
+                <h3>
+                    Software & System Development
+                </h3>
 
                 <div class="company">
-                    YOUR CLIENT / ORGANIZATION
+                    Project-Based Experience
                 </div>
 
                 <div class="date">
-                    MONTH YEAR – PRESENT
+                    Project Experience
                 </div>
 
                 <ul>
+
                     <li>
-                        Describe the work you completed.
+                        Developed Windows Forms applications
+                        using VB.NET.
                     </li>
 
                     <li>
-                        Mention the tools you used.
+                        Worked with Supabase databases and
+                        REST API integration.
                     </li>
 
                     <li>
-                        Describe the result of the project.
+                        Created systems for profiling,
+                        records, documents, reports, and
+                        administrative management.
                     </li>
+
+                    <li>
+                        Designed user interfaces and implemented
+                        system features based on project needs.
+                    </li>
+
                 </ul>
 
             </div>
@@ -1002,9 +596,9 @@
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      SAMPLE WORKS
-========================= -->
+===================================================== -->
 
 <section id="works">
 
@@ -1012,7 +606,9 @@
 
         <div class="section-title">
 
-            <h2>Sample Works</h2>
+            <h2>
+                Sample Works
+            </h2>
 
             <p>
                 A selection of my creative, administrative,
@@ -1025,30 +621,30 @@
         <div class="portfolio-grid">
 
 
-            <!-- SAMPLE 1 -->
+            <!-- =================================================
+                 SAMPLE WORK 1
+            ================================================= -->
 
             <div class="portfolio-card">
 
                 <div class="portfolio-image">
 
-                    <!--
-                        REPLACE WITH YOUR IMAGE:
-
-                        <img src="images/social-media-1.jpg"
-                             alt="Social Media Design">
-                    -->
-
-                    SAMPLE WORK IMAGE
+                    <img src="images/social-media-1.jpg"
+                         alt="Social Media Design"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='SOCIAL MEDIA<br>DESIGN';">
 
                 </div>
 
                 <div class="portfolio-content">
 
-                    <h3>Social Media Design</h3>
+                    <h3>
+                        Social Media Design
+                    </h3>
 
                     <p>
-                        Replace this text with a description
-                        of your social media design.
+                        Social media graphics designed to
+                        communicate promotions, announcements,
+                        and brand messages clearly.
                     </p>
 
                     <span class="tag">
@@ -1060,28 +656,30 @@
             </div>
 
 
-            <!-- SAMPLE 2 -->
+            <!-- =================================================
+                 SAMPLE WORK 2
+            ================================================= -->
 
             <div class="portfolio-card">
 
                 <div class="portfolio-image">
 
-                    <!--
-                        <img src="images/social-media-2.jpg"
-                             alt="Social Media Post">
-                    -->
-
-                    SAMPLE WORK IMAGE
+                    <img src="images/social-media-2.jpg"
+                         alt="Facebook and Instagram Post"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='FACEBOOK / INSTAGRAM<br>POST';">
 
                 </div>
 
                 <div class="portfolio-content">
 
-                    <h3>Facebook / Instagram Post</h3>
+                    <h3>
+                        Facebook / Instagram Post
+                    </h3>
 
                     <p>
-                        Add a short explanation of the project,
-                        purpose, and your role.
+                        Sample social media content focused on
+                        engaging audiences and presenting
+                        information in a clear format.
                     </p>
 
                     <span class="tag">
@@ -1093,28 +691,30 @@
             </div>
 
 
-            <!-- SAMPLE 3 -->
+            <!-- =================================================
+                 SAMPLE WORK 3
+            ================================================= -->
 
             <div class="portfolio-card">
 
                 <div class="portfolio-image">
 
-                    <!--
-                        <img src="images/data-entry.jpg"
-                             alt="Data Entry Sample">
-                    -->
-
-                    SAMPLE WORK IMAGE
+                    <img src="images/data-entry.jpg"
+                         alt="Data Entry Sample"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='DATA ENTRY<br>SAMPLE';">
 
                 </div>
 
                 <div class="portfolio-content">
 
-                    <h3>Data Entry</h3>
+                    <h3>
+                        Data Entry
+                    </h3>
 
                     <p>
-                        Add a description of your spreadsheet,
-                        data organization, or data-entry work.
+                        Organized spreadsheet and data-entry
+                        samples demonstrating accuracy and
+                        attention to detail.
                     </p>
 
                     <span class="tag">
@@ -1126,28 +726,30 @@
             </div>
 
 
-            <!-- SAMPLE 4 -->
+            <!-- =================================================
+                 SAMPLE WORK 4
+            ================================================= -->
 
             <div class="portfolio-card">
 
                 <div class="portfolio-image">
 
-                    <!--
-                        <img src="images/lead-generation.jpg"
-                             alt="Lead Generation Sample">
-                    -->
-
-                    SAMPLE WORK IMAGE
+                    <img src="images/lead-generation.jpg"
+                         alt="Lead Generation Sample"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='LEAD GENERATION<br>SAMPLE';">
 
                 </div>
 
                 <div class="portfolio-content">
 
-                    <h3>Lead Generation</h3>
+                    <h3>
+                        Lead Generation
+                    </h3>
 
                     <p>
-                        Show an example of your lead research
-                        and organized prospect data.
+                        Example of organized prospect research,
+                        lead collection, and information
+                        management.
                     </p>
 
                     <span class="tag">
@@ -1159,28 +761,29 @@
             </div>
 
 
-            <!-- SAMPLE 5 -->
+            <!-- =================================================
+                 SAMPLE WORK 5
+            ================================================= -->
 
             <div class="portfolio-card">
 
                 <div class="portfolio-image">
 
-                    <!--
-                        <img src="images/content-calendar.jpg"
-                             alt="Content Calendar">
-                    -->
-
-                    SAMPLE WORK IMAGE
+                    <img src="images/content-calendar.jpg"
+                         alt="Content Calendar"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='CONTENT CALENDAR<br>SAMPLE';">
 
                 </div>
 
                 <div class="portfolio-content">
 
-                    <h3>Content Calendar</h3>
+                    <h3>
+                        Content Calendar
+                    </h3>
 
                     <p>
-                        Add your sample content planning
-                        or scheduling work.
+                        Sample content planning and scheduling
+                        system for organizing social media posts.
                     </p>
 
                     <span class="tag">
@@ -1192,28 +795,29 @@
             </div>
 
 
-            <!-- SAMPLE 6 -->
+            <!-- =================================================
+                 SAMPLE WORK 6
+            ================================================= -->
 
             <div class="portfolio-card">
 
                 <div class="portfolio-image">
 
-                    <!--
-                        <img src="images/canva-design.jpg"
-                             alt="Canva Design">
-                    -->
-
-                    SAMPLE WORK IMAGE
+                    <img src="images/canva-design.jpg"
+                         alt="Canva Promotional Design"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='PROMOTIONAL<br>DESIGN';">
 
                 </div>
 
                 <div class="portfolio-content">
 
-                    <h3>Promotional Design</h3>
+                    <h3>
+                        Promotional Design
+                    </h3>
 
                     <p>
-                        Add information about your promotional
-                        graphic or marketing material.
+                        Promotional graphics and marketing
+                        materials created for digital platforms.
                     </p>
 
                     <span class="tag">
@@ -1231,9 +835,9 @@
 </section>
 
 
-<!-- =========================
-     PROJECTS
-========================= -->
+<!-- =====================================================
+     TECHNICAL PROJECTS
+===================================================== -->
 
 <section id="projects">
 
@@ -1241,7 +845,9 @@
 
         <div class="section-title">
 
-            <h2>Projects</h2>
+            <h2>
+                Projects
+            </h2>
 
             <p>
                 Selected technical and professional projects.
@@ -1303,16 +909,19 @@
             <div class="project-card">
 
                 <h3>
-                    YOUR PROJECT NAME
+                    SGYG Document System
                 </h3>
 
                 <p>
-                    Replace this with another project you
-                    want to showcase.
+                    A document management system created to
+                    organize financial documents, community
+                    engagement records, youth profiling,
+                    picture backups, and system files.
                 </p>
 
                 <p class="technology">
-                    Technologies: YOUR TECHNOLOGIES
+                    Technologies:
+                    VB.NET • Windows Forms • Supabase
                 </p>
 
             </div>
@@ -1323,15 +932,19 @@
             <div class="project-card">
 
                 <h3>
-                    YOUR PROJECT NAME
+                    Portfolio Website
                 </h3>
 
                 <p>
-                    Add your project description here.
+                    A responsive personal portfolio website
+                    created to showcase professional skills,
+                    services, sample works, and technical
+                    projects.
                 </p>
 
                 <p class="technology">
-                    Technologies: YOUR TECHNOLOGIES
+                    Technologies:
+                    HTML • CSS • JavaScript • GitHub Pages
                 </p>
 
             </div>
@@ -1343,9 +956,9 @@
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      SERVICES
-========================= -->
+===================================================== -->
 
 <section id="services">
 
@@ -1353,7 +966,9 @@
 
         <div class="section-title">
 
-            <h2>Services</h2>
+            <h2>
+                Services
+            </h2>
 
             <p>
                 How I can help your business.
@@ -1365,78 +980,103 @@
         <div class="services-grid">
 
 
+            <!-- SERVICE 1 -->
+
             <div class="service-card">
 
-                <h3>Social Media Management</h3>
+                <h3>
+                    Social Media Management
+                </h3>
 
                 <p>
-                    Content planning, scheduling,
-                    captions, engagement, and social
-                    media organization.
+                    Content planning, scheduling, captions,
+                    engagement, and social media organization
+                    to help maintain a consistent online presence.
                 </p>
 
             </div>
 
 
+            <!-- SERVICE 2 -->
+
             <div class="service-card">
 
-                <h3>Canva Graphic Design</h3>
+                <h3>
+                    Canva Graphic Design
+                </h3>
 
                 <p>
-                    Social media posts, promotional
-                    graphics, presentations, and
-                    marketing materials.
+                    Social media posts, promotional graphics,
+                    presentations, and marketing materials
+                    designed using Canva.
                 </p>
 
             </div>
 
 
+            <!-- SERVICE 3 -->
+
             <div class="service-card">
 
-                <h3>Data Entry</h3>
+                <h3>
+                    Data Entry
+                </h3>
 
                 <p>
                     Accurate data entry, spreadsheet
-                    organization, data cleaning,
-                    and database management.
+                    organization, data cleaning, and
+                    database-related tasks.
                 </p>
 
             </div>
 
 
+            <!-- SERVICE 4 -->
+
             <div class="service-card">
 
-                <h3>Lead Generation</h3>
+                <h3>
+                    Lead Generation
+                </h3>
 
                 <p>
                     Online research, prospect research,
-                    lead collection, and data organization.
+                    lead collection, and organized
+                    prospect information.
                 </p>
 
             </div>
 
 
+            <!-- SERVICE 5 -->
+
             <div class="service-card">
 
-                <h3>Virtual Assistance</h3>
+                <h3>
+                    Virtual Assistance
+                </h3>
 
                 <p>
-                    Administrative support, research,
-                    file organization, and general
-                    virtual assistance.
+                    Administrative support, online research,
+                    file organization, task management,
+                    and general virtual assistance.
                 </p>
 
             </div>
 
 
+            <!-- SERVICE 6 -->
+
             <div class="service-card">
 
-                <h3>Technical Support</h3>
+                <h3>
+                    Technical Support
+                </h3>
 
                 <p>
                     Basic website development, software
-                    projects, data systems, and technical
-                    assistance.
+                    projects, database systems, and
+                    technical assistance.
                 </p>
 
             </div>
@@ -1448,9 +1088,9 @@
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      RESUME
-========================= -->
+===================================================== -->
 
 <section id="resume">
 
@@ -1458,7 +1098,9 @@
 
         <div class="section-title">
 
-            <h2>My Resume</h2>
+            <h2>
+                My Resume
+            </h2>
 
             <p>
                 Want to learn more about my experience
@@ -1467,14 +1109,19 @@
 
         </div>
 
+
         <!--
-            AFTER YOU UPLOAD YOUR RESUME PDF TO GITHUB,
-            CHANGE "resume.pdf" IF YOUR FILE HAS A DIFFERENT NAME.
+            Upload your resume to the main repository.
+
+            File name:
+
+            resume.pdf
         -->
 
         <a href="resume.pdf"
            class="btn btn-primary"
-           target="_blank">
+           target="_blank"
+           rel="noopener">
 
             View / Download Resume
 
@@ -1485,9 +1132,9 @@
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      CONTACT
-========================= -->
+===================================================== -->
 
 <section id="contact">
 
@@ -1495,7 +1142,9 @@
 
         <div class="section-title">
 
-            <h2>Contact Me</h2>
+            <h2>
+                Contact Me
+            </h2>
 
             <p>
                 Let's work together.
@@ -1507,9 +1156,15 @@
         <div class="contact-grid">
 
 
+            <!-- =================================================
+                 CONTACT INFORMATION
+            ================================================= -->
+
             <div class="contact-info">
 
-                <h3>Let's Connect</h3>
+                <h3>
+                    Let's Connect
+                </h3>
 
                 <p>
                     I'm open to opportunities in social media
@@ -1518,9 +1173,17 @@
                 </p>
 
 
+                <!-- EMAIL -->
+
                 <div class="contact-item">
 
-                    <strong>Email</strong>
+                    <strong>
+                        Email
+                    </strong>
+
+                    <!--
+                        CHANGE THIS TO YOUR REAL EMAIL
+                    -->
 
                     <a href="mailto:YOUR_EMAIL@example.com">
                         YOUR_EMAIL@example.com
@@ -1529,12 +1192,21 @@
                 </div>
 
 
+                <!-- LINKEDIN -->
+
                 <div class="contact-item">
 
-                    <strong>LinkedIn</strong>
+                    <strong>
+                        LinkedIn
+                    </strong>
+
+                    <!--
+                        CHANGE THIS TO YOUR LINKEDIN URL
+                    -->
 
                     <a href="YOUR_LINKEDIN_URL"
-                       target="_blank">
+                       target="_blank"
+                       rel="noopener">
 
                         Your LinkedIn Profile
 
@@ -1543,12 +1215,21 @@
                 </div>
 
 
+                <!-- FACEBOOK -->
+
                 <div class="contact-item">
 
-                    <strong>Facebook</strong>
+                    <strong>
+                        Facebook
+                    </strong>
+
+                    <!--
+                        CHANGE THIS TO YOUR FACEBOOK URL
+                    -->
 
                     <a href="YOUR_FACEBOOK_URL"
-                       target="_blank">
+                       target="_blank"
+                       rel="noopener">
 
                         Your Facebook Profile
 
@@ -1557,9 +1238,13 @@
                 </div>
 
 
+                <!-- LOCATION -->
+
                 <div class="contact-item">
 
-                    <strong>Location</strong>
+                    <strong>
+                        Location
+                    </strong>
 
                     YOUR LOCATION
 
@@ -1568,7 +1253,9 @@
             </div>
 
 
-            <!-- CONTACT FORM -->
+            <!-- =================================================
+                 CONTACT FORM
+            ================================================= -->
 
             <form onsubmit="sendMessage(event)">
 
@@ -1616,31 +1303,35 @@
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
     <p>
-        © 2026 Justine Kyle Palma. All Rights Reserved.
+        © 2026 Justine Kyle Palma.
+        All Rights Reserved.
     </p>
 
     <p>
-        Social Media Manager | Data Entry Specialist |
+        Social Media Manager |
+        Data Entry Specialist |
         Virtual Assistant
     </p>
 
 </footer>
 
 
-<!-- =========================
+<!-- =====================================================
      JAVASCRIPT
-========================= -->
+===================================================== -->
 
 <script>
 
-    /* MOBILE MENU */
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
 
     function toggleMenu() {
 
@@ -1652,26 +1343,33 @@
     }
 
 
-    /* CLOSE MOBILE MENU AFTER CLICKING */
+    /* =====================================================
+       CLOSE MOBILE MENU WHEN LINK IS CLICKED
+    ===================================================== */
 
-    document.querySelectorAll(".nav-links a").forEach(link => {
+    document
+        .querySelectorAll(".nav-links a")
+        .forEach(function(link) {
 
-        link.addEventListener("click", () => {
+            link.addEventListener("click", function() {
 
-            document
-                .getElementById("navLinks")
-                .classList.remove("active");
+                document
+                    .getElementById("navLinks")
+                    .classList.remove("active");
+
+            });
 
         });
 
-    });
 
-
-    /* CONTACT FORM */
+    /* =====================================================
+       CONTACT FORM
+    ===================================================== */
 
     function sendMessage(event) {
 
         event.preventDefault();
+
 
         const name =
             document.getElementById("name").value;
@@ -1687,21 +1385,35 @@
 
 
         /*
-            THIS USES YOUR EMAIL APP.
+            =================================================
+            IMPORTANT
 
-            REPLACE YOUR_EMAIL@example.com
-            WITH YOUR REAL EMAIL ADDRESS.
+            Replace YOUR_EMAIL@example.com below
+            with your REAL email address.
+            =================================================
         */
 
+        const destinationEmail =
+            "YOUR_EMAIL@example.com";
+
+
         const mailto =
-            "mailto:YOUR_EMAIL@example.com" +
+            "mailto:" +
+            destinationEmail +
+
             "?subject=" +
             encodeURIComponent(subject) +
+
             "&body=" +
             encodeURIComponent(
-                "Name: " + name +
-                "\nEmail: " + email +
-                "\n\nMessage:\n" + message
+                "Name: " +
+                name +
+
+                "\nEmail: " +
+                email +
+
+                "\n\nMessage:\n" +
+                message
             );
 
 
@@ -1710,6 +1422,7 @@
     }
 
 </script>
+
 
 </body>
 </html>
