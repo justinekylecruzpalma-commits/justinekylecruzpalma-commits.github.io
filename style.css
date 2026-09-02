@@ -1,20 +1,18 @@
 /* =========================================================
-   JUSTINE KYLE PALMA - PORTFOLIO
-   RESPONSIVE CSS
+   GLOBAL
 ========================================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
 
 html {
     scroll-behavior: smooth;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
+    margin: 0;
+    padding: 0;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
     color: #222;
@@ -31,6 +29,7 @@ img {
     max-width: 100%;
     display: block;
 }
+
 
 /* =========================================================
    NAVIGATION
@@ -52,11 +51,9 @@ nav {
     min-height: 70px;
     margin: 0 auto;
     padding: 15px 25px;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     position: relative;
 }
 
@@ -74,8 +71,9 @@ nav {
     display: flex;
     align-items: center;
     gap: 22px;
-
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
@@ -95,6 +93,7 @@ nav {
     cursor: pointer;
     user-select: none;
 }
+
 
 /* =========================================================
    GENERAL
@@ -119,13 +118,15 @@ section {
 .section-title h2 {
     font-size: 36px;
     line-height: 1.2;
-    margin-bottom: 10px;
+    margin: 0 0 10px;
 }
 
 .section-title p {
     color: #666;
     font-size: 16px;
+    margin: 0;
 }
+
 
 /* =========================================================
    BUTTONS
@@ -163,16 +164,15 @@ section {
     color: white;
 }
 
+
 /* =========================================================
    HERO
 ========================================================= */
 
 #home {
     min-height: calc(100vh - 70px);
-
     display: flex;
     align-items: center;
-
     background: linear-gradient(
         135deg,
         #eef2ff,
@@ -184,10 +184,8 @@ section {
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;
-
     display: grid;
     grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
-
     gap: 50px;
     align-items: center;
 }
@@ -199,7 +197,7 @@ section {
 .hero h1 {
     font-size: clamp(38px, 5vw, 55px);
     line-height: 1.1;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
 }
 
 .hero h1 span {
@@ -210,14 +208,14 @@ section {
     font-size: 22px;
     line-height: 1.4;
     color: #555;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
 }
 
 .hero p {
     max-width: 650px;
     color: #666;
     font-size: 17px;
-    margin-bottom: 25px;
+    margin: 0 0 25px;
 }
 
 .hero-image {
@@ -226,34 +224,28 @@ section {
     align-items: center;
 }
 
-/* PROFILE PHOTO */
+
+/* =========================================================
+   PROFILE PHOTO
+========================================================= */
 
 .profile-placeholder {
     width: 300px;
     height: 300px;
-
     border-radius: 50%;
-
     background: #e0e7ff;
-
     border: 8px solid white;
-
-    box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.12);
-
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
-
     text-align: center;
-
     color: #4f46e5;
     font-weight: bold;
-
     padding: 30px;
-
     object-fit: cover;
 }
+
 
 /* =========================================================
    ABOUT
@@ -265,33 +257,22 @@ section {
 
 .about-grid {
     display: grid;
-
-    grid-template-columns:
-        minmax(280px, 1fr)
-        minmax(0, 1.5fr);
-
+    grid-template-columns: minmax(280px, 1fr) minmax(0, 1.5fr);
     gap: 50px;
-
     align-items: center;
 }
 
 .about-image {
     width: 100%;
     min-height: 350px;
-
     background: #eef2ff;
-
     border-radius: 15px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     text-align: center;
-
     color: #4f46e5;
     font-weight: bold;
-
     overflow: hidden;
 }
 
@@ -299,9 +280,7 @@ section {
     width: 100%;
     height: 100%;
     min-height: 350px;
-
     object-fit: cover;
-
     border-radius: 15px;
 }
 
@@ -311,13 +290,14 @@ section {
 
 .about-text h3 {
     font-size: 28px;
-    margin-bottom: 15px;
+    margin: 0 0 15px;
 }
 
 .about-text p {
     color: #666;
-    margin-bottom: 15px;
+    margin: 0 0 15px;
 }
+
 
 /* =========================================================
    SKILLS
@@ -325,34 +305,23 @@ section {
 
 .skills-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
 }
 
 .skill-card {
     background: white;
-
     padding: 30px 20px;
-
     border-radius: 12px;
-
     text-align: center;
-
     border: 1px solid #eee;
-
     transition: 0.3s;
-
     min-width: 0;
 }
 
 .skill-card:hover {
     transform: translateY(-6px);
-
-    box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 .skill-icon {
@@ -361,13 +330,15 @@ section {
 }
 
 .skill-card h3 {
-    margin-bottom: 8px;
+    margin: 0 0 8px;
 }
 
 .skill-card p {
     color: #666;
     font-size: 14px;
+    margin: 0;
 }
+
 
 /* =========================================================
    EXPERIENCE
@@ -385,30 +356,18 @@ section {
 
 .experience-card {
     border-left: 4px solid #4f46e5;
-
-    padding:
-        5px
-        0
-        30px
-        30px;
-
+    padding: 5px 0 30px 30px;
     margin-bottom: 25px;
-
     position: relative;
 }
 
 .experience-card::before {
     content: "";
-
     width: 15px;
     height: 15px;
-
     background: #4f46e5;
-
     border-radius: 50%;
-
     position: absolute;
-
     left: -9px;
     top: 5px;
 }
@@ -416,6 +375,7 @@ section {
 .experience-card h3 {
     font-size: 22px;
     line-height: 1.3;
+    margin: 0;
 }
 
 .experience-card .company {
@@ -434,63 +394,47 @@ section {
     color: #666;
 }
 
+
 /* =========================================================
    SAMPLE WORKS
 ========================================================= */
 
 .portfolio-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 25px;
 }
 
 .portfolio-card {
     background: white;
-
     border-radius: 12px;
-
     overflow: hidden;
-
     border: 1px solid #eee;
-
     transition: 0.3s;
-
     min-width: 0;
 }
 
 .portfolio-card:hover {
     transform: translateY(-5px);
-
-    box-shadow:
-        0 15px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
 }
 
 .portfolio-image {
     width: 100%;
     height: 220px;
-
     background: #e5e7eb;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     text-align: center;
-
     color: #666;
-
     padding: 20px;
-
     overflow: hidden;
 }
 
 .portfolio-image img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
 }
 
@@ -499,29 +443,26 @@ section {
 }
 
 .portfolio-content h3 {
-    margin-bottom: 8px;
+    margin: 0 0 8px;
     line-height: 1.3;
 }
 
 .portfolio-content p {
     color: #666;
     font-size: 14px;
+    margin: 0;
 }
 
 .tag {
     display: inline-block;
-
     background: #eef2ff;
     color: #4f46e5;
-
     padding: 5px 10px;
-
     border-radius: 20px;
-
     font-size: 12px;
-
     margin-top: 12px;
 }
+
 
 /* =========================================================
    PROJECTS
@@ -533,34 +474,27 @@ section {
 
 .project-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 30px;
 }
 
 .project-card {
     padding: 30px;
-
     background: #f8f9fb;
-
     border-radius: 15px;
-
     border: 1px solid #eee;
-
     min-width: 0;
 }
 
 .project-card h3 {
     font-size: 24px;
     line-height: 1.3;
-    margin-bottom: 10px;
+    margin: 0 0 10px;
 }
 
 .project-card p {
     color: #666;
-    margin-bottom: 15px;
+    margin: 0 0 15px;
 }
 
 .technology {
@@ -569,160 +503,167 @@ section {
     color: #4f46e5 !important;
 }
 
+
 /* =========================================================
    SERVICES
 ========================================================= */
 
+#services {
+    background: #f8f9fb;
+}
+
 .services-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-    gap: 25px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
 }
 
 .service-card {
     background: white;
-
-    padding: 30px;
-
+    padding: 30px 22px;
     border-radius: 12px;
-
     border: 1px solid #eee;
-
-    min-width: 0;
-
+    text-align: center;
     transition: 0.3s;
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
 
-    box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.08);
+.service-card .icon {
+    font-size: 38px;
+    margin-bottom: 15px;
 }
 
 .service-card h3 {
-    margin-bottom: 10px;
-    line-height: 1.3;
+    font-size: 19px;
+    margin: 0 0 10px;
 }
 
 .service-card p {
     color: #666;
+    font-size: 14px;
+    margin: 0;
 }
+
 
 /* =========================================================
    RESUME
 ========================================================= */
 
 #resume {
+    background: white;
+}
+
+.resume-box {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 45px;
     background: #eef2ff;
+    border-radius: 18px;
     text-align: center;
 }
 
-#resume p {
-    max-width: 650px;
-
-    margin:
-        0 auto
-        25px;
-
-    color: #666;
+.resume-box h3 {
+    font-size: 28px;
+    margin: 0 0 12px;
 }
+
+.resume-box p {
+    color: #666;
+    margin: 0 auto 20px;
+    max-width: 650px;
+}
+
 
 /* =========================================================
    CONTACT
 ========================================================= */
 
 #contact {
-    background: white;
+    background: #f8f9fb;
 }
 
 .contact-grid {
     display: grid;
-
-    grid-template-columns:
-        minmax(0, 1fr)
-        minmax(0, 1fr);
-
-    gap: 50px;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+    gap: 40px;
+    align-items: start;
 }
 
 .contact-info {
-    min-width: 0;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #eee;
 }
 
 .contact-info h3 {
-    font-size: 26px;
-    margin-bottom: 15px;
+    font-size: 25px;
+    margin: 0 0 15px;
 }
 
 .contact-info p {
     color: #666;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .contact-item {
-    margin: 15px 0;
-
-    overflow-wrap: anywhere;
+    margin-bottom: 18px;
 }
 
 .contact-item strong {
     display: block;
-    margin-bottom: 3px;
+    margin-bottom: 4px;
 }
 
 .contact-item a {
     color: #4f46e5;
+    word-break: break-word;
 }
 
-form {
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 15px;
+.contact-form {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #eee;
 }
 
-input,
-textarea {
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group textarea {
     width: 100%;
-
-    padding: 14px;
-
-    border:
-        1px solid #ddd;
-
+    padding: 13px 15px;
+    border: 1px solid #ddd;
     border-radius: 8px;
-
     font-family: inherit;
-
     font-size: 15px;
-
     outline: none;
+    transition: 0.3s;
 }
 
-input:focus,
-textarea:focus {
+.form-group input:focus,
+.form-group textarea:focus {
     border-color: #4f46e5;
-
-    box-shadow:
-        0 0 0 3px rgba(79, 70, 229, 0.1);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
-textarea {
+.form-group textarea {
     min-height: 150px;
     resize: vertical;
 }
 
-button {
-    border: none;
-    cursor: pointer;
-    font-size: 15px;
-}
 
 /* =========================================================
    FOOTER
@@ -730,20 +671,33 @@ button {
 
 footer {
     background: #111827;
-
     color: white;
-
     text-align: center;
-
     padding: 30px 20px;
 }
 
 footer p {
-    color: #aaa;
-    font-size: 14px;
-
-    margin: 4px 0;
+    margin: 5px 0;
+    color: #d1d5db;
 }
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: white;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #a5b4fc;
+}
+
 
 /* =========================================================
    TABLET
@@ -751,37 +705,27 @@ footer p {
 
 @media (max-width: 1000px) {
 
-    .nav-links {
-        gap: 14px;
-    }
-
-    .nav-links a {
-        font-size: 13px;
-    }
-
-    .hero {
-        grid-template-columns:
-            minmax(0, 1.2fr)
-            minmax(250px, 1fr);
-
-        gap: 30px;
-    }
-
     .skills-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-    }
-
-    .portfolio-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .services-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero {
+        gap: 30px;
+    }
+
+    .nav-links {
+        gap: 15px;
     }
 }
+
 
 /* =========================================================
    MOBILE NAVIGATION
@@ -790,7 +734,7 @@ footer p {
 @media (max-width: 800px) {
 
     nav {
-        min-height: 65px;
+        padding: 15px 20px;
     }
 
     .menu-btn {
@@ -799,29 +743,18 @@ footer p {
 
     .nav-links {
         display: none;
-
         position: absolute;
-
-        top: 65px;
+        top: 70px;
         left: 0;
-
         width: 100%;
-
         background: white;
-
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        padding: 20px;
         flex-direction: column;
-
         align-items: stretch;
-
         gap: 0;
-
-        padding: 10px 20px 20px;
-
-        border-bottom:
-            1px solid #eee;
-
-        box-shadow:
-            0 10px 20px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
     }
 
     .nav-links.active {
@@ -834,20 +767,13 @@ footer p {
 
     .nav-links a {
         display: block;
-
-        width: 100%;
-
         padding: 12px 5px;
-
-        font-size: 15px;
+        text-align: center;
     }
 
     .hero {
         grid-template-columns: 1fr;
-
         text-align: center;
-
-        gap: 40px;
     }
 
     .hero p {
@@ -860,14 +786,12 @@ footer p {
     }
 
     .profile-placeholder {
-        width: 250px;
-        height: 250px;
+        width: 240px;
+        height: 240px;
     }
 
     .about-grid {
         grid-template-columns: 1fr;
-
-        gap: 35px;
     }
 
     .about-image {
@@ -878,12 +802,15 @@ footer p {
         min-height: 300px;
     }
 
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
     .contact-grid {
         grid-template-columns: 1fr;
-
-        gap: 40px;
     }
 }
+
 
 /* =========================================================
    SMALL MOBILE
@@ -892,7 +819,7 @@ footer p {
 @media (max-width: 600px) {
 
     section {
-        padding: 70px 20px;
+        padding: 65px 18px;
     }
 
     .section-title {
@@ -903,90 +830,90 @@ footer p {
         font-size: 30px;
     }
 
+    .section-title p {
+        font-size: 14px;
+    }
+
     .hero h1 {
-        font-size: 38px;
+        font-size: 40px;
     }
 
     .hero h3 {
-        font-size: 18px;
+        font-size: 19px;
     }
 
     .hero p {
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .skills-grid,
-    .portfolio-grid,
-    .project-grid,
-    .services-grid {
+    .services-grid,
+    .portfolio-grid {
         grid-template-columns: 1fr;
     }
 
-    .skill-card {
+    .skill-card,
+    .service-card {
         padding: 25px 20px;
     }
 
     .portfolio-image {
-        height: 230px;
+        height: 210px;
     }
 
     .project-card {
-        padding: 25px;
+        padding: 25px 20px;
     }
 
-    .service-card {
-        padding: 25px;
+    .project-card h3 {
+        font-size: 21px;
     }
 
-    .profile-placeholder {
-        width: 220px;
-        height: 220px;
-
-        border-width: 6px;
+    .resume-box {
+        padding: 30px 20px;
     }
 
-    .about-image {
-        min-height: 250px;
+    .resume-box h3 {
+        font-size: 24px;
     }
 
-    .about-image img {
-        min-height: 250px;
+    .contact-info,
+    .contact-form {
+        padding: 25px 20px;
     }
 
     .btn {
-        padding: 12px 18px;
-    }
-}
-
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
-
-@media (max-width: 400px) {
-
-    nav {
-        padding: 12px 15px;
-    }
-
-    .logo {
-        font-size: 19px;
-    }
-
-    section {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    .hero h1 {
-        font-size: 32px;
-    }
-
-    .profile-placeholder {
-        width: 190px;
-        height: 190px;
+        width: 100%;
+        margin: 5px 0;
+        text-align: center;
     }
 
     .experience-card {
-        padding-left: 20px;
+        padding-left: 22px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREEN
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .profile-placeholder {
+        width: 210px;
+        height: 210px;
+    }
+
+    .section-title h2 {
+        font-size: 27px;
     }
 }
