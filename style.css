@@ -1,6 +1,6 @@
 /* =====================================================
    JUSTINE KYLE PALMA PORTFOLIO
-   MODERN TECH LANDSCAPE DESIGN
+   FINAL MODERN TECH DESIGN
 ===================================================== */
 
 
@@ -10,21 +10,15 @@
 :root{
 
     --bg:#050816;
-
     --bg-light:#0f172a;
-
     --primary:#2563eb;
-
     --cyan:#22d3ee;
 
     --white:#f8fafc;
-
     --text:#cbd5e1;
-
     --muted:#94a3b8;
 
     --glass:rgba(255,255,255,.06);
-
     --border:rgba(255,255,255,.12);
 
 }
@@ -34,9 +28,7 @@
 *{
 
     margin:0;
-
     padding:0;
-
     box-sizing:border-box;
 
 }
@@ -238,9 +230,9 @@ nav{
 
     font-size:14px;
 
-    transition:.3s;
-
     position:relative;
+
+    transition:.3s;
 
 }
 
@@ -323,9 +315,9 @@ nav{
 
     display:flex;
 
-    align-items:center;
-
     justify-content:space-between;
+
+    align-items:center;
 
     gap:70px;
 
@@ -425,12 +417,6 @@ nav{
 
 
 
-
-
-
-
-
-
 .skill-tags{
 
     display:flex;
@@ -473,12 +459,6 @@ nav{
 
 
 
-
-
-
-
-
-
 .hero-buttons{
 
     display:flex;
@@ -499,9 +479,9 @@ nav{
 
     font-weight:600;
 
-    transition:.3s;
-
     display:inline-block;
+
+    transition:.3s;
 
 }
 
@@ -541,12 +521,6 @@ nav{
 
 
 
-
-
-
-
-
-
 .hero-stats{
 
     display:flex;
@@ -561,9 +535,9 @@ nav{
 
 .hero-stats strong{
 
-    font-size:35px;
-
     color:var(--cyan);
+
+    font-size:35px;
 
 }
 
@@ -574,12 +548,6 @@ nav{
     font-size:14px;
 
 }
-
-
-
-
-
-
 
 
 
@@ -634,12 +602,6 @@ nav{
     animation:floating 5s infinite;
 
 }
-
-
-
-
-
-
 
 
 
@@ -945,6 +907,14 @@ transform:translateX(0);
 
 
 
+.service-box ul{
+
+    padding-left:0;
+
+}
+
+
+
 .service-box li{
 
     color:var(--text);
@@ -1245,9 +1215,9 @@ transform:translateX(0);
 
     display:flex;
 
-    align-items:center;
-
     justify-content:center;
+
+    align-items:center;
 
     border-radius:50%;
 
@@ -1334,7 +1304,7 @@ transform:translateX(0);
 
 
 /* =====================================================
-   PROJECT SHOWCASE
+   PROJECT SHOWCASE SECTION
 ===================================================== */
 
 
@@ -1344,7 +1314,7 @@ transform:translateX(0);
 
     flex-direction:column;
 
-    gap:40px;
+    gap:45px;
 
 }
 
@@ -1404,7 +1374,7 @@ transform:translateX(0);
 
 
 
-/* PROJECT IMAGE */
+/* PROJECT IMAGE FIX */
 
 .project-image{
 
@@ -1416,11 +1386,11 @@ transform:translateX(0);
 
     border-radius:25px;
 
+    background:#020617;
+
     border:
 
     1px solid var(--border);
-
-    background:#020617;
 
 }
 
@@ -1658,6 +1628,8 @@ transform:translateX(0);
 
     border-radius:30px;
 
+    min-height:120px;
+
     transition:.4s;
 
 }
@@ -1694,15 +1666,23 @@ transform:translateX(0);
 
 }
 /* =====================================================
-   READY TO WORK TOGETHER / RESUME CTA
+   READY TO WORK TOGETHER / RESUME CTA FIX
 ===================================================== */
+
+
+#resume{
+
+    padding:90px 0;
+
+}
+
 
 
 .resume-banner{
 
     text-align:center;
 
-    padding:80px 40px;
+    padding:80px 50px;
 
     border-radius:40px;
 
@@ -1742,7 +1722,9 @@ transform:translateX(0);
 
     font-size:45px;
 
-    margin-bottom:20px;
+    line-height:1.2;
+
+    margin-bottom:25px;
 
 }
 
@@ -1750,13 +1732,15 @@ transform:translateX(0);
 
 .resume-banner p{
 
-    max-width:700px;
+    max-width:650px;
 
-    margin:auto;
+    margin:0 auto;
 
     color:var(--muted);
 
-    line-height:1.8;
+    line-height:1.9;
+
+    font-size:16px;
 
 }
 
@@ -1767,6 +1751,8 @@ transform:translateX(0);
     display:flex;
 
     justify-content:center;
+
+    align-items:center;
 
     gap:20px;
 
@@ -1882,37 +1868,27 @@ transform:translateX(0);
 
 .contact-form textarea{
 
-
     width:100%;
 
-
     padding:18px;
-
 
     background:
 
     rgba(255,255,255,.05);
 
-
     border:
 
     1px solid var(--border);
 
-
     border-radius:20px;
-
 
     color:white;
 
-
     font-family:'Poppins',sans-serif;
-
 
     outline:none;
 
-
     transition:.3s;
-
 
 }
 
@@ -1922,16 +1898,13 @@ transform:translateX(0);
 
 .contact-form textarea:focus{
 
-
     border-color:
 
     var(--cyan);
 
-
     box-shadow:
 
     0 0 20px rgba(34,211,238,.15);
-
 
 }
 
@@ -1993,7 +1966,7 @@ footer p{
 
 
 /* =====================================================
-   SCROLL REVEAL ANIMATION
+   SCROLL ANIMATION
 ===================================================== */
 
 
@@ -2346,9 +2319,33 @@ nav{
 
 
 
+.resume-banner{
+
+    padding:50px 25px;
+
+}
+
+
+
 .resume-banner h2{
 
-    font-size:35px;
+    font-size:32px;
+
+}
+
+
+
+.resume-banner p{
+
+    font-size:14px;
+
+}
+
+
+
+.resume-buttons{
+
+    flex-direction:column;
 
 }
 
@@ -2451,14 +2448,6 @@ section{
 .project-content h3{
 
     font-size:25px;
-
-}
-
-
-
-.resume-buttons{
-
-    flex-direction:column;
 
 }
 
