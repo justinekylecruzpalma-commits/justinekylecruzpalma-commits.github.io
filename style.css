@@ -1,30 +1,47 @@
 /* =====================================================
-   GLOBAL SETTINGS
+   JUSTINE KYLE PALMA PORTFOLIO
+   MODERN PROFESSIONAL DESIGN
 ===================================================== */
+
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 
+
 :root {
 
-    --primary: #2563eb;
-    --secondary: #1e40af;
+    --primary:#2563eb;
 
-    --dark: #111827;
-    --gray: #64748b;
+    --secondary:#1e40af;
 
-    --light: #f8fafc;
-    --white: #ffffff;
+    --dark:#111827;
+
+    --gray:#64748b;
+
+    --light:#f8fafc;
+
+    --white:#ffffff;
+
 
     --shadow:
-    0 10px 30px rgba(0,0,0,.08);
+    0 15px 35px rgba(0,0,0,.08);
 
 }
+
+
+
+
+
+
+/* =====================================================
+   RESET
+===================================================== */
 
 
 * {
 
     margin:0;
+
     padding:0;
 
     box-sizing:border-box;
@@ -37,9 +54,7 @@
 
 body {
 
-    font-family:
-    'Poppins',
-    sans-serif;
+    font-family:'Poppins',sans-serif;
 
     background:
     var(--light);
@@ -95,6 +110,8 @@ section {
 
 
 
+
+
 /* =====================================================
    NAVIGATION
 ===================================================== */
@@ -102,25 +119,38 @@ section {
 
 header {
 
+
     position:fixed;
 
     top:20px;
 
     left:50%;
 
+
     transform:
     translateX(-50%);
 
+
     width:90%;
 
-    background:white;
 
-    border-radius:20px;
+    background:
+    rgba(255,255,255,.85);
+
+
+    backdrop-filter:
+    blur(15px);
+
+
+    border-radius:25px;
+
 
     box-shadow:
     var(--shadow);
 
+
     z-index:1000;
+
 
 }
 
@@ -128,13 +158,16 @@ header {
 
 nav {
 
+
     display:flex;
 
     justify-content:space-between;
 
     align-items:center;
 
+
     padding:20px 35px;
+
 
 }
 
@@ -142,9 +175,11 @@ nav {
 
 .logo {
 
+
     font-size:25px;
 
-    font-weight:700;
+    font-weight:800;
+
 
 }
 
@@ -152,14 +187,18 @@ nav {
 
 .logo span {
 
+
     color:
     var(--primary);
+
 
 }
 
 
 
+
 .nav-links {
+
 
     display:flex;
 
@@ -167,17 +206,21 @@ nav {
 
     list-style:none;
 
+
 }
 
 
 
 .nav-links a {
 
+
     font-size:14px;
 
     font-weight:500;
 
+
     transition:.3s;
+
 
 }
 
@@ -185,14 +228,18 @@ nav {
 
 .nav-links a:hover {
 
+
     color:
     var(--primary);
+
 
 }
 
 
 
+
 .menu-btn {
+
 
     display:none;
 
@@ -200,7 +247,12 @@ nav {
 
     cursor:pointer;
 
+
 }
+
+
+
+
 
 
 
@@ -213,6 +265,7 @@ nav {
 
 #home {
 
+
     background:
 
     linear-gradient(
@@ -221,13 +274,16 @@ nav {
     #eff6ff
     );
 
+
 }
 
 
 
 .hero {
 
+
     min-height:100vh;
+
 
     display:flex;
 
@@ -235,9 +291,22 @@ nav {
 
     justify-content:space-between;
 
+
     gap:50px;
 
+
     padding-top:120px;
+
+
+}
+
+
+
+.hero-content {
+
+
+    flex:1;
+
 
 }
 
@@ -245,11 +314,15 @@ nav {
 
 .hero h1 {
 
-    font-size:55px;
 
-    line-height:1.2;
+    font-size:60px;
+
+
+    line-height:1.15;
+
 
     font-weight:800;
+
 
 }
 
@@ -257,19 +330,25 @@ nav {
 
 .hero h1 span {
 
+
     color:
     var(--primary);
+
 
 }
 
 
 
+
 .hero h3 {
 
-    margin:20px 0;
+
+    margin:25px 0;
+
 
     color:
     var(--secondary);
+
 
 }
 
@@ -277,12 +356,27 @@ nav {
 
 .hero p {
 
-    max-width:600px;
-
-    margin-bottom:15px;
 
     color:
     var(--gray);
+
+
+    max-width:600px;
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+.hero-buttons {
+
+
+    margin-top:20px;
+
 
 }
 
@@ -290,11 +384,54 @@ nav {
 
 .hero-image {
 
+
     flex:1;
+
 
     display:flex;
 
+
     justify-content:center;
+
+
+    position:relative;
+
+
+}
+
+
+
+.circle-bg {
+
+
+    position:absolute;
+
+
+    width:450px;
+
+
+    height:450px;
+
+
+    border-radius:50%;
+
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #2563eb,
+    #60a5fa
+    );
+
+
+    opacity:.15;
+
+
+    animation:
+
+    floatCircle 6s infinite;
+
 
 }
 
@@ -302,7 +439,20 @@ nav {
 
 .profile-photo {
 
+
     width:420px;
+
+
+    position:relative;
+
+
+    z-index:2;
+
+
+    animation:
+
+    floatPhoto 5s infinite;
+
 
     filter:
 
@@ -310,7 +460,46 @@ nav {
     0 20px 40px rgba(37,99,235,.25)
     );
 
+
 }
+
+
+
+
+
+@keyframes floatPhoto {
+
+
+50% {
+
+transform:
+translateY(-15px);
+
+}
+
+
+}
+
+
+
+
+
+@keyframes floatCircle {
+
+
+50% {
+
+transform:
+translate(20px,-20px);
+
+}
+
+
+}
+
+
+
+
 
 
 
@@ -323,21 +512,23 @@ nav {
 
 .btn {
 
+
     display:inline-block;
+
 
     padding:
 
     14px 32px;
 
-    margin:
-
-    15px 10px 0 0;
 
     border-radius:50px;
 
+
     font-weight:600;
 
+
     transition:.3s;
+
 
 }
 
@@ -345,10 +536,13 @@ nav {
 
 .btn-primary {
 
+
     background:
     var(--primary);
 
+
     color:white;
+
 
 }
 
@@ -356,12 +550,15 @@ nav {
 
 .btn-outline {
 
+
     border:
 
     2px solid var(--primary);
 
+
     color:
     var(--primary);
+
 
 }
 
@@ -369,10 +566,16 @@ nav {
 
 .btn:hover {
 
+
     transform:
-    translateY(-4px);
+    translateY(-5px);
+
 
 }
+
+
+
+
 
 
 
@@ -385,9 +588,12 @@ nav {
 
 .section-title {
 
+
     text-align:center;
 
+
     margin-bottom:60px;
+
 
 }
 
@@ -395,7 +601,9 @@ nav {
 
 .section-title h2 {
 
+
     font-size:40px;
+
 
 }
 
@@ -403,10 +611,16 @@ nav {
 
 .section-title p {
 
+
     color:
     var(--gray);
 
+
 }
+
+
+
+
 
 
 
@@ -419,14 +633,19 @@ nav {
 
 .about-grid {
 
+
     display:grid;
+
 
     grid-template-columns:
     1fr 1fr;
 
+
     gap:60px;
 
+
     align-items:center;
+
 
 }
 
@@ -434,7 +653,12 @@ nav {
 
 .about-image {
 
-    text-align:center;
+
+    display:flex;
+
+
+    justify-content:center;
+
 
 }
 
@@ -442,12 +666,16 @@ nav {
 
 .about-photo {
 
+
     width:320px;
 
+
     filter:
+
     drop-shadow(
     0 20px 30px rgba(0,0,0,.15)
     );
+
 
 }
 
@@ -455,9 +683,12 @@ nav {
 
 .about-text h3 {
 
+
     font-size:30px;
 
+
     margin-bottom:20px;
+
 
 }
 
@@ -465,12 +696,19 @@ nav {
 
 .about-text p {
 
-    margin-bottom:15px;
 
     color:
     var(--gray);
 
+
+    margin-bottom:15px;
+
+
 }
+
+
+
+
 
 
 
@@ -483,12 +721,16 @@ nav {
 
 .skills-grid {
 
+
     display:grid;
+
 
     grid-template-columns:
     repeat(4,1fr);
 
+
     gap:25px;
+
 
 }
 
@@ -496,18 +738,25 @@ nav {
 
 .skill-card {
 
+
     background:white;
 
-    padding:30px;
 
-    border-radius:20px;
+    padding:35px;
+
+
+    text-align:center;
+
+
+    border-radius:25px;
+
 
     box-shadow:
     var(--shadow);
 
-    text-align:center;
 
-    transition:.3s;
+    transition:.4s;
+
 
 }
 
@@ -515,8 +764,10 @@ nav {
 
 .skill-card:hover {
 
+
     transform:
-    translateY(-10px);
+    translateY(-12px);
+
 
 }
 
@@ -524,11 +775,18 @@ nav {
 
 .skill-icon {
 
-    font-size:40px;
+
+    font-size:45px;
+
 
     margin-bottom:15px;
 
+
 }
+
+
+
+
 
 
 
@@ -541,9 +799,12 @@ nav {
 
 .timeline {
 
+
     display:grid;
 
+
     gap:30px;
+
 
 }
 
@@ -551,14 +812,19 @@ nav {
 
 .experience-card {
 
+
     background:white;
+
 
     padding:35px;
 
-    border-radius:20px;
+
+    border-radius:25px;
+
 
     box-shadow:
     var(--shadow);
+
 
 }
 
@@ -566,10 +832,13 @@ nav {
 
 .company {
 
+
     color:
     var(--primary);
 
+
     font-weight:600;
+
 
 }
 
@@ -577,38 +846,50 @@ nav {
 
 .date {
 
+
     color:
     var(--gray);
 
-    margin-bottom:20px;
 
 }
+
+
 
 
 
 .experience-card li {
 
+
     margin-left:20px;
 
+
 }
+
+
+
+
 
 
 
 
 
 /* =====================================================
-   PORTFOLIO
+   PORTFOLIO WORKS
 ===================================================== */
 
 
 .portfolio-grid {
 
+
     display:grid;
+
 
     grid-template-columns:
     repeat(3,1fr);
 
+
     gap:30px;
+
 
 }
 
@@ -616,14 +897,33 @@ nav {
 
 .portfolio-card {
 
+
     background:white;
 
-    border-radius:20px;
+
+    border-radius:25px;
+
 
     overflow:hidden;
 
+
     box-shadow:
     var(--shadow);
+
+
+    transition:.4s;
+
+
+}
+
+
+
+.portfolio-card:hover {
+
+
+    transform:
+    translateY(-12px);
+
 
 }
 
@@ -631,15 +931,111 @@ nav {
 
 .portfolio-image {
 
-    height:220px;
+
+    height:250px;
+
+
+    overflow:hidden;
+
+
+    position:relative;
+
+
+}
+
+
+
+.portfolio-image img {
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    object-fit:cover;
+
+
+    transition:.5s;
+
+
+}
+
+
+
+.portfolio-card:hover
+.portfolio-image img {
+
+
+    transform:
+    scale(1.1);
+
+
+}
+
+
+
+.portfolio-overlay {
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+    background:
+    rgba(37,99,235,.85);
+
 
     display:flex;
 
+
     justify-content:center;
+
 
     align-items:center;
 
-    background:#e0f2fe;
+
+    opacity:0;
+
+
+    transition:.4s;
+
+
+}
+
+
+
+.portfolio-card:hover
+.portfolio-overlay {
+
+
+    opacity:1;
+
+
+}
+
+
+
+.view-btn {
+
+
+    background:white;
+
+
+    color:
+    var(--primary);
+
+
+    padding:
+
+    12px 25px;
+
+
+    border-radius:50px;
+
 
 }
 
@@ -647,7 +1043,9 @@ nav {
 
 .portfolio-content {
 
-    padding:25px;
+
+    padding:30px;
+
 
 }
 
@@ -655,17 +1053,25 @@ nav {
 
 .tag {
 
+
     display:inline-block;
 
-    background:
-    #dbeafe;
+
+    margin-top:15px;
+
+
+    padding:6px 18px;
+
+
+    border-radius:30px;
+
+
+    background:#dbeafe;
+
 
     color:
     var(--primary);
 
-    padding:5px 15px;
-
-    border-radius:20px;
 
 }
 
@@ -673,20 +1079,28 @@ nav {
 
 
 
+
+
+
+
 /* =====================================================
-   PROJECTS & SERVICES
+   PROJECTS SERVICES
 ===================================================== */
 
 
 .project-grid,
 .services-grid {
 
+
     display:grid;
+
 
     grid-template-columns:
     repeat(2,1fr);
 
+
     gap:30px;
+
 
 }
 
@@ -695,16 +1109,22 @@ nav {
 .project-card,
 .service-card {
 
+
     background:white;
+
 
     padding:35px;
 
-    border-radius:20px;
+
+    border-radius:25px;
+
 
     box-shadow:
     var(--shadow);
 
+
     transition:.3s;
+
 
 }
 
@@ -713,10 +1133,16 @@ nav {
 .project-card:hover,
 .service-card:hover {
 
+
     transform:
     translateY(-8px);
 
+
 }
+
+
+
+
 
 
 
@@ -729,12 +1155,16 @@ nav {
 
 .contact-grid {
 
+
     display:grid;
+
 
     grid-template-columns:
     1fr 1fr;
 
+
     gap:50px;
+
 
 }
 
@@ -742,7 +1172,9 @@ nav {
 
 .contact-item {
 
+
     margin:20px 0;
+
 
 }
 
@@ -750,11 +1182,15 @@ nav {
 
 form {
 
+
     display:flex;
+
 
     flex-direction:column;
 
+
     gap:15px;
+
 
 }
 
@@ -763,18 +1199,22 @@ form {
 input,
 textarea {
 
+
     padding:15px;
+
 
     border:none;
 
+
     border-radius:15px;
 
-    background:white;
 
     box-shadow:
     var(--shadow);
 
+
     font-family:inherit;
+
 
 }
 
@@ -782,9 +1222,15 @@ textarea {
 
 textarea {
 
+
     height:150px;
 
+
 }
+
+
+
+
 
 
 
@@ -797,14 +1243,19 @@ textarea {
 
 footer {
 
+
     background:
     var(--dark);
 
+
     color:white;
+
 
     text-align:center;
 
+
     padding:40px;
+
 
 }
 
@@ -812,23 +1263,70 @@ footer {
 
 
 
+
+
+
+
 /* =====================================================
-   MOBILE RESPONSIVE
+   SCROLL REVEAL
+===================================================== */
+
+
+.reveal {
+
+
+    opacity:0;
+
+
+    transform:
+    translateY(40px);
+
+
+    transition:
+    .8s ease;
+
+
+}
+
+
+
+.reveal.active {
+
+
+    opacity:1;
+
+
+    transform:
+    translateY(0);
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   RESPONSIVE DESIGN
 ===================================================== */
 
 
 @media(max-width:900px){
 
 
-.hero,
-.about-grid,
-.contact-grid {
 
-    grid-template-columns:1fr;
+.hero {
+
 
     flex-direction:column;
 
+
     text-align:center;
+
 
 }
 
@@ -836,7 +1334,9 @@ footer {
 
 .hero h1 {
 
-    font-size:40px;
+
+    font-size:42px;
+
 
 }
 
@@ -844,7 +1344,32 @@ footer {
 
 .profile-photo {
 
+
     width:300px;
+
+
+}
+
+
+
+.circle-bg {
+
+
+    width:320px;
+
+    height:320px;
+
+
+}
+
+
+
+.about-grid,
+.contact-grid {
+
+
+    grid-template-columns:1fr;
+
 
 }
 
@@ -852,8 +1377,10 @@ footer {
 
 .skills-grid {
 
+
     grid-template-columns:
     repeat(2,1fr);
+
 
 }
 
@@ -861,7 +1388,9 @@ footer {
 
 .portfolio-grid {
 
+
     grid-template-columns:1fr;
+
 
 }
 
@@ -870,7 +1399,9 @@ footer {
 .project-grid,
 .services-grid {
 
+
     grid-template-columns:1fr;
+
 
 }
 
@@ -878,21 +1409,30 @@ footer {
 
 .nav-links {
 
+
     display:none;
+
 
     flex-direction:column;
 
-    background:white;
 
     position:absolute;
 
+
+    right:20px;
+
+
     top:80px;
 
-    right:0;
+
+    background:white;
+
 
     padding:25px;
 
+
     border-radius:20px;
+
 
 }
 
@@ -900,7 +1440,9 @@ footer {
 
 .nav-links.active {
 
+
     display:flex;
+
 
 }
 
@@ -908,14 +1450,15 @@ footer {
 
 .menu-btn {
 
+
     display:block;
 
-}
-
-
 
 }
 
+
+
+}
 
 
 
@@ -923,9 +1466,12 @@ footer {
 @media(max-width:500px){
 
 
+
 .skills-grid {
 
+
     grid-template-columns:1fr;
+
 
 }
 
@@ -933,7 +1479,9 @@ footer {
 
 .hero h1 {
 
+
     font-size:32px;
+
 
 }
 
@@ -941,10 +1489,11 @@ footer {
 
 header {
 
+
     width:95%;
 
-}
 
+}
 
 
 }
