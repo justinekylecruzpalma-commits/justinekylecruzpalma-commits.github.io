@@ -1,1428 +1,992 @@
-<!DOCTYPE html>
-<html lang="en">
+/* =========================================================
+   JUSTINE KYLE PALMA - PORTFOLIO
+   RESPONSIVE CSS
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #222;
+    background: #f8f9fb;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.97);
+    border-bottom: 1px solid #e5e5e5;
+    backdrop-filter: blur(10px);
+}
+
+nav {
+    max-width: 1150px;
+    min-height: 70px;
+    margin: 0 auto;
+    padding: 15px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: relative;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #4f46e5;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+
+    list-style: none;
+}
+
+.nav-links a {
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.nav-links a:hover {
+    color: #4f46e5;
+}
+
+.menu-btn {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+section {
+    width: 100%;
+    padding: 90px 25px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 36px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #666;
+    font-size: 16px;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn {
+    display: inline-block;
+    padding: 13px 22px;
+    border-radius: 8px;
+    font-weight: 700;
+    margin: 5px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: #4f46e5;
+    color: white;
+    border: 2px solid #4f46e5;
+}
+
+.btn-primary:hover {
+    background: #3730a3;
+    border-color: #3730a3;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 2px solid #4f46e5;
+    color: #4f46e5;
+}
+
+.btn-outline:hover {
+    background: #4f46e5;
+    color: white;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+#home {
+    min-height: calc(100vh - 70px);
+
+    display: flex;
+    align-items: center;
+
+    background: linear-gradient(
+        135deg,
+        #eef2ff,
+        #ffffff
+    );
+}
+
+.hero {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
+
+    gap: 50px;
+    align-items: center;
+}
+
+.hero > div {
+    min-width: 0;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 5vw, 55px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #4f46e5;
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+.hero h3 {
+    font-size: 22px;
+    line-height: 1.4;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 650px;
+    color: #666;
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* PROFILE PHOTO */
+
+.profile-placeholder {
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
 
-    <title>Justine Kyle Palma | Portfolio</title>
+    background: #e0e7ff;
 
-    <meta name="description"
-          content="Justine Kyle Palma - Social Media Manager, Data Entry Specialist, Virtual Assistant, and Computer Engineering Graduate.">
+    border: 8px solid white;
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="style.css">
-</head>
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.12);
 
-<body>
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
+    text-align: center;
 
-<header>
+    color: #4f46e5;
+    font-weight: bold;
 
-    <nav>
+    padding: 30px;
 
-        <!-- LOGO -->
-        <a href="#home" class="logo">
-            Justine <span>Palma</span>
-        </a>
+    object-fit: cover;
+}
 
-        <!-- MOBILE MENU BUTTON -->
-        <div class="menu-btn"
-             onclick="toggleMenu()"
-             aria-label="Open navigation menu">
-            ☰
-        </div>
+/* =========================================================
+   ABOUT
+========================================================= */
 
-        <!-- NAVIGATION LINKS -->
-        <ul class="nav-links" id="navLinks">
+#about {
+    background: white;
+}
 
-            <li>
-                <a href="#home">Home</a>
-            </li>
+.about-grid {
+    display: grid;
 
-            <li>
-                <a href="#about">About</a>
-            </li>
+    grid-template-columns:
+        minmax(280px, 1fr)
+        minmax(0, 1.5fr);
 
-            <li>
-                <a href="#skills">Skills</a>
-            </li>
+    gap: 50px;
 
-            <li>
-                <a href="#experience">Experience</a>
-            </li>
+    align-items: center;
+}
 
-            <li>
-                <a href="#works">Sample Works</a>
-            </li>
+.about-image {
+    width: 100%;
+    min-height: 350px;
 
-            <li>
-                <a href="#projects">Projects</a>
-            </li>
+    background: #eef2ff;
 
-            <li>
-                <a href="#services">Services</a>
-            </li>
+    border-radius: 15px;
 
-            <li>
-                <a href="#resume">Resume</a>
-            </li>
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-            <li>
-                <a href="#contact">Contact</a>
-            </li>
+    text-align: center;
 
-        </ul>
+    color: #4f46e5;
+    font-weight: bold;
 
-    </nav>
+    overflow: hidden;
+}
 
-</header>
+.about-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
 
+    object-fit: cover;
 
-<!-- =====================================================
-     HOME / HERO
-===================================================== -->
+    border-radius: 15px;
+}
 
-<section id="home">
+.about-text {
+    min-width: 0;
+}
 
-    <div class="hero">
+.about-text h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
 
-        <!-- HERO TEXT -->
-        <div>
+.about-text p {
+    color: #666;
+    margin-bottom: 15px;
+}
 
-            <h1>
-                Hi, I'm
-                <span>Justine Kyle Palma</span>
-            </h1>
+/* =========================================================
+   SKILLS
+========================================================= */
 
-            <h3>
-                Social Media Manager |
-                Data Entry Specialist |
-                Virtual Assistant
-            </h3>
+.skills-grid {
+    display: grid;
 
-            <p>
-                I help businesses stay organized, build their
-                online presence, manage content, and handle
-                administrative tasks efficiently.
-            </p>
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
 
-            <p>
-                With a background in Computer Engineering, I
-                combine creativity, organization, and technical
-                skills to provide reliable digital support.
-            </p>
+    gap: 20px;
+}
 
-            <a href="#works" class="btn btn-primary">
-                View My Work
-            </a>
+.skill-card {
+    background: white;
 
-            <a href="#contact" class="btn btn-outline">
-                Contact Me
-            </a>
+    padding: 30px 20px;
 
-        </div>
+    border-radius: 12px;
 
+    text-align: center;
 
-        <!-- HERO PHOTO -->
-        <div class="hero-image">
+    border: 1px solid #eee;
 
-            <!--
-                =================================================
-                PHOTO PLACEHOLDER
+    transition: 0.3s;
 
-                Upload your photo to:
+    min-width: 0;
+}
 
-                images/profile.jpg
+.skill-card:hover {
+    transform: translateY(-6px);
 
-                Then this image will automatically appear.
-                =================================================
-            -->
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.08);
+}
 
-            <img src="images/profile.jpg"
-                 alt="Justine Kyle Palma"
-                 class="profile-placeholder"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+.skill-icon {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
 
-            <!-- Fallback if photo doesn't exist -->
-            <div class="profile-placeholder"
-                 style="display:none;">
+.skill-card h3 {
+    margin-bottom: 8px;
+}
 
-                YOUR<br>
-                PROFESSIONAL<br>
-                PHOTO
+.skill-card p {
+    color: #666;
+    font-size: 14px;
+}
 
-            </div>
+/* =========================================================
+   EXPERIENCE
+========================================================= */
 
-        </div>
+#experience {
+    background: white;
+}
 
-    </div>
+.timeline {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+}
 
-</section>
+.experience-card {
+    border-left: 4px solid #4f46e5;
 
+    padding:
+        5px
+        0
+        30px
+        30px;
 
-<!-- =====================================================
-     ABOUT ME
-===================================================== -->
+    margin-bottom: 25px;
 
-<section id="about">
+    position: relative;
+}
 
-    <div class="container">
+.experience-card::before {
+    content: "";
 
-        <div class="section-title">
+    width: 15px;
+    height: 15px;
 
-            <h2>About Me</h2>
+    background: #4f46e5;
 
-            <p>
-                Get to know me
-            </p>
+    border-radius: 50%;
 
-        </div>
+    position: absolute;
 
+    left: -9px;
+    top: 5px;
+}
 
-        <div class="about-grid">
+.experience-card h3 {
+    font-size: 22px;
+    line-height: 1.3;
+}
 
-            <!-- ABOUT PHOTO -->
-            <div class="about-image">
+.experience-card .company {
+    color: #4f46e5;
+    font-weight: bold;
+}
 
-                <!--
-                    Upload your second photo to:
+.experience-card .date {
+    color: #888;
+    font-size: 14px;
+    margin: 5px 0 12px;
+}
 
-                    images/about.jpg
-                -->
+.experience-card ul {
+    padding-left: 20px;
+    color: #666;
+}
 
-                <img src="images/about.jpg"
-                     alt="Justine Kyle Palma"
-                     onerror="this.style.display='none'; this.parentElement.innerHTML='ABOUT ME PHOTO';">
+/* =========================================================
+   SAMPLE WORKS
+========================================================= */
 
-            </div>
+.portfolio-grid {
+    display: grid;
 
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
 
-            <!-- ABOUT TEXT -->
-            <div class="about-text">
+    gap: 25px;
+}
 
-                <h3>
-                    Hello! I'm Justine.
-                </h3>
+.portfolio-card {
+    background: white;
 
-                <p>
-                    I am a graduate of Bachelor of Science in
-                    Computer Engineering with an interest in
-                    social media management, virtual assistance,
-                    data entry, lead generation, and
-                    administrative support.
-                </p>
+    border-radius: 12px;
 
-                <p>
-                    I enjoy combining creativity and technology
-                    to help businesses organize their operations,
-                    improve their online presence, and
-                    communicate effectively with their audience.
-                </p>
+    overflow: hidden;
 
-                <p>
-                    I am continuously developing my skills in
-                    digital tools, content creation, graphic
-                    design, data management, and software
-                    development.
-                </p>
+    border: 1px solid #eee;
 
-                <p>
-                    I am detail-oriented, organized, willing to
-                    learn, and comfortable working with both
-                    creative and technical tasks.
-                </p>
+    transition: 0.3s;
 
-                <!-- EDIT LOCATION -->
-                <p>
-                    <strong>Location:</strong>
-                    YOUR LOCATION
-                </p>
+    min-width: 0;
+}
 
-            </div>
+.portfolio-card:hover {
+    transform: translateY(-5px);
 
-        </div>
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.08);
+}
 
-    </div>
+.portfolio-image {
+    width: 100%;
+    height: 220px;
 
-</section>
+    background: #e5e7eb;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-<!-- =====================================================
-     SKILLS
-===================================================== -->
+    text-align: center;
 
-<section id="skills">
+    color: #666;
 
-    <div class="container">
+    padding: 20px;
 
-        <div class="section-title">
+    overflow: hidden;
+}
 
-            <h2>My Skills</h2>
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
 
-            <p>
-                Tools and skills I can offer
-            </p>
+    object-fit: cover;
+}
 
-        </div>
+.portfolio-content {
+    padding: 22px;
+}
 
+.portfolio-content h3 {
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
 
-        <div class="skills-grid">
+.portfolio-content p {
+    color: #666;
+    font-size: 14px;
+}
 
-            <!-- SKILL 1 -->
-            <div class="skill-card">
+.tag {
+    display: inline-block;
 
-                <div class="skill-icon">
-                    📱
-                </div>
+    background: #eef2ff;
+    color: #4f46e5;
 
-                <h3>
-                    Social Media
-                </h3>
+    padding: 5px 10px;
 
-                <p>
-                    Content planning, posting, engagement,
-                    captions, and social media management.
-                </p>
+    border-radius: 20px;
 
-            </div>
+    font-size: 12px;
 
+    margin-top: 12px;
+}
 
-            <!-- SKILL 2 -->
-            <div class="skill-card">
+/* =========================================================
+   PROJECTS
+========================================================= */
 
-                <div class="skill-icon">
-                    🎨
-                </div>
+#projects {
+    background: white;
+}
 
-                <h3>
-                    Canva Design
-                </h3>
+.project-grid {
+    display: grid;
 
-                <p>
-                    Social media graphics, promotional materials,
-                    presentations, and branding content.
-                </p>
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
 
-            </div>
+    gap: 30px;
+}
 
+.project-card {
+    padding: 30px;
 
-            <!-- SKILL 3 -->
-            <div class="skill-card">
+    background: #f8f9fb;
 
-                <div class="skill-icon">
-                    📊
-                </div>
+    border-radius: 15px;
 
-                <h3>
-                    Data Entry
-                </h3>
+    border: 1px solid #eee;
 
-                <p>
-                    Accurate data entry, spreadsheets,
-                    organization, and data management.
-                </p>
+    min-width: 0;
+}
 
-            </div>
+.project-card h3 {
+    font-size: 24px;
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
 
+.project-card p {
+    color: #666;
+    margin-bottom: 15px;
+}
 
-            <!-- SKILL 4 -->
-            <div class="skill-card">
+.technology {
+    font-size: 14px;
+    font-weight: bold;
+    color: #4f46e5 !important;
+}
 
-                <div class="skill-icon">
-                    🔎
-                </div>
+/* =========================================================
+   SERVICES
+========================================================= */
 
-                <h3>
-                    Lead Generation
-                </h3>
+.services-grid {
+    display: grid;
 
-                <p>
-                    Web research, prospect research,
-                    data collection, and lead organization.
-                </p>
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
 
-            </div>
+    gap: 25px;
+}
 
+.service-card {
+    background: white;
 
-            <!-- SKILL 5 -->
-            <div class="skill-card">
+    padding: 30px;
 
-                <div class="skill-icon">
-                    💻
-                </div>
+    border-radius: 12px;
 
-                <h3>
-                    Computer Skills
-                </h3>
+    border: 1px solid #eee;
 
-                <p>
-                    Microsoft Office, Google Workspace,
-                    spreadsheets, and digital tools.
-                </p>
+    min-width: 0;
 
-            </div>
+    transition: 0.3s;
+}
 
+.service-card:hover {
+    transform: translateY(-5px);
 
-            <!-- SKILL 6 -->
-            <div class="skill-card">
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.08);
+}
 
-                <div class="skill-icon">
-                    ⚙️
-                </div>
+.service-card h3 {
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
 
-                <h3>
-                    Virtual Assistance
-                </h3>
+.service-card p {
+    color: #666;
+}
 
-                <p>
-                    Administrative support, organization,
-                    research, and task management.
-                </p>
+/* =========================================================
+   RESUME
+========================================================= */
 
-            </div>
+#resume {
+    background: #eef2ff;
+    text-align: center;
+}
 
+#resume p {
+    max-width: 650px;
 
-            <!-- SKILL 7 -->
-            <div class="skill-card">
+    margin:
+        0 auto
+        25px;
 
-                <div class="skill-icon">
-                    🖥️
-                </div>
+    color: #666;
+}
 
-                <h3>
-                    Web Development
-                </h3>
+/* =========================================================
+   CONTACT
+========================================================= */
 
-                <p>
-                    Basic HTML, CSS, JavaScript,
-                    and website development.
-                </p>
+#contact {
+    background: white;
+}
 
-            </div>
+.contact-grid {
+    display: grid;
 
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
 
-            <!-- SKILL 8 -->
-            <div class="skill-card">
+    gap: 50px;
+}
 
-                <div class="skill-icon">
-                    🧑‍💻
-                </div>
+.contact-info {
+    min-width: 0;
+}
 
-                <h3>
-                    VB.NET
-                </h3>
+.contact-info h3 {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
 
-                <p>
-                    Windows Forms applications,
-                    databases, and system development.
-                </p>
+.contact-info p {
+    color: #666;
+    margin-bottom: 15px;
+}
 
-            </div>
+.contact-item {
+    margin: 15px 0;
 
-        </div>
+    overflow-wrap: anywhere;
+}
 
-    </div>
+.contact-item strong {
+    display: block;
+    margin-bottom: 3px;
+}
 
-</section>
+.contact-item a {
+    color: #4f46e5;
+}
 
+form {
+    width: 100%;
 
-<!-- =====================================================
-     WORK EXPERIENCE
-===================================================== -->
+    display: flex;
+    flex-direction: column;
 
-<section id="experience">
+    gap: 15px;
+}
 
-    <div class="container">
+input,
+textarea {
+    width: 100%;
 
-        <div class="section-title">
+    padding: 14px;
 
-            <h2>
-                Work Experience
-            </h2>
+    border:
+        1px solid #ddd;
 
-            <p>
-                My professional and project experience
-            </p>
+    border-radius: 8px;
 
-        </div>
+    font-family: inherit;
 
+    font-size: 15px;
 
-        <div class="timeline">
+    outline: none;
+}
 
+input:focus,
+textarea:focus {
+    border-color: #4f46e5;
 
-            <!-- =================================================
-                 EXPERIENCE 1
-            ================================================= -->
+    box-shadow:
+        0 0 0 3px rgba(79, 70, 229, 0.1);
+}
 
-            <div class="experience-card">
+textarea {
+    min-height: 150px;
+    resize: vertical;
+}
 
-                <h3>
-                    Waiter
-                </h3>
+button {
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
 
-                <div class="company">
-                    Alodia's Place
-                </div>
+/* =========================================================
+   FOOTER
+========================================================= */
 
-                <div class="date">
-                    December 2020 – January 2023
-                </div>
+footer {
+    background: #111827;
 
-                <ul>
+    color: white;
 
-                    <li>
-                        Provided customer service and assisted
-                        customers with their orders and requests.
-                    </li>
+    text-align: center;
 
-                    <li>
-                        Maintained accurate order information
-                        and coordinated with team members.
-                    </li>
+    padding: 30px 20px;
+}
 
-                    <li>
-                        Helped maintain an organized and
-                        professional work environment.
-                    </li>
+footer p {
+    color: #aaa;
+    font-size: 14px;
 
-                    <li>
-                        Developed communication, teamwork,
-                        time-management, and customer-service skills.
-                    </li>
+    margin: 4px 0;
+}
 
-                </ul>
+/* =========================================================
+   TABLET
+========================================================= */
 
-            </div>
+@media (max-width: 1000px) {
 
-
-            <!-- =================================================
-                 EXPERIENCE 2
-            ================================================= -->
-
-            <div class="experience-card">
-
-                <h3>
-                    Community & Youth Organization Experience
-                </h3>
-
-                <div class="company">
-                    SK / Community Leadership
-                </div>
-
-                <div class="date">
-                    Community-Based Experience
-                </div>
-
-                <ul>
-
-                    <li>
-                        Assisted with youth-focused activities,
-                        programs, and community initiatives.
-                    </li>
-
-                    <li>
-                        Helped organize documents, records,
-                        activities, and administrative information.
-                    </li>
-
-                    <li>
-                        Participated in planning and coordination
-                        of community activities.
-                    </li>
-
-                    <li>
-                        Developed organizational, communication,
-                        leadership, and administrative skills.
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-            <!-- =================================================
-                 EXPERIENCE 3
-            ================================================= -->
-
-            <div class="experience-card">
-
-                <h3>
-                    Software & System Development
-                </h3>
-
-                <div class="company">
-                    Project-Based Experience
-                </div>
-
-                <div class="date">
-                    Project Experience
-                </div>
-
-                <ul>
-
-                    <li>
-                        Developed Windows Forms applications
-                        using VB.NET.
-                    </li>
-
-                    <li>
-                        Worked with Supabase databases and
-                        REST API integration.
-                    </li>
-
-                    <li>
-                        Created systems for profiling,
-                        records, documents, reports, and
-                        administrative management.
-                    </li>
-
-                    <li>
-                        Designed user interfaces and implemented
-                        system features based on project needs.
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SAMPLE WORKS
-===================================================== -->
-
-<section id="works">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>
-                Sample Works
-            </h2>
-
-            <p>
-                A selection of my creative, administrative,
-                and digital work.
-            </p>
-
-        </div>
-
-
-        <div class="portfolio-grid">
-
-
-            <!-- =================================================
-                 SAMPLE WORK 1
-            ================================================= -->
-
-            <div class="portfolio-card">
-
-                <div class="portfolio-image">
-
-                    <img src="images/social-media-1.jpg"
-                         alt="Social Media Design"
-                         onerror="this.style.display='none'; this.parentElement.innerHTML='SOCIAL MEDIA<br>DESIGN';">
-
-                </div>
-
-                <div class="portfolio-content">
-
-                    <h3>
-                        Social Media Design
-                    </h3>
-
-                    <p>
-                        Social media graphics designed to
-                        communicate promotions, announcements,
-                        and brand messages clearly.
-                    </p>
-
-                    <span class="tag">
-                        Canva
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================================
-                 SAMPLE WORK 2
-            ================================================= -->
-
-            <div class="portfolio-card">
-
-                <div class="portfolio-image">
-
-                    <img src="images/social-media-2.jpg"
-                         alt="Facebook and Instagram Post"
-                         onerror="this.style.display='none'; this.parentElement.innerHTML='FACEBOOK / INSTAGRAM<br>POST';">
-
-                </div>
-
-                <div class="portfolio-content">
-
-                    <h3>
-                        Facebook / Instagram Post
-                    </h3>
-
-                    <p>
-                        Sample social media content focused on
-                        engaging audiences and presenting
-                        information in a clear format.
-                    </p>
-
-                    <span class="tag">
-                        Social Media
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================================
-                 SAMPLE WORK 3
-            ================================================= -->
-
-            <div class="portfolio-card">
-
-                <div class="portfolio-image">
-
-                    <img src="images/data-entry.jpg"
-                         alt="Data Entry Sample"
-                         onerror="this.style.display='none'; this.parentElement.innerHTML='DATA ENTRY<br>SAMPLE';">
-
-                </div>
-
-                <div class="portfolio-content">
-
-                    <h3>
-                        Data Entry
-                    </h3>
-
-                    <p>
-                        Organized spreadsheet and data-entry
-                        samples demonstrating accuracy and
-                        attention to detail.
-                    </p>
-
-                    <span class="tag">
-                        Data Entry
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================================
-                 SAMPLE WORK 4
-            ================================================= -->
-
-            <div class="portfolio-card">
-
-                <div class="portfolio-image">
-
-                    <img src="images/lead-generation.jpg"
-                         alt="Lead Generation Sample"
-                         onerror="this.style.display='none'; this.parentElement.innerHTML='LEAD GENERATION<br>SAMPLE';">
-
-                </div>
-
-                <div class="portfolio-content">
-
-                    <h3>
-                        Lead Generation
-                    </h3>
-
-                    <p>
-                        Example of organized prospect research,
-                        lead collection, and information
-                        management.
-                    </p>
-
-                    <span class="tag">
-                        Lead Generation
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================================
-                 SAMPLE WORK 5
-            ================================================= -->
-
-            <div class="portfolio-card">
-
-                <div class="portfolio-image">
-
-                    <img src="images/content-calendar.jpg"
-                         alt="Content Calendar"
-                         onerror="this.style.display='none'; this.parentElement.innerHTML='CONTENT CALENDAR<br>SAMPLE';">
-
-                </div>
-
-                <div class="portfolio-content">
-
-                    <h3>
-                        Content Calendar
-                    </h3>
-
-                    <p>
-                        Sample content planning and scheduling
-                        system for organizing social media posts.
-                    </p>
-
-                    <span class="tag">
-                        Content Planning
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================================
-                 SAMPLE WORK 6
-            ================================================= -->
-
-            <div class="portfolio-card">
-
-                <div class="portfolio-image">
-
-                    <img src="images/canva-design.jpg"
-                         alt="Canva Promotional Design"
-                         onerror="this.style.display='none'; this.parentElement.innerHTML='PROMOTIONAL<br>DESIGN';">
-
-                </div>
-
-                <div class="portfolio-content">
-
-                    <h3>
-                        Promotional Design
-                    </h3>
-
-                    <p>
-                        Promotional graphics and marketing
-                        materials created for digital platforms.
-                    </p>
-
-                    <span class="tag">
-                        Graphic Design
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     TECHNICAL PROJECTS
-===================================================== -->
-
-<section id="projects">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>
-                Projects
-            </h2>
-
-            <p>
-                Selected technical and professional projects.
-            </p>
-
-        </div>
-
-
-        <div class="project-grid">
-
-
-            <!-- PROJECT 1 -->
-
-            <div class="project-card">
-
-                <h3>
-                    KK Profiling Management System
-                </h3>
-
-                <p>
-                    A profiling and management system designed
-                    to organize youth information, records,
-                    analytics, reports, and related data.
-                </p>
-
-                <p class="technology">
-                    Technologies:
-                    VB.NET • Windows Forms • Supabase
-                </p>
-
-            </div>
-
-
-            <!-- PROJECT 2 -->
-
-            <div class="project-card">
-
-                <h3>
-                    SK Management System
-                </h3>
-
-                <p>
-                    A management system designed to organize
-                    documents, activities, attendance,
-                    records, reports, and other administrative
-                    information.
-                </p>
-
-                <p class="technology">
-                    Technologies:
-                    VB.NET • Windows Forms • Supabase
-                </p>
-
-            </div>
-
-
-            <!-- PROJECT 3 -->
-
-            <div class="project-card">
-
-                <h3>
-                    SGYG Document System
-                </h3>
-
-                <p>
-                    A document management system created to
-                    organize financial documents, community
-                    engagement records, youth profiling,
-                    picture backups, and system files.
-                </p>
-
-                <p class="technology">
-                    Technologies:
-                    VB.NET • Windows Forms • Supabase
-                </p>
-
-            </div>
-
-
-            <!-- PROJECT 4 -->
-
-            <div class="project-card">
-
-                <h3>
-                    Portfolio Website
-                </h3>
-
-                <p>
-                    A responsive personal portfolio website
-                    created to showcase professional skills,
-                    services, sample works, and technical
-                    projects.
-                </p>
-
-                <p class="technology">
-                    Technologies:
-                    HTML • CSS • JavaScript • GitHub Pages
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SERVICES
-===================================================== -->
-
-<section id="services">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>
-                Services
-            </h2>
-
-            <p>
-                How I can help your business.
-            </p>
-
-        </div>
-
-
-        <div class="services-grid">
-
-
-            <!-- SERVICE 1 -->
-
-            <div class="service-card">
-
-                <h3>
-                    Social Media Management
-                </h3>
-
-                <p>
-                    Content planning, scheduling, captions,
-                    engagement, and social media organization
-                    to help maintain a consistent online presence.
-                </p>
-
-            </div>
-
-
-            <!-- SERVICE 2 -->
-
-            <div class="service-card">
-
-                <h3>
-                    Canva Graphic Design
-                </h3>
-
-                <p>
-                    Social media posts, promotional graphics,
-                    presentations, and marketing materials
-                    designed using Canva.
-                </p>
-
-            </div>
-
-
-            <!-- SERVICE 3 -->
-
-            <div class="service-card">
-
-                <h3>
-                    Data Entry
-                </h3>
-
-                <p>
-                    Accurate data entry, spreadsheet
-                    organization, data cleaning, and
-                    database-related tasks.
-                </p>
-
-            </div>
-
-
-            <!-- SERVICE 4 -->
-
-            <div class="service-card">
-
-                <h3>
-                    Lead Generation
-                </h3>
-
-                <p>
-                    Online research, prospect research,
-                    lead collection, and organized
-                    prospect information.
-                </p>
-
-            </div>
-
-
-            <!-- SERVICE 5 -->
-
-            <div class="service-card">
-
-                <h3>
-                    Virtual Assistance
-                </h3>
-
-                <p>
-                    Administrative support, online research,
-                    file organization, task management,
-                    and general virtual assistance.
-                </p>
-
-            </div>
-
-
-            <!-- SERVICE 6 -->
-
-            <div class="service-card">
-
-                <h3>
-                    Technical Support
-                </h3>
-
-                <p>
-                    Basic website development, software
-                    projects, database systems, and
-                    technical assistance.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     RESUME
-===================================================== -->
-
-<section id="resume">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>
-                My Resume
-            </h2>
-
-            <p>
-                Want to learn more about my experience
-                and qualifications?
-            </p>
-
-        </div>
-
-
-        <!--
-            Upload your resume to the main repository.
-
-            File name:
-
-            resume.pdf
-        -->
-
-        <a href="resume.pdf"
-           class="btn btn-primary"
-           target="_blank"
-           rel="noopener">
-
-            View / Download Resume
-
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CONTACT
-===================================================== -->
-
-<section id="contact">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>
-                Contact Me
-            </h2>
-
-            <p>
-                Let's work together.
-            </p>
-
-        </div>
-
-
-        <div class="contact-grid">
-
-
-            <!-- =================================================
-                 CONTACT INFORMATION
-            ================================================= -->
-
-            <div class="contact-info">
-
-                <h3>
-                    Let's Connect
-                </h3>
-
-                <p>
-                    I'm open to opportunities in social media
-                    management, data entry, virtual assistance,
-                    lead generation, and related digital work.
-                </p>
-
-
-                <!-- EMAIL -->
-
-                <div class="contact-item">
-
-                    <strong>
-                        Email
-                    </strong>
-
-                    <!--
-                        CHANGE THIS TO YOUR REAL EMAIL
-                    -->
-
-                    <a href="mailto:YOUR_EMAIL@example.com">
-                        YOUR_EMAIL@example.com
-                    </a>
-
-                </div>
-
-
-                <!-- LINKEDIN -->
-
-                <div class="contact-item">
-
-                    <strong>
-                        LinkedIn
-                    </strong>
-
-                    <!--
-                        CHANGE THIS TO YOUR LINKEDIN URL
-                    -->
-
-                    <a href="YOUR_LINKEDIN_URL"
-                       target="_blank"
-                       rel="noopener">
-
-                        Your LinkedIn Profile
-
-                    </a>
-
-                </div>
-
-
-                <!-- FACEBOOK -->
-
-                <div class="contact-item">
-
-                    <strong>
-                        Facebook
-                    </strong>
-
-                    <!--
-                        CHANGE THIS TO YOUR FACEBOOK URL
-                    -->
-
-                    <a href="YOUR_FACEBOOK_URL"
-                       target="_blank"
-                       rel="noopener">
-
-                        Your Facebook Profile
-
-                    </a>
-
-                </div>
-
-
-                <!-- LOCATION -->
-
-                <div class="contact-item">
-
-                    <strong>
-                        Location
-                    </strong>
-
-                    YOUR LOCATION
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================================
-                 CONTACT FORM
-            ================================================= -->
-
-            <form onsubmit="sendMessage(event)">
-
-                <input
-                    type="text"
-                    id="name"
-                    placeholder="Your Name"
-                    required
-                >
-
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="Your Email"
-                    required
-                >
-
-                <input
-                    type="text"
-                    id="subject"
-                    placeholder="Subject"
-                    required
-                >
-
-                <textarea
-                    id="message"
-                    placeholder="Your Message"
-                    required
-                ></textarea>
-
-                <button
-                    type="submit"
-                    class="btn btn-primary">
-
-                    Send Message
-
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-    <p>
-        © 2026 Justine Kyle Palma.
-        All Rights Reserved.
-    </p>
-
-    <p>
-        Social Media Manager |
-        Data Entry Specialist |
-        Virtual Assistant
-    </p>
-
-</footer>
-
-
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
-<script>
-
-    /* =====================================================
-       MOBILE MENU
-    ===================================================== */
-
-    function toggleMenu() {
-
-        const navLinks =
-            document.getElementById("navLinks");
-
-        navLinks.classList.toggle("active");
-
+    .nav-links {
+        gap: 14px;
     }
 
-
-    /* =====================================================
-       CLOSE MOBILE MENU WHEN LINK IS CLICKED
-    ===================================================== */
-
-    document
-        .querySelectorAll(".nav-links a")
-        .forEach(function(link) {
-
-            link.addEventListener("click", function() {
-
-                document
-                    .getElementById("navLinks")
-                    .classList.remove("active");
-
-            });
-
-        });
-
-
-    /* =====================================================
-       CONTACT FORM
-    ===================================================== */
-
-    function sendMessage(event) {
-
-        event.preventDefault();
-
-
-        const name =
-            document.getElementById("name").value;
-
-        const email =
-            document.getElementById("email").value;
-
-        const subject =
-            document.getElementById("subject").value;
-
-        const message =
-            document.getElementById("message").value;
-
-
-        /*
-            =================================================
-            IMPORTANT
-
-            Replace YOUR_EMAIL@example.com below
-            with your REAL email address.
-            =================================================
-        */
-
-        const destinationEmail =
-            "YOUR_EMAIL@example.com";
-
-
-        const mailto =
-            "mailto:" +
-            destinationEmail +
-
-            "?subject=" +
-            encodeURIComponent(subject) +
-
-            "&body=" +
-            encodeURIComponent(
-                "Name: " +
-                name +
-
-                "\nEmail: " +
-                email +
-
-                "\n\nMessage:\n" +
-                message
-            );
-
-
-        window.location.href = mailto;
-
+    .nav-links a {
+        font-size: 13px;
     }
 
-</script>
+    .hero {
+        grid-template-columns:
+            minmax(0, 1.2fr)
+            minmax(250px, 1fr);
 
+        gap: 30px;
+    }
 
-</body>
-</html>
+    .skills-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .portfolio-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .services-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+@media (max-width: 800px) {
+
+    nav {
+        min-height: 65px;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+
+        top: 65px;
+        left: 0;
+
+        width: 100%;
+
+        background: white;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 10px 20px 20px;
+
+        border-bottom:
+            1px solid #eee;
+
+        box-shadow:
+            0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+
+        width: 100%;
+
+        padding: 12px 5px;
+
+        font-size: 15px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+        gap: 40px;
+    }
+
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-image {
+        order: -1;
+    }
+
+    .profile-placeholder {
+        width: 250px;
+        height: 250px;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .about-image {
+        min-height: 300px;
+    }
+
+    .about-image img {
+        min-height: 300px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    section {
+        padding: 70px 20px;
+    }
+
+    .section-title {
+        margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+        font-size: 30px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero h3 {
+        font-size: 18px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .skills-grid,
+    .portfolio-grid,
+    .project-grid,
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-card {
+        padding: 25px 20px;
+    }
+
+    .portfolio-image {
+        height: 230px;
+    }
+
+    .project-card {
+        padding: 25px;
+    }
+
+    .service-card {
+        padding: 25px;
+    }
+
+    .profile-placeholder {
+        width: 220px;
+        height: 220px;
+
+        border-width: 6px;
+    }
+
+    .about-image {
+        min-height: 250px;
+    }
+
+    .about-image img {
+        min-height: 250px;
+    }
+
+    .btn {
+        padding: 12px 18px;
+    }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 400px) {
+
+    nav {
+        padding: 12px 15px;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    section {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .profile-placeholder {
+        width: 190px;
+        height: 190px;
+    }
+
+    .experience-card {
+        padding-left: 20px;
+    }
+}
