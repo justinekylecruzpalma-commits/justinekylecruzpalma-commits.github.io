@@ -7565,3 +7565,45 @@ section {
 #experience .section-title p {
     margin-bottom: 0;
 }
+/* ================= SKILL ICONS ================= */
+
+.skill-icon {
+
+    width:60px;
+    height:60px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:20px;
+
+    border-radius:50%;
+
+    background:rgba(0,217,255,0.12);
+
+    border:1px solid rgba(0,217,255,0.35);
+
+    color:#00d9ff;
+
+    font-size:26px;
+
+    transition:.3s ease;
+
+}
+
+
+.skill-box:hover .skill-icon {
+
+    transform:translateY(-5px);
+
+    box-shadow:0 0 25px rgba(0,217,255,.45);
+
+}
+
+
+.skill-icon i {
+
+    line-height:1;
+
+}
