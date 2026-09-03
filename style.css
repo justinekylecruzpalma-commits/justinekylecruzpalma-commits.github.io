@@ -7607,3 +7607,51 @@ section {
     line-height:1;
 
 }
+/* ================= EXPERIENCE HEADER ALIGNMENT FIX ================= */
+
+
+#experience .section-title {
+
+    text-align: left;
+
+    margin-bottom: 45px;
+
+}
+
+
+
+#experience .section-title h2 {
+
+    text-align: left;
+
+    margin-left: 0;
+
+}
+
+
+
+#experience .section-title p {
+
+    text-align: left;
+
+    margin-left: 0;
+
+}
+
+
+
+#experience .experience-container {
+
+    margin-top: 0;
+
+}
+
+
+
+/* Keep cards aligned with header */
+
+#experience .experience-card {
+
+    margin-left: 0;
+
+}
