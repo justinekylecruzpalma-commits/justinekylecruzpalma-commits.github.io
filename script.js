@@ -1,18 +1,20 @@
 /* =====================================================
 JUSTINE KYLE PALMA PORTFOLIO
-FINAL JAVASCRIPT
+PREMIUM JAVASCRIPT
+PART 1/2
 ===================================================== */
 
 
 
 // =====================================================
-// MOBILE NAVIGATION
+// MOBILE MENU
 // =====================================================
 
 
 const menuBtn = document.querySelector(".menu-btn");
 
 const navLinks = document.querySelector(".nav-links");
+
 
 
 if(menuBtn && navLinks){
@@ -24,10 +26,15 @@ menuBtn.addEventListener("click",()=>{
 navLinks.classList.toggle("active");
 
 
+menuBtn.classList.toggle("open");
+
+
 });
 
 
 }
+
+
 
 
 
@@ -42,7 +49,11 @@ document.querySelectorAll(".nav-links a")
 link.addEventListener("click",()=>{
 
 
+if(navLinks){
+
 navLinks.classList.remove("active");
+
+}
 
 
 });
@@ -66,7 +77,14 @@ navLinks.classList.remove("active");
 const header = document.querySelector("header");
 
 
+
+
+
 window.addEventListener("scroll",()=>{
+
+
+if(!header) return;
+
 
 
 if(window.scrollY > 50){
@@ -123,7 +141,9 @@ e.preventDefault();
 
 target.scrollIntoView({
 
-behavior:"smooth"
+behavior:"smooth",
+
+block:"start"
 
 });
 
@@ -155,6 +175,8 @@ document.querySelectorAll(".reveal");
 
 
 
+
+
 const revealObserver =
 new IntersectionObserver((entries)=>{
 
@@ -177,7 +199,7 @@ entry.target.classList.add("active");
 
 },{
 
-threshold:.15
+threshold:0.15
 
 });
 
@@ -189,343 +211,6 @@ revealElements.forEach(element=>{
 
 
 revealObserver.observe(element);
-
-
-});
-
-
-
-
-
-
-
-
-
-// =====================================================
-// PROJECT + SAMPLE WORK MODAL
-// =====================================================
-
-
-const modal =
-document.getElementById("projectModal");
-
-
-const modalImage =
-document.getElementById("modalImage");
-
-
-const closeModal =
-document.querySelector(".modal-close");
-
-
-const nextBtn =
-document.getElementById("nextProject");
-
-
-const prevBtn =
-document.getElementById("prevProject");
-
-
-
-
-
-let galleryImages = [];
-
-let currentImage = 0;
-
-
-
-
-
-
-
-
-
-// GET CLICKABLE IMAGES
-
-
-const clickableImages =
-document.querySelectorAll(".project-click");
-
-
-
-
-
-clickableImages.forEach(item=>{
-
-
-item.addEventListener("click",()=>{
-
-
-galleryImages = [];
-
-
-
-clickableImages.forEach(image=>{
-
-
-galleryImages.push(
-image.dataset.image
-);
-
-
-});
-
-
-
-
-
-currentImage =
-galleryImages.indexOf(
-item.dataset.image
-);
-
-
-
-
-
-openGallery();
-
-
-
-});
-
-
-});
-
-
-
-
-
-
-
-
-
-// OPEN MODAL
-
-
-function openGallery(){
-
-
-if(!modal || !modalImage)
-return;
-
-
-
-modalImage.src =
-galleryImages[currentImage];
-
-
-
-modal.classList.add("active");
-
-
-
-document.body.style.overflow="hidden";
-
-
-}
-
-
-
-
-
-
-
-
-
-// CLOSE MODAL
-
-
-function closeGallery(){
-
-
-if(!modal)
-return;
-
-
-
-modal.classList.remove("active");
-
-
-document.body.style.overflow="auto";
-
-
-}
-
-
-
-
-
-
-
-
-
-if(closeModal){
-
-
-closeModal.addEventListener(
-"click",
-closeGallery
-);
-
-
-}
-
-
-
-
-
-
-
-
-
-// CLICK OUTSIDE MODAL
-
-
-if(modal){
-
-
-modal.addEventListener(
-"click",
-(e)=>{
-
-
-if(e.target === modal){
-
-
-closeGallery();
-
-
-}
-
-
-});
-
-
-}
-
-
-
-
-
-
-
-
-
-// NEXT IMAGE
-
-
-if(nextBtn){
-
-
-nextBtn.addEventListener(
-"click",
-()=>{
-
-
-if(galleryImages.length === 0)
-return;
-
-
-
-currentImage++;
-
-
-
-if(currentImage >= galleryImages.length){
-
-
-currentImage = 0;
-
-
-}
-
-
-
-modalImage.src =
-galleryImages[currentImage];
-
-
-
-});
-
-
-}
-
-
-
-
-
-
-
-
-
-// PREVIOUS IMAGE
-
-
-if(prevBtn){
-
-
-prevBtn.addEventListener(
-"click",
-()=>{
-
-
-if(galleryImages.length === 0)
-return;
-
-
-
-currentImage--;
-
-
-
-if(currentImage < 0){
-
-
-currentImage =
-galleryImages.length - 1;
-
-
-}
-
-
-
-modalImage.src =
-galleryImages[currentImage];
-
-
-
-});
-
-
-}
-
-
-
-
-
-
-
-
-
-// ESC KEY CLOSE
-
-
-document.addEventListener(
-"keydown",
-(e)=>{
-
-
-if(e.key === "Escape"){
-
-
-closeGallery();
-
-
-}
-
 
 
 });
@@ -553,9 +238,8 @@ document.querySelector(".scroll-top");
 if(scrollTop){
 
 
-window.addEventListener(
-"scroll",
-()=>{
+
+window.addEventListener("scroll",()=>{
 
 
 if(window.scrollY > 500){
@@ -575,13 +259,16 @@ scrollTop.classList.remove("active");
 }
 
 
-
 });
 
 
-scrollTop.addEventListener(
-"click",
-()=>{
+
+
+
+
+
+
+scrollTop.addEventListener("click",()=>{
 
 
 window.scrollTo({
@@ -597,6 +284,364 @@ behavior:"smooth"
 
 
 }
+
+
+/* =====================================================
+IMAGE GALLERY MODAL
+===================================================== */
+
+
+const modal = document.getElementById("projectModal");
+
+const modalImage = document.getElementById("modalImage");
+
+const closeModal = document.querySelector(".modal-close");
+
+const nextProject = document.getElementById("nextProject");
+
+const prevProject = document.getElementById("prevProject");
+
+
+
+
+
+let gallery = [];
+
+let currentIndex = 0;
+
+
+
+
+
+
+
+
+
+// Collect all clickable images
+
+
+const projectImages =
+document.querySelectorAll(".project-click");
+
+
+
+
+
+projectImages.forEach(item=>{
+
+
+item.addEventListener("click",()=>{
+
+
+gallery = [];
+
+
+
+
+
+projectImages.forEach(image=>{
+
+
+gallery.push(
+image.dataset.image
+);
+
+
+});
+
+
+
+
+
+
+
+currentIndex =
+gallery.indexOf(
+item.dataset.image
+);
+
+
+
+
+
+
+openModal();
+
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+
+
+// Open modal
+
+
+function openModal(){
+
+
+if(!modal || !modalImage)
+return;
+
+
+
+modalImage.src =
+gallery[currentIndex];
+
+
+
+modal.classList.add("active");
+
+
+
+document.body.style.overflow="hidden";
+
+
+}
+
+
+
+
+
+
+
+
+
+// Close modal
+
+
+function closeGallery(){
+
+
+if(!modal)
+return;
+
+
+
+modal.classList.remove("active");
+
+
+
+document.body.style.overflow="auto";
+
+
+}
+
+
+
+
+
+
+
+
+
+if(closeModal){
+
+
+closeModal.addEventListener(
+
+"click",
+
+closeGallery
+
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+// Click outside close
+
+
+if(modal){
+
+
+modal.addEventListener(
+
+"click",
+
+(event)=>{
+
+
+if(event.target === modal){
+
+
+closeGallery();
+
+
+}
+
+
+}
+
+
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+// Next image
+
+
+if(nextProject){
+
+
+nextProject.addEventListener(
+
+"click",
+
+()=>{
+
+
+if(gallery.length===0)
+return;
+
+
+
+
+currentIndex++;
+
+
+
+
+
+if(currentIndex >= gallery.length){
+
+
+currentIndex = 0;
+
+
+}
+
+
+
+
+
+modalImage.src =
+gallery[currentIndex];
+
+
+
+}
+
+
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+// Previous image
+
+
+if(prevProject){
+
+
+prevProject.addEventListener(
+
+"click",
+
+()=>{
+
+
+if(gallery.length===0)
+return;
+
+
+
+
+currentIndex--;
+
+
+
+
+
+if(currentIndex < 0){
+
+
+currentIndex =
+gallery.length - 1;
+
+
+}
+
+
+
+
+
+modalImage.src =
+gallery[currentIndex];
+
+
+
+}
+
+
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+// ESC close
+
+
+document.addEventListener(
+
+"keydown",
+
+(event)=>{
+
+
+if(event.key === "Escape"){
+
+
+closeGallery();
+
+
+}
+
+
+}
+
+);
 
 
 
@@ -618,6 +663,31 @@ event.preventDefault();
 
 
 
+
+
+const name =
+document.getElementById("name").value;
+
+
+
+const email =
+document.getElementById("email").value;
+
+
+
+const message =
+document.getElementById("message").value;
+
+
+
+
+
+
+
+if(name && email && message){
+
+
+
 alert(
 
 "Thank you for your message! I will get back to you soon."
@@ -627,6 +697,11 @@ alert(
 
 
 event.target.reset();
+
+
+
+}
+
 
 
 }
@@ -640,26 +715,65 @@ event.target.reset();
 
 
 // =====================================================
-// IMAGE ERROR HANDLER
+// IMAGE ERROR HANDLING
 // =====================================================
 
 
 document.querySelectorAll("img")
-.forEach(img=>{
+.forEach(image=>{
 
 
-img.addEventListener(
+image.addEventListener(
+
 "error",
+
 ()=>{
 
 
 console.warn(
-"Image not found:",
-img.src
+
+"Missing image:",
+
+image.src
+
+);
+
+
+}
+
+
 );
 
 
 });
 
 
-});
+
+
+
+
+
+
+
+// =====================================================
+// HERO LOAD EFFECT
+// =====================================================
+
+
+window.addEventListener(
+
+"load",
+
+()=>{
+
+
+document.body.classList.add(
+
+"loaded"
+
+);
+
+
+}
+
+);
