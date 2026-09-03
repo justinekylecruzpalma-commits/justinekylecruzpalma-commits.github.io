@@ -421,8 +421,15 @@ return;
 
 
 
-modalImage.src =
-galleryImages[currentIndex];
+modalImage.src = galleryImages[currentIndex];
+
+modalImage.onload = () => {
+    console.log("Loaded:", modalImage.src);
+};
+
+modalImage.onerror = () => {
+    console.error("Image not found:", modalImage.src);
+};
 
 
 
