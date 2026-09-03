@@ -16,13 +16,18 @@ const navLinks = document.querySelector(".nav-links");
 
 if(menuBtn && navLinks){
 
-    menuBtn.addEventListener("click",()=>{
 
-        navLinks.classList.toggle("active");
+menuBtn.addEventListener("click",()=>{
 
-    });
+
+    navLinks.classList.toggle("active");
+
+
+});
+
 
 }
+
 
 
 
@@ -30,15 +35,13 @@ document.querySelectorAll(".nav-links a")
 .forEach(link=>{
 
 
-    link.addEventListener("click",()=>{
+link.addEventListener("click",()=>{
 
-        if(navLinks){
 
-            navLinks.classList.remove("active");
+    navLinks.classList.remove("active");
 
-        }
 
-    });
+});
 
 
 });
@@ -50,90 +53,36 @@ document.querySelectorAll(".nav-links a")
 
 
 
+
 // =====================================================
-// GALLERY IMAGES
-// MAKE SURE FILE NAMES MATCH YOUR FOLDER
+// PROJECT IMAGE DATA
 // =====================================================
 
 
-const projectImages = {
+const galleryImages = [
 
 
-    graphic:[
+"images/sample/work1.jpg",
 
-        "graphic-design-collage.png",
+"images/sample/work2.jpg",
 
-        "shirt1.png",
+"images/sample/work3.jpg",
 
-        "shirt2.png",
+"images/sample/work4.jpg",
 
-        "shirt3.png",
+"images/sample/work5.jpg",
 
-        "shirt4.png"
-
-    ],
+"images/sample/work6.jpg"
 
 
-
-    analytics:[
-
-        "analytics-collage.png",
-
-        "analytics1.png",
-
-        "analytics2.png",
-
-        "analytics3.png",
-
-        "analytics4.png"
-
-    ],
-
-
-
-    sk:[
-
-        "sk-management.png"
-
-    ],
-
-
-
-    kk:[
-
-        "kk-profiling.png"
-
-    ],
-
-
-
-    sgyg:[
-
-        "sgyg-system.png"
-
-    ],
-
-
-
-    drone:[
-
-        "drone-project.png"
-
-    ]
-
-
-};
+];
 
 
 
 
 
+let currentIndex = 0;
 
-
-
-let currentProject = "";
-
-let currentImage = 0;
 
 
 
@@ -143,57 +92,87 @@ let currentImage = 0;
 
 
 // =====================================================
-// OPEN MODAL
+// MODAL ELEMENTS
 // =====================================================
 
 
-function openProject(project){
+const modal =
+document.getElementById("projectModal");
 
 
-    const modal =
-    document.getElementById("projectModal");
+const modalImage =
+document.getElementById("modalImage");
 
 
-    const galleryImage =
-    document.getElementById("galleryImage");
+const closeModal =
+document.querySelector(".modal-close");
 
 
-
-    if(!modal || !galleryImage){
-
-        console.log("Modal missing");
-
-        return;
-
-    }
+const nextBtn =
+document.getElementById("nextProject");
 
 
-
-
-    currentProject = project;
-
-    currentImage = 0;
+const prevBtn =
+document.getElementById("prevProject");
 
 
 
-    galleryImage.src =
-    projectImages[project][0];
 
 
 
-    modal.style.display = "flex";
 
 
 
-    setTimeout(()=>{
+// =====================================================
+// OPEN IMAGE MODAL
+// =====================================================
 
-        modal.classList.add("show");
 
-    },10);
+document.querySelectorAll(".project-click")
+.forEach((item,index)=>{
+
+
+item.addEventListener("click",()=>{
+
+
+    currentIndex=index;
+
+
+    openModal();
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+
+
+function openModal(){
+
+
+
+modalImage.src =
+galleryImages[currentIndex];
+
+
+
+modal.classList.add("active");
+
+
+
+document.body.style.overflow="hidden";
 
 
 
 }
+
 
 
 
@@ -207,34 +186,48 @@ function openProject(project){
 // =====================================================
 
 
-function closeProject(){
+if(closeModal){
 
 
-    const modal =
-    document.getElementById("projectModal");
+closeModal.addEventListener("click",()=>{
 
 
-
-    if(modal){
-
-
-        modal.classList.remove("show");
+    modal.classList.remove("active");
 
 
-
-        setTimeout(()=>{
-
-
-            modal.style.display="none";
+    document.body.style.overflow="auto";
 
 
-        },300);
-
-
-    }
+});
 
 
 }
+
+
+
+
+
+
+
+
+
+modal.addEventListener("click",(e)=>{
+
+
+if(e.target === modal){
+
+
+    modal.classList.remove("active");
+
+
+    document.body.style.overflow="auto";
+
+
+}
+
+
+});
+
 
 
 
@@ -248,35 +241,35 @@ function closeProject(){
 // =====================================================
 
 
-function nextImage(){
+if(nextBtn){
 
 
-    if(!currentProject){
-
-        return;
-
-    }
+nextBtn.addEventListener("click",()=>{
 
 
-
-    let images =
-    projectImages[currentProject];
+currentIndex++;
 
 
 
-    if(currentImage < images.length - 1){
+if(currentIndex >= galleryImages.length){
 
 
-        currentImage++;
-
-
-        changeImage();
-
-
-    }
+    currentIndex=0;
 
 
 }
+
+
+
+changeImage();
+
+
+
+});
+
+
+}
+
 
 
 
@@ -290,27 +283,32 @@ function nextImage(){
 // =====================================================
 
 
-function previousImage(){
+if(prevBtn){
 
 
-    if(!currentProject){
-
-        return;
-
-    }
+prevBtn.addEventListener("click",()=>{
 
 
-
-    if(currentImage > 0){
-
-
-        currentImage--;
+currentIndex--;
 
 
-        changeImage();
+
+if(currentIndex < 0){
 
 
-    }
+    currentIndex =
+    galleryImages.length-1;
+
+
+}
+
+
+
+changeImage();
+
+
+
+});
 
 
 }
@@ -321,41 +319,26 @@ function previousImage(){
 
 
 
-
-// =====================================================
-// IMAGE TRANSITION
-// =====================================================
 
 
 function changeImage(){
 
 
-    const image =
-    document.getElementById("galleryImage");
+
+modalImage.style.opacity="0";
 
 
-
-    image.style.opacity="0";
-
-    image.style.transform="scale(.95)";
+setTimeout(()=>{
 
 
-
-    setTimeout(()=>{
-
-
-        image.src =
-        projectImages[currentProject][currentImage];
+modalImage.src =
+galleryImages[currentIndex];
 
 
-
-        image.style.opacity="1";
-
-        image.style.transform="scale(1)";
+modalImage.style.opacity="1";
 
 
-
-    },200);
+},200);
 
 
 
@@ -368,26 +351,26 @@ function changeImage(){
 
 
 
+
 // =====================================================
-// CLOSE WHEN CLICK OUTSIDE
+// ESC CLOSE
 // =====================================================
 
 
-window.addEventListener("click",(event)=>{
+document.addEventListener("keydown",(e)=>{
 
 
-    const modal =
-    document.getElementById("projectModal");
+if(e.key==="Escape"){
 
 
-
-    if(event.target === modal){
-
-
-        closeProject();
+modal.classList.remove("active");
 
 
-    }
+document.body.style.overflow="auto";
+
+
+}
+
 
 
 });
@@ -399,39 +382,16 @@ window.addEventListener("click",(event)=>{
 
 
 
-// =====================================================
-// ESC KEY CLOSE
-// =====================================================
-
-
-document.addEventListener("keydown",(event)=>{
-
-
-    if(event.key === "Escape"){
-
-
-        closeProject();
-
-
-    }
-
-
-});
-
-
-
-
-
-
-
 
 // =====================================================
-// SCROLL REVEAL ANIMATION
+// SCROLL REVEAL
 // =====================================================
 
 
 const revealElements =
-document.querySelectorAll(".reveal");
+document.querySelectorAll(
+".reveal"
+);
 
 
 
@@ -439,26 +399,27 @@ const revealObserver =
 new IntersectionObserver((entries)=>{
 
 
-    entries.forEach(entry=>{
+entries.forEach(entry=>{
 
 
-        if(entry.isIntersecting){
+if(entry.isIntersecting){
 
 
-            entry.target.classList.add("active");
+entry.target.classList.add("active");
 
 
-        }
+}
 
 
-    });
+});
 
 
 },{
 
-    threshold:.15
+threshold:.15
 
 });
+
 
 
 
@@ -466,10 +427,11 @@ new IntersectionObserver((entries)=>{
 revealElements.forEach(element=>{
 
 
-    revealObserver.observe(element);
+revealObserver.observe(element);
 
 
 });
+
 
 
 
@@ -483,41 +445,111 @@ revealElements.forEach(element=>{
 // =====================================================
 
 
-document.querySelectorAll('a[href^="#"]')
+document.querySelectorAll(
+'a[href^="#"]'
+)
 .forEach(anchor=>{
 
 
-anchor.addEventListener("click",function(e){
+anchor.addEventListener(
+"click",
+function(e){
 
 
-    const target =
-    document.querySelector(
-        this.getAttribute("href")
-    );
-
-
-
-    if(target){
-
-
-        e.preventDefault();
+const target =
+document.querySelector(
+this.getAttribute("href")
+);
 
 
 
-        target.scrollIntoView({
-
-            behavior:"smooth"
-
-        });
+if(target){
 
 
-    }
+e.preventDefault();
+
+
+target.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+
+}
+
 
 
 });
 
 
 });
+
+
+
+
+
+
+
+
+
+// =====================================================
+// SCROLL TO TOP
+// =====================================================
+
+
+const scrollTop =
+document.querySelector(".scroll-top");
+
+
+
+window.addEventListener("scroll",()=>{
+
+
+if(window.scrollY > 500){
+
+
+scrollTop.classList.add("active");
+
+
+}
+
+else{
+
+
+scrollTop.classList.remove("active");
+
+
+}
+
+
+});
+
+
+
+
+
+
+if(scrollTop){
+
+
+scrollTop.addEventListener("click",()=>{
+
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+
+});
+
+
+}
+
 
 
 
@@ -531,63 +563,35 @@ anchor.addEventListener("click",function(e){
 // =====================================================
 
 
-function sendMessage(event){
-
-
-    event.preventDefault();
-
-
-
-    let name =
-    document.getElementById("name").value;
+const contactForm =
+document.querySelector(".contact-form form");
 
 
 
-    let email =
-    document.getElementById("email").value;
+if(contactForm){
+
+
+contactForm.addEventListener(
+"submit",
+
+(e)=>{
+
+
+e.preventDefault();
 
 
 
-    let subject =
-    document.getElementById("subject").value;
+alert(
+"Thank you for your message! I will get back to you soon."
+);
 
 
 
-    let message =
-    document.getElementById("message").value;
+contactForm.reset();
 
 
 
-    let body =
-
-    `
-Name:
-${name}
-
-
-Email:
-${email}
-
-
-Message:
-${message}
-
-    `;
-
-
-
-    window.location.href =
-
-    "mailto:justinekylecruz.palma@gmail.com"
-    +
-    "?subject="
-    +
-    encodeURIComponent(subject)
-    +
-    "&body="
-    +
-    encodeURIComponent(body);
-
+});
 
 
 }
@@ -599,17 +603,34 @@ ${message}
 
 
 
+
 // =====================================================
-// PAGE LOADED
+// IMAGE LOADING EFFECT
 // =====================================================
 
 
-window.addEventListener("load",()=>{
+document.querySelectorAll("img")
+.forEach(img=>{
 
 
-    console.log(
-        "Portfolio loaded successfully"
-    );
+img.addEventListener("load",()=>{
+
+
+img.classList.add("loaded");
 
 
 });
+
+
+});
+
+
+
+
+
+
+
+
+console.log(
+"Portfolio Website Loaded Successfully 🚀"
+);
