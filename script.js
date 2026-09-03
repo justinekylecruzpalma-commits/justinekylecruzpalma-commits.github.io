@@ -1,55 +1,30 @@
-/* =====================================================
-JUSTINE KYLE PALMA PORTFOLIO
-FINAL SCRIPT.JS
-===================================================== */
-
-
-
-// =====================================================
-// MOBILE MENU
-// =====================================================
-
+// ================= MOBILE MENU =================
 
 const menuBtn = document.querySelector(".menu-btn");
-
 const navLinks = document.querySelector(".nav-links");
 
 
+if(menuBtn){
 
-if(menuBtn && navLinks){
+    menuBtn.addEventListener("click",()=>{
 
+        navLinks.classList.toggle("active");
 
-menuBtn.addEventListener("click",()=>{
-
-
-navLinks.classList.toggle("active");
-
-
-});
-
+    });
 
 }
 
 
 
+// Close menu after clicking link
 
+document.querySelectorAll(".nav-links a").forEach(link=>{
 
-document.querySelectorAll(".nav-links a")
-.forEach(link=>{
+    link.addEventListener("click",()=>{
 
+        navLinks.classList.remove("active");
 
-link.addEventListener("click",()=>{
-
-
-if(navLinks){
-
-navLinks.classList.remove("active");
-
-}
-
-
-});
-
+    });
 
 });
 
@@ -61,37 +36,26 @@ navLinks.classList.remove("active");
 
 
 
-// =====================================================
-// NAVBAR SCROLL EFFECT
-// =====================================================
+// ================= SCROLL HEADER =================
 
 
-const header = document.querySelector("header");
-
+const header = document.querySelector("#header");
 
 
 window.addEventListener("scroll",()=>{
 
 
-if(!header) return;
+    if(window.scrollY > 50){
 
+        header.classList.add("sticky");
 
+    }
 
-if(window.scrollY > 50){
+    else{
 
+        header.classList.remove("sticky");
 
-header.classList.add("scrolled");
-
-
-}
-
-else{
-
-
-header.classList.remove("scrolled");
-
-
-}
+    }
 
 
 });
@@ -104,102 +68,32 @@ header.classList.remove("scrolled");
 
 
 
-// =====================================================
-// SMOOTH SCROLL
-// =====================================================
+// ================= REVEAL ANIMATION =================
 
 
-document.querySelectorAll('a[href^="#"]')
-.forEach(anchor=>{
+const revealElements = document.querySelectorAll(".reveal");
 
 
-anchor.addEventListener("click",function(e){
+const revealObserver = new IntersectionObserver((entries)=>{
 
 
-const target =
-document.querySelector(
-this.getAttribute("href")
-);
+    entries.forEach(entry=>{
 
 
+        if(entry.isIntersecting){
 
-if(target){
+            entry.target.classList.add("active");
 
-
-e.preventDefault();
-
-
-target.scrollIntoView({
-
-behavior:"smooth",
-
-block:"start"
-
-});
+        }
 
 
-}
-
-
-
-});
-
-
-});
-
-
-
-
-
-
-
-
-
-// =====================================================
-// SCROLL REVEAL
-// =====================================================
-
-
-const revealElements =
-document.querySelectorAll(".reveal");
-
-
-
-
-
-const observer =
-new IntersectionObserver((entries)=>{
-
-
-entries.forEach(entry=>{
-
-
-if(entry.isIntersecting){
-
-
-entry.target.classList.add("active");
-
-
-}
-
-
-});
+    });
 
 
 },{
 
-threshold:.15
 
-});
-
-
-
-
-
-revealElements.forEach(element=>{
-
-
-observer.observe(element);
+threshold:0.15
 
 
 });
@@ -208,44 +102,10 @@ observer.observe(element);
 
 
 
+revealElements.forEach(el=>{
 
 
-
-
-// =====================================================
-// SCROLL TOP BUTTON
-// =====================================================
-
-
-const scrollTop =
-document.querySelector(".scroll-top");
-
-
-
-
-
-if(scrollTop){
-
-
-
-window.addEventListener("scroll",()=>{
-
-
-if(window.scrollY > 500){
-
-
-scrollTop.classList.add("active");
-
-
-}
-
-else{
-
-
-scrollTop.classList.remove("active");
-
-
-}
+    revealObserver.observe(el);
 
 
 });
@@ -254,58 +114,22 @@ scrollTop.classList.remove("active");
 
 
 
-scrollTop.addEventListener("click",()=>{
-
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
-
-});
-
-
-}
 
 
 
 
+// ================= IMAGE MODAL =================
 
 
+const modal = document.getElementById("projectModal");
 
+const modalImage = document.getElementById("modalImage");
 
+const closeModal = document.querySelector(".modal-close");
 
-// =====================================================
-// IMAGE MODAL SYSTEM
-// SUPPORTS DATA-IMAGE AND DATA-GALLERY
-// =====================================================
+const prevBtn = document.getElementById("prevProject");
 
-
-
-const modal =
-document.getElementById("projectModal");
-
-
-const modalImage =
-document.getElementById("modalImage");
-
-
-const closeModal =
-document.querySelector(".modal-close");
-
-
-const nextBtn =
-document.getElementById("nextProject");
-
-
-const prevBtn =
-document.getElementById("prevProject");
-
-
+const nextBtn = document.getElementById("nextProject");
 
 
 
@@ -321,132 +145,102 @@ let currentIndex = 0;
 
 
 
-// GET ALL CLICKABLE IMAGES
+// ================= OPEN IMAGE =================
 
 
-const clickableImages =
-document.querySelectorAll(".project-click");
+function openImageModal(){
+
+
+    if(!modal || !modalImage){
+
+        return;
+
+    }
+
+
+    modalImage.src = galleryImages[currentIndex];
+
+
+    modal.classList.add("active");
+
+
+    document.body.style.overflow="hidden";
+
+
+}
 
 
 
 
 
 
+
+
+
+// ================= PROJECT CLICK =================
+
+
+const clickableImages = document.querySelectorAll(".project-click");
 
 
 
 clickableImages.forEach(item=>{
 
 
-item.addEventListener("click",()=>{
+    item.addEventListener("click",()=>{
 
 
-galleryImages = [];
+        galleryImages = [];
 
 
 
-if(item.hasAttribute("data-gallery")){
+        // SAMPLE WORK MULTIPLE IMAGES
 
+        if(item.dataset.gallery){
 
-galleryImages = item
-.getAttribute("data-gallery")
-.split(",");
 
+            galleryImages = item.dataset.gallery
 
+            .split(",")
 
-}
+            .map(image=>image.trim());
 
 
+        }
 
-else if(item.hasAttribute("data-image")){
 
 
-galleryImages.push(
+        // NORMAL PROJECT IMAGE
 
-item.getAttribute("data-image")
+        else if(item.dataset.image){
 
-);
 
+            galleryImages.push(
 
-}
+                item.dataset.image
 
+            );
 
 
+        }
 
 
-console.log("Gallery:", galleryImages);
 
 
 
-currentIndex = 0;
+        if(galleryImages.length > 0){
 
 
-openImageModal();
+            currentIndex = 0;
 
 
+            openImageModal();
 
-});
 
+        }
 
-});
 
-
-
-
-
-// NEW GALLERY SYSTEM
-
-if(item.dataset.gallery){
-
-galleryImages =
-item.dataset.gallery
-.split(",")
-.map(image => image.trim());
-
-}
-
-else if(item.dataset.image){
-
-galleryImages = [
-
-item.dataset.image
-
-];
-
-}
-
-
-
-
-
-// OLD PROJECT SYSTEM
-
-else if(item.dataset.image){
-
-
-galleryImages = [
-
-item.dataset.image
-
-];
-
-
-}
-
-
-
-
-
-
-
-currentIndex = 0;
-
-
-openImageModal();
-
-
-});
-
+    });
 
 
 });
@@ -459,84 +253,22 @@ openImageModal();
 
 
 
-// OPEN MODAL
-
-
-function openImageModal(){
-
-
-
-if(!modal || !modalImage)
-return;
-
-
-
-modalImage.src = galleryImages[currentIndex];
-
-modalImage.onload = () => {
-    console.log("Loaded:", modalImage.src);
-};
-
-modalImage.onerror = () => {
-    console.error("Image not found:", modalImage.src);
-};
-
-
-
-modal.classList.add("active");
-
-
-
-document.body.style.overflow="hidden";
-
-
-}
-
-
-
-
-
-
-
-
-
-// CLOSE MODAL
-
-
-function closeImageModal(){
-
-
-if(!modal)
-return;
-
-
-
-modal.classList.remove("active");
-
-
-document.body.style.overflow="auto";
-
-
-}
-
-
-
-
-
-
-
+// ================= CLOSE MODAL =================
 
 
 if(closeModal){
 
 
-closeModal.addEventListener(
+    closeModal.addEventListener("click",()=>{
 
-"click",
 
-closeImageModal
+        modal.classList.remove("active");
 
-);
+
+        document.body.style.overflow="auto";
+
+
+    });
 
 
 }
@@ -549,32 +281,28 @@ closeImageModal
 
 
 
-// CLOSE WHEN CLICK OUTSIDE
+// Close clicking outside image
 
 
 if(modal){
 
 
-modal.addEventListener(
-
-"click",
-
-(e)=>{
+    modal.addEventListener("click",(e)=>{
 
 
-if(e.target === modal){
+        if(e.target === modal){
 
 
-closeImageModal();
+            modal.classList.remove("active");
 
 
-}
+            document.body.style.overflow="auto";
 
 
-}
+        }
 
 
-);
+    });
 
 
 }
@@ -587,51 +315,42 @@ closeImageModal();
 
 
 
-// NEXT IMAGE
+// ================= NEXT IMAGE =================
 
 
 if(nextBtn){
 
 
-nextBtn.addEventListener(
-
-"click",
-
-()=>{
+    nextBtn.addEventListener("click",()=>{
 
 
-if(galleryImages.length <= 1)
-return;
+        if(galleryImages.length <= 1){
 
+            return;
 
-
-currentIndex++;
+        }
 
 
 
-
-
-if(currentIndex >= galleryImages.length){
-
-
-currentIndex = 0;
-
-
-}
+        currentIndex++;
 
 
 
+        if(currentIndex >= galleryImages.length){
 
 
-modalImage.src =
-galleryImages[currentIndex];
+            currentIndex = 0;
+
+
+        }
 
 
 
-}
+        modalImage.src = galleryImages[currentIndex];
 
 
-);
+
+    });
 
 
 }
@@ -644,52 +363,42 @@ galleryImages[currentIndex];
 
 
 
-// PREVIOUS IMAGE
+// ================= PREVIOUS IMAGE =================
 
 
 if(prevBtn){
 
 
-prevBtn.addEventListener(
-
-"click",
-
-()=>{
+    prevBtn.addEventListener("click",()=>{
 
 
-if(galleryImages.length <= 1)
-return;
+        if(galleryImages.length <= 1){
 
+            return;
 
-
-currentIndex--;
+        }
 
 
 
-
-
-if(currentIndex < 0){
-
-
-currentIndex =
-galleryImages.length - 1;
-
-
-}
+        currentIndex--;
 
 
 
+        if(currentIndex < 0){
 
 
-modalImage.src =
-galleryImages[currentIndex];
+            currentIndex = galleryImages.length - 1;
+
+
+        }
 
 
 
-}
+        modalImage.src = galleryImages[currentIndex];
 
 
-);
+
+    });
 
 
 }
@@ -702,86 +411,42 @@ galleryImages[currentIndex];
 
 
 
-// ESCAPE CLOSE
-
-
-document.addEventListener(
-
-"keydown",
-
-(e)=>{
-
-
-if(e.key === "Escape"){
-
-
-closeImageModal();
-
-
-}
-
-
-}
-
-);
-
-
-
-
-
-
-
-
-
-// =====================================================
-// CONTACT FORM
-// =====================================================
+// ================= CONTACT FORM =================
 
 
 function sendMessage(event){
 
 
-event.preventDefault();
+    event.preventDefault();
 
 
 
+    const name = document.getElementById("name").value;
 
+    const email = document.getElementById("email").value;
 
-const name =
-document.getElementById("name").value;
+    const subject = document.getElementById("subject").value;
 
-
-
-const email =
-document.getElementById("email").value;
-
-
-
-const message =
-document.getElementById("message").value;
+    const message = document.getElementById("message").value;
 
 
 
+    const body = 
+
+`Name: ${name}
+
+Email: ${email}
+
+
+Message:
+
+${message}`;
 
 
 
-if(name && email && message){
+    window.location.href = 
 
-
-
-alert(
-
-"Thank you for your message! I will get back to you soon."
-
-);
-
-
-
-event.target.reset();
-
-
-
-}
+`mailto:justinekylecruz.palma@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
 
 
 
@@ -795,62 +460,41 @@ event.target.reset();
 
 
 
-// =====================================================
-// IMAGE ERROR CHECK
-// =====================================================
+// ================= SMOOTH SCROLL =================
 
 
-document.querySelectorAll("img")
-.forEach(img=>{
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
 
 
-img.addEventListener(
-
-"error",
-
-()=>{
+    anchor.addEventListener("click",function(e){
 
 
-console.warn(
+        const target = document.querySelector(
 
-"Image missing:",
+            this.getAttribute("href")
 
-img.src
-
-);
+        );
 
 
-}
+
+        if(target){
 
 
-);
+            e.preventDefault();
+
+
+
+            target.scrollIntoView({
+
+                behavior:"smooth"
+
+            });
+
+
+        }
+
+
+    });
 
 
 });
-
-
-
-
-
-
-
-
-
-// =====================================================
-// PAGE LOAD EFFECT
-// =====================================================
-
-
-window.addEventListener(
-
-"load",
-
-()=>{
-
-
-document.body.classList.add("loaded");
-
-
-}
-
-);
