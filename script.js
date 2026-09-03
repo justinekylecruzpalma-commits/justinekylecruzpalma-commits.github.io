@@ -348,12 +348,20 @@ item.addEventListener("click",()=>{
 
 if(item.dataset.gallery){
 
-
 galleryImages =
 item.dataset.gallery
 .split(",")
-.map(image=>image.trim());
+.map(image => image.trim());
 
+}
+
+else if(item.dataset.image){
+
+galleryImages = [
+
+item.dataset.image
+
+];
 
 }
 
