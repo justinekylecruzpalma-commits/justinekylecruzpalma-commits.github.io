@@ -1,7 +1,6 @@
 /* =====================================================
 JUSTINE KYLE PALMA PORTFOLIO
-PREMIUM JAVASCRIPT
-PART 1/2
+FINAL SCRIPT.JS
 ===================================================== */
 
 
@@ -26,17 +25,10 @@ menuBtn.addEventListener("click",()=>{
 navLinks.classList.toggle("active");
 
 
-menuBtn.classList.toggle("open");
-
-
 });
 
 
 }
-
-
-
-
 
 
 
@@ -75,8 +67,6 @@ navLinks.classList.remove("active");
 
 
 const header = document.querySelector("header");
-
-
 
 
 
@@ -166,7 +156,7 @@ block:"start"
 
 
 // =====================================================
-// SCROLL REVEAL ANIMATION
+// SCROLL REVEAL
 // =====================================================
 
 
@@ -177,7 +167,7 @@ document.querySelectorAll(".reveal");
 
 
 
-const revealObserver =
+const observer =
 new IntersectionObserver((entries)=>{
 
 
@@ -193,13 +183,12 @@ entry.target.classList.add("active");
 }
 
 
-
 });
 
 
 },{
 
-threshold:0.15
+threshold:.15
 
 });
 
@@ -210,7 +199,7 @@ threshold:0.15
 revealElements.forEach(element=>{
 
 
-revealObserver.observe(element);
+observer.observe(element);
 
 
 });
@@ -224,7 +213,7 @@ revealObserver.observe(element);
 
 
 // =====================================================
-// SCROLL TO TOP
+// SCROLL TOP BUTTON
 // =====================================================
 
 
@@ -265,9 +254,6 @@ scrollTop.classList.remove("active");
 
 
 
-
-
-
 scrollTop.addEventListener("click",()=>{
 
 
@@ -286,26 +272,44 @@ behavior:"smooth"
 }
 
 
-/* =====================================================
-IMAGE GALLERY MODAL
-===================================================== */
-
-
-const modal = document.getElementById("projectModal");
-
-const modalImage = document.getElementById("modalImage");
-
-const closeModal = document.querySelector(".modal-close");
-
-const nextProject = document.getElementById("nextProject");
-
-const prevProject = document.getElementById("prevProject");
 
 
 
 
 
-let gallery = [];
+
+
+// =====================================================
+// IMAGE MODAL SYSTEM
+// SUPPORTS DATA-IMAGE AND DATA-GALLERY
+// =====================================================
+
+
+
+const modal =
+document.getElementById("projectModal");
+
+
+const modalImage =
+document.getElementById("modalImage");
+
+
+const closeModal =
+document.querySelector(".modal-close");
+
+
+const nextBtn =
+document.getElementById("nextProject");
+
+
+const prevBtn =
+document.getElementById("prevProject");
+
+
+
+
+
+let galleryImages = [];
 
 let currentIndex = 0;
 
@@ -317,62 +321,79 @@ let currentIndex = 0;
 
 
 
-// Collect all clickable images
+// GET ALL CLICKABLE IMAGES
 
 
-const projectImages =
+const clickableImages =
 document.querySelectorAll(".project-click");
 
 
 
 
 
-projectImages.forEach(item=>{
+
+
+
+
+clickableImages.forEach(item=>{
 
 
 item.addEventListener("click",()=>{
 
 
-gallery = [];
+
+
+
+// NEW GALLERY SYSTEM
+
+if(item.dataset.gallery){
+
+
+galleryImages =
+item.dataset.gallery
+.split(",")
+.map(image=>image.trim());
+
+
+}
 
 
 
 
 
-projectImages.forEach(image=>{
+// OLD PROJECT SYSTEM
+
+else if(item.dataset.image){
 
 
-gallery.push(
-image.dataset.image
-);
+galleryImages = [
 
-
-});
-
-
-
-
-
-
-
-currentIndex =
-gallery.indexOf(
 item.dataset.image
-);
+
+];
+
+
+}
 
 
 
 
 
 
-openModal();
+
+currentIndex = 0;
+
+
+openImageModal();
+
+
+});
 
 
 
 });
 
 
-});
 
 
 
@@ -380,12 +401,11 @@ openModal();
 
 
 
+// OPEN MODAL
 
 
-// Open modal
+function openImageModal(){
 
-
-function openModal(){
 
 
 if(!modal || !modalImage)
@@ -394,7 +414,7 @@ return;
 
 
 modalImage.src =
-gallery[currentIndex];
+galleryImages[currentIndex];
 
 
 
@@ -415,10 +435,10 @@ document.body.style.overflow="hidden";
 
 
 
-// Close modal
+// CLOSE MODAL
 
 
-function closeGallery(){
+function closeImageModal(){
 
 
 if(!modal)
@@ -427,7 +447,6 @@ return;
 
 
 modal.classList.remove("active");
-
 
 
 document.body.style.overflow="auto";
@@ -450,7 +469,7 @@ closeModal.addEventListener(
 
 "click",
 
-closeGallery
+closeImageModal
 
 );
 
@@ -465,7 +484,7 @@ closeGallery
 
 
 
-// Click outside close
+// CLOSE WHEN CLICK OUTSIDE
 
 
 if(modal){
@@ -475,13 +494,13 @@ modal.addEventListener(
 
 "click",
 
-(event)=>{
+(e)=>{
 
 
-if(event.target === modal){
+if(e.target === modal){
 
 
-closeGallery();
+closeImageModal();
 
 
 }
@@ -503,22 +522,21 @@ closeGallery();
 
 
 
-// Next image
+// NEXT IMAGE
 
 
-if(nextProject){
+if(nextBtn){
 
 
-nextProject.addEventListener(
+nextBtn.addEventListener(
 
 "click",
 
 ()=>{
 
 
-if(gallery.length===0)
+if(galleryImages.length <= 1)
 return;
-
 
 
 
@@ -528,7 +546,7 @@ currentIndex++;
 
 
 
-if(currentIndex >= gallery.length){
+if(currentIndex >= galleryImages.length){
 
 
 currentIndex = 0;
@@ -541,7 +559,7 @@ currentIndex = 0;
 
 
 modalImage.src =
-gallery[currentIndex];
+galleryImages[currentIndex];
 
 
 
@@ -561,22 +579,21 @@ gallery[currentIndex];
 
 
 
-// Previous image
+// PREVIOUS IMAGE
 
 
-if(prevProject){
+if(prevBtn){
 
 
-prevProject.addEventListener(
+prevBtn.addEventListener(
 
 "click",
 
 ()=>{
 
 
-if(gallery.length===0)
+if(galleryImages.length <= 1)
 return;
-
 
 
 
@@ -590,7 +607,7 @@ if(currentIndex < 0){
 
 
 currentIndex =
-gallery.length - 1;
+galleryImages.length - 1;
 
 
 }
@@ -600,7 +617,7 @@ gallery.length - 1;
 
 
 modalImage.src =
-gallery[currentIndex];
+galleryImages[currentIndex];
 
 
 
@@ -620,20 +637,20 @@ gallery[currentIndex];
 
 
 
-// ESC close
+// ESCAPE CLOSE
 
 
 document.addEventListener(
 
 "keydown",
 
-(event)=>{
+(e)=>{
 
 
-if(event.key === "Escape"){
+if(e.key === "Escape"){
 
 
-closeGallery();
+closeImageModal();
 
 
 }
@@ -683,7 +700,6 @@ document.getElementById("message").value;
 
 
 
-
 if(name && email && message){
 
 
@@ -715,15 +731,15 @@ event.target.reset();
 
 
 // =====================================================
-// IMAGE ERROR HANDLING
+// IMAGE ERROR CHECK
 // =====================================================
 
 
 document.querySelectorAll("img")
-.forEach(image=>{
+.forEach(img=>{
 
 
-image.addEventListener(
+img.addEventListener(
 
 "error",
 
@@ -732,9 +748,9 @@ image.addEventListener(
 
 console.warn(
 
-"Missing image:",
+"Image missing:",
 
-image.src
+img.src
 
 );
 
@@ -756,7 +772,7 @@ image.src
 
 
 // =====================================================
-// HERO LOAD EFFECT
+// PAGE LOAD EFFECT
 // =====================================================
 
 
@@ -767,11 +783,7 @@ window.addEventListener(
 ()=>{
 
 
-document.body.classList.add(
-
-"loaded"
-
-);
+document.body.classList.add("loaded");
 
 
 }
