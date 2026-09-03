@@ -1,25 +1,26 @@
 /* =====================================================
-PORTFOLIO JAVASCRIPT
-JUSTINE KYLE PALMA
+JUSTINE KYLE PALMA PORTFOLIO
+FINAL SCRIPT.JS
 ===================================================== */
 
 
-/* =====================================================
-MOBILE NAVIGATION
-===================================================== */
+
+// =====================================================
+// MOBILE MENU
+// =====================================================
 
 
 const menuBtn = document.querySelector(".menu-btn");
 const navLinks = document.querySelector(".nav-links");
 
 
-if(menuBtn){
+if(menuBtn && navLinks){
 
-menuBtn.addEventListener("click",()=>{
+    menuBtn.addEventListener("click",()=>{
 
-    navLinks.classList.toggle("active");
+        navLinks.classList.toggle("active");
 
-});
+    });
 
 }
 
@@ -28,104 +29,97 @@ menuBtn.addEventListener("click",()=>{
 document.querySelectorAll(".nav-links a")
 .forEach(link=>{
 
-link.addEventListener("click",()=>{
 
-    navLinks.classList.remove("active");
+    link.addEventListener("click",()=>{
+
+        if(navLinks){
+
+            navLinks.classList.remove("active");
+
+        }
+
+    });
+
 
 });
 
-});
 
 
 
 
 
 
-/* =====================================================
-PROJECT GALLERY DATA
-===================================================== */
+
+// =====================================================
+// GALLERY IMAGES
+// MAKE SURE FILE NAMES MATCH YOUR FOLDER
+// =====================================================
 
 
 const projectImages = {
 
 
-/* TECH PROJECTS */
+    graphic:[
 
-sk:[
+        "graphic-design-collage.png",
 
-"sk-management.png"
+        "shirt1.png",
 
-],
+        "shirt2.png",
 
+        "shirt3.png",
 
+        "shirt4.png"
 
-kk:[
-
-"kk-profiling.png"
-
-],
+    ],
 
 
 
-sgyg:[
+    analytics:[
 
-"sgyg-system.png"
+        "analytics-collage.png",
 
-],
+        "analytics1.png",
 
+        "analytics2.png",
 
+        "analytics3.png",
 
-drone:[
+        "analytics4.png"
 
-"drone-project.png"
-
-],
-
-
+    ],
 
 
 
+    sk:[
 
-/* SAMPLE WORK */
+        "sk-management.png"
 
-
-graphic:[
-
-
-"graphic-design-collage.png",
-
-
-"shirt1.png",
-
-"shirt2.png",
-
-"shirt3.png",
-
-"shirt4.png",
-
-"shirt5.png"
-
-
-],
+    ],
 
 
 
+    kk:[
 
-analytics:[
+        "kk-profiling.png"
 
-
-"analytics-collage.png",
-
-"analytics1.png",
-
-"analytics2.png",
-
-"analytics3.png",
-
-"analytics4.png"
+    ],
 
 
-]
+
+    sgyg:[
+
+        "sgyg-system.png"
+
+    ],
+
+
+
+    drone:[
+
+        "drone-project.png"
+
+    ]
 
 
 };
@@ -136,9 +130,10 @@ analytics:[
 
 
 
+
 let currentProject = "";
 
-let currentImageIndex = 0;
+let currentImage = 0;
 
 
 
@@ -147,59 +142,54 @@ let currentImageIndex = 0;
 
 
 
-/* =====================================================
-OPEN PROJECT MODAL
-===================================================== */
+// =====================================================
+// OPEN MODAL
+// =====================================================
 
 
 function openProject(project){
 
 
-const modal =
-document.getElementById("projectModal");
+    const modal =
+    document.getElementById("projectModal");
 
 
-const image =
-document.getElementById("galleryImage");
-
-
-
-currentProject = project;
-
-currentImageIndex = 0;
+    const galleryImage =
+    document.getElementById("galleryImage");
 
 
 
-image.style.opacity="0";
+    if(!modal || !galleryImage){
 
+        console.log("Modal missing");
 
+        return;
 
-setTimeout(()=>{
-
-
-image.src =
-projectImages[project][0];
-
-image.style.opacity="1";
-
-
-},200);
+    }
 
 
 
 
+    currentProject = project;
 
-modal.style.display="flex";
-
-
-
-setTimeout(()=>{
+    currentImage = 0;
 
 
-modal.classList.add("show");
+
+    galleryImage.src =
+    projectImages[project][0];
 
 
-},10);
+
+    modal.style.display = "flex";
+
+
+
+    setTimeout(()=>{
+
+        modal.classList.add("show");
+
+    },10);
 
 
 
@@ -212,30 +202,36 @@ modal.classList.add("show");
 
 
 
-/* =====================================================
-CLOSE MODAL
-===================================================== */
+// =====================================================
+// CLOSE MODAL
+// =====================================================
 
 
 function closeProject(){
 
 
-const modal =
-document.getElementById("projectModal");
-
-
-modal.classList.remove("show");
+    const modal =
+    document.getElementById("projectModal");
 
 
 
-setTimeout(()=>{
+    if(modal){
 
 
-modal.style.display="none";
+        modal.classList.remove("show");
 
 
-},300);
 
+        setTimeout(()=>{
+
+
+            modal.style.display="none";
+
+
+        },300);
+
+
+    }
 
 
 }
@@ -247,111 +243,74 @@ modal.style.display="none";
 
 
 
-/* =====================================================
-NEXT IMAGE
-===================================================== */
+// =====================================================
+// NEXT IMAGE
+// =====================================================
 
 
 function nextImage(){
 
 
-let gallery =
-projectImages[currentProject];
+    if(!currentProject){
+
+        return;
+
+    }
 
 
 
-if(currentImageIndex <
-gallery.length - 1){
-
-
-currentImageIndex++;
+    let images =
+    projectImages[currentProject];
 
 
 
-changeGalleryImage();
+    if(currentImage < images.length - 1){
+
+
+        currentImage++;
+
+
+        changeImage();
+
+
+    }
 
 
 }
 
 
 
-}
 
 
 
 
 
-
-
-/* =====================================================
-PREVIOUS IMAGE
-===================================================== */
+// =====================================================
+// PREVIOUS IMAGE
+// =====================================================
 
 
 function previousImage(){
 
 
+    if(!currentProject){
 
-if(currentImageIndex > 0){
+        return;
 
-
-currentImageIndex--;
-
-
-
-changeGalleryImage();
-
-
-}
+    }
 
 
 
-}
+    if(currentImage > 0){
 
 
+        currentImage--;
 
 
+        changeImage();
 
 
-
-/* =====================================================
-CHANGE IMAGE ANIMATION
-===================================================== */
-
-
-function changeGalleryImage(){
-
-
-const image =
-document.getElementById("galleryImage");
-
-
-
-image.style.opacity="0";
-
-image.style.transform=
-"scale(.95)";
-
-
-
-setTimeout(()=>{
-
-
-image.src =
-projectImages[currentProject]
-[currentImageIndex];
-
-
-
-image.style.opacity="1";
-
-image.style.transform=
-"scale(1)";
-
-
-
-},200);
-
+    }
 
 
 }
@@ -363,25 +322,72 @@ image.style.transform=
 
 
 
-/* =====================================================
-CLICK OUTSIDE MODAL CLOSE
-===================================================== */
+// =====================================================
+// IMAGE TRANSITION
+// =====================================================
 
 
-window.addEventListener("click",(e)=>{
+function changeImage(){
 
 
-const modal =
-document.getElementById("projectModal");
+    const image =
+    document.getElementById("galleryImage");
 
 
 
-if(e.target === modal){
+    image.style.opacity="0";
 
-closeProject();
+    image.style.transform="scale(.95)";
+
+
+
+    setTimeout(()=>{
+
+
+        image.src =
+        projectImages[currentProject][currentImage];
+
+
+
+        image.style.opacity="1";
+
+        image.style.transform="scale(1)";
+
+
+
+    },200);
+
+
 
 }
 
+
+
+
+
+
+
+
+// =====================================================
+// CLOSE WHEN CLICK OUTSIDE
+// =====================================================
+
+
+window.addEventListener("click",(event)=>{
+
+
+    const modal =
+    document.getElementById("projectModal");
+
+
+
+    if(event.target === modal){
+
+
+        closeProject();
+
+
+    }
 
 
 });
@@ -393,50 +399,21 @@ closeProject();
 
 
 
-/* =====================================================
-SCROLL REVEAL ANIMATION
-===================================================== */
+// =====================================================
+// ESC KEY CLOSE
+// =====================================================
 
 
-const observer =
-new IntersectionObserver(
-(entries)=>{
+document.addEventListener("keydown",(event)=>{
 
 
-entries.forEach(entry=>{
+    if(event.key === "Escape"){
 
 
-if(entry.isIntersecting){
+        closeProject();
 
 
-entry.target.classList.add("active");
-
-
-}
-
-
-});
-
-
-},
-
-{
-
-threshold:0.15
-
-}
-
-);
-
-
-
-
-
-document.querySelectorAll(".reveal")
-.forEach((element)=>{
-
-
-observer.observe(element);
+    }
 
 
 });
@@ -448,50 +425,93 @@ observer.observe(element);
 
 
 
+// =====================================================
+// SCROLL REVEAL ANIMATION
+// =====================================================
 
-/* =====================================================
-SMOOTH SCROLL
-===================================================== */
+
+const revealElements =
+document.querySelectorAll(".reveal");
 
 
-document.querySelectorAll(
-'a[href^="#"]'
-)
 
+const revealObserver =
+new IntersectionObserver((entries)=>{
+
+
+    entries.forEach(entry=>{
+
+
+        if(entry.isIntersecting){
+
+
+            entry.target.classList.add("active");
+
+
+        }
+
+
+    });
+
+
+},{
+
+    threshold:.15
+
+});
+
+
+
+
+revealElements.forEach(element=>{
+
+
+    revealObserver.observe(element);
+
+
+});
+
+
+
+
+
+
+
+
+// =====================================================
+// SMOOTH SCROLL
+// =====================================================
+
+
+document.querySelectorAll('a[href^="#"]')
 .forEach(anchor=>{
 
 
-anchor.addEventListener(
-"click",
-
-function(e){
+anchor.addEventListener("click",function(e){
 
 
-let target =
-document.querySelector(
-this.getAttribute("href")
-);
+    const target =
+    document.querySelector(
+        this.getAttribute("href")
+    );
 
 
 
-if(target){
+    if(target){
 
 
-e.preventDefault();
+        e.preventDefault();
 
 
 
-target.scrollIntoView({
+        target.scrollIntoView({
 
-behavior:"smooth",
+            behavior:"smooth"
 
-block:"start"
-
-});
+        });
 
 
-}
-
+    }
 
 
 });
@@ -506,59 +526,67 @@ block:"start"
 
 
 
-
-/* =====================================================
-CONTACT FORM
-===================================================== */
+// =====================================================
+// CONTACT FORM
+// =====================================================
 
 
 function sendMessage(event){
 
 
-event.preventDefault();
+    event.preventDefault();
 
 
 
-let name =
-document.getElementById("name").value;
+    let name =
+    document.getElementById("name").value;
 
 
 
-let email =
-document.getElementById("email").value;
+    let email =
+    document.getElementById("email").value;
 
 
 
-let subject =
-document.getElementById("subject").value;
+    let subject =
+    document.getElementById("subject").value;
 
 
 
-let message =
-document.getElementById("message").value;
+    let message =
+    document.getElementById("message").value;
 
 
 
+    let body =
 
-let mail =
-`mailto:justinekylecruz.palma@gmail.com?
-subject=${subject}
-&body=
-
+    `
 Name:
 ${name}
+
 
 Email:
 ${email}
 
+
 Message:
 ${message}
-`;
+
+    `;
 
 
 
-window.location.href =
-mail;
+    window.location.href =
+
+    "mailto:justinekylecruz.palma@gmail.com"
+    +
+    "?subject="
+    +
+    encodeURIComponent(subject)
+    +
+    "&body="
+    +
+    encodeURIComponent(body);
 
 
 
@@ -571,80 +599,17 @@ mail;
 
 
 
-
-/* =====================================================
-NAVBAR SCROLL EFFECT
-===================================================== */
-
-
-window.addEventListener(
-"scroll",
-
-()=>{
+// =====================================================
+// PAGE LOADED
+// =====================================================
 
 
-const header =
-document.querySelector("header");
+window.addEventListener("load",()=>{
 
 
-
-if(window.scrollY > 50){
-
-
-header.classList.add("scrolled");
-
-
-}
-
-else{
-
-
-header.classList.remove("scrolled");
-
-
-}
-
+    console.log(
+        "Portfolio loaded successfully"
+    );
 
 
 });
-
-
-
-
-
-
-
-
-/* =====================================================
-IMAGE LOADING EFFECT
-===================================================== */
-
-
-document.querySelectorAll("img")
-.forEach(img=>{
-
-
-img.addEventListener(
-"load",
-
-()=>{
-
-
-img.classList.add("loaded");
-
-
-});
-
-
-});
-
-
-
-
-
-
-
-
-console.log(
-"Portfolio Loaded Successfully 🚀"
-);
