@@ -1,8 +1,7 @@
 /* =====================================================
-JUSTINE KYLE PALMA PORTFOLIO
-FINAL SCRIPT.JS
+PORTFOLIO SCRIPT
+CLICKABLE PROJECTS + SAMPLE WORK
 ===================================================== */
-
 
 
 // =====================================================
@@ -14,17 +13,13 @@ const menuBtn = document.querySelector(".menu-btn");
 const navLinks = document.querySelector(".nav-links");
 
 
-if(menuBtn && navLinks){
-
+if(menuBtn){
 
 menuBtn.addEventListener("click",()=>{
 
-
-    navLinks.classList.toggle("active");
-
+navLinks.classList.toggle("active");
 
 });
-
 
 }
 
@@ -34,15 +29,11 @@ menuBtn.addEventListener("click",()=>{
 document.querySelectorAll(".nav-links a")
 .forEach(link=>{
 
-
 link.addEventListener("click",()=>{
 
-
-    navLinks.classList.remove("active");
-
+navLinks.classList.remove("active");
 
 });
-
 
 });
 
@@ -55,31 +46,24 @@ link.addEventListener("click",()=>{
 
 
 // =====================================================
-// PROJECT IMAGE DATA
+// IMAGE MODAL
 // =====================================================
 
 
-const galleryImages = [
+const modal = document.getElementById("projectModal");
+
+const modalImage = document.getElementById("modalImage");
+
+const closeModal = document.querySelector(".modal-close");
 
 
-"images/sample/work1.jpg",
+const nextBtn = document.getElementById("nextProject");
 
-"images/sample/work2.jpg",
-
-"images/sample/work3.jpg",
-
-"images/sample/work4.jpg",
-
-"images/sample/work5.jpg",
-
-"images/sample/work6.jpg"
-
-
-];
+const prevBtn = document.getElementById("prevProject");
 
 
 
-
+let gallery = [];
 
 let currentIndex = 0;
 
@@ -89,61 +73,45 @@ let currentIndex = 0;
 
 
 
-
-
-// =====================================================
-// MODAL ELEMENTS
-// =====================================================
-
-
-const modal =
-document.getElementById("projectModal");
-
-
-const modalImage =
-document.getElementById("modalImage");
-
-
-const closeModal =
-document.querySelector(".modal-close");
-
-
-const nextBtn =
-document.getElementById("nextProject");
-
-
-const prevBtn =
-document.getElementById("prevProject");
-
-
-
-
-
-
-
-
-
-// =====================================================
-// OPEN IMAGE MODAL
-// =====================================================
+// GET ALL CLICKABLE IMAGES
 
 
 document.querySelectorAll(".project-click")
-.forEach((item,index)=>{
+.forEach((item)=>{
 
 
 item.addEventListener("click",()=>{
 
 
-    currentIndex=index;
+gallery = [];
 
 
-    openModal();
+document.querySelectorAll(".project-click")
+.forEach(image=>{
+
+
+gallery.push(
+image.dataset.image
+);
 
 
 });
 
 
+
+currentIndex =
+gallery.indexOf(item.dataset.image);
+
+
+
+openModal();
+
+
+
+});
+
+
+
 });
 
 
@@ -152,23 +120,25 @@ item.addEventListener("click",()=>{
 
 
 
+
+
+// OPEN MODAL
 
 
 function openModal(){
 
 
+if(!modal) return;
+
 
 modalImage.src =
-galleryImages[currentIndex];
-
+gallery[currentIndex];
 
 
 modal.classList.add("active");
 
 
-
 document.body.style.overflow="hidden";
-
 
 
 }
@@ -181,9 +151,7 @@ document.body.style.overflow="hidden";
 
 
 
-// =====================================================
 // CLOSE MODAL
-// =====================================================
 
 
 if(closeModal){
@@ -192,10 +160,10 @@ if(closeModal){
 closeModal.addEventListener("click",()=>{
 
 
-    modal.classList.remove("active");
+modal.classList.remove("active");
 
 
-    document.body.style.overflow="auto";
+document.body.style.overflow="auto";
 
 
 });
@@ -209,6 +177,12 @@ closeModal.addEventListener("click",()=>{
 
 
 
+
+
+// CLICK OUTSIDE CLOSE
+
+
+if(modal){
 
 
 modal.addEventListener("click",(e)=>{
@@ -217,10 +191,10 @@ modal.addEventListener("click",(e)=>{
 if(e.target === modal){
 
 
-    modal.classList.remove("active");
+modal.classList.remove("active");
 
 
-    document.body.style.overflow="auto";
+document.body.style.overflow="auto";
 
 
 }
@@ -229,6 +203,7 @@ if(e.target === modal){
 });
 
 
+}
 
 
 
@@ -236,9 +211,9 @@ if(e.target === modal){
 
 
 
-// =====================================================
+
+
 // NEXT IMAGE
-// =====================================================
 
 
 if(nextBtn){
@@ -251,18 +226,18 @@ currentIndex++;
 
 
 
-if(currentIndex >= galleryImages.length){
+if(currentIndex >= gallery.length){
 
 
-    currentIndex=0;
+currentIndex = 0;
 
 
 }
 
 
 
-changeImage();
-
+modalImage.src =
+gallery[currentIndex];
 
 
 });
@@ -278,9 +253,7 @@ changeImage();
 
 
 
-// =====================================================
 // PREVIOUS IMAGE
-// =====================================================
 
 
 if(prevBtn){
@@ -296,16 +269,15 @@ currentIndex--;
 if(currentIndex < 0){
 
 
-    currentIndex =
-    galleryImages.length-1;
+currentIndex = gallery.length - 1;
 
 
 }
 
 
 
-changeImage();
-
+modalImage.src =
+gallery[currentIndex];
 
 
 });
@@ -321,46 +293,13 @@ changeImage();
 
 
 
-function changeImage(){
-
-
-
-modalImage.style.opacity="0";
-
-
-setTimeout(()=>{
-
-
-modalImage.src =
-galleryImages[currentIndex];
-
-
-modalImage.style.opacity="1";
-
-
-},200);
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// =====================================================
 // ESC CLOSE
-// =====================================================
 
 
 document.addEventListener("keydown",(e)=>{
 
 
-if(e.key==="Escape"){
+if(e.key==="Escape" && modal){
 
 
 modal.classList.remove("active");
@@ -372,7 +311,6 @@ document.body.style.overflow="auto";
 }
 
 
-
 });
 
 
@@ -384,18 +322,16 @@ document.body.style.overflow="auto";
 
 
 // =====================================================
-// SCROLL REVEAL
+// SCROLL REVEAL ANIMATION
 // =====================================================
 
 
-const revealElements =
-document.querySelectorAll(
-".reveal"
-);
+const reveals =
+document.querySelectorAll(".reveal");
 
 
 
-const revealObserver =
+const observer =
 new IntersectionObserver((entries)=>{
 
 
@@ -415,19 +351,17 @@ entry.target.classList.add("active");
 
 
 },{
-
-threshold:.15
-
+threshold:0.15
 });
 
 
 
 
 
-revealElements.forEach(element=>{
+reveals.forEach((element)=>{
 
 
-revealObserver.observe(element);
+observer.observe(element);
 
 
 });
@@ -445,15 +379,11 @@ revealObserver.observe(element);
 // =====================================================
 
 
-document.querySelectorAll(
-'a[href^="#"]'
-)
+document.querySelectorAll('a[href^="#"]')
 .forEach(anchor=>{
 
 
-anchor.addEventListener(
-"click",
-function(e){
+anchor.addEventListener("click",function(e){
 
 
 const target =
@@ -494,90 +424,14 @@ behavior:"smooth"
 
 
 // =====================================================
-// SCROLL TO TOP
-// =====================================================
-
-
-const scrollTop =
-document.querySelector(".scroll-top");
-
-
-
-window.addEventListener("scroll",()=>{
-
-
-if(window.scrollY > 500){
-
-
-scrollTop.classList.add("active");
-
-
-}
-
-else{
-
-
-scrollTop.classList.remove("active");
-
-
-}
-
-
-});
-
-
-
-
-
-
-if(scrollTop){
-
-
-scrollTop.addEventListener("click",()=>{
-
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
-
-});
-
-
-}
-
-
-
-
-
-
-
-
-
-// =====================================================
 // CONTACT FORM
 // =====================================================
 
 
-const contactForm =
-document.querySelector(".contact-form form");
+function sendMessage(event){
 
 
-
-if(contactForm){
-
-
-contactForm.addEventListener(
-"submit",
-
-(e)=>{
-
-
-e.preventDefault();
+event.preventDefault();
 
 
 
@@ -587,50 +441,7 @@ alert(
 
 
 
-contactForm.reset();
-
-
-
-});
+event.target.reset();
 
 
 }
-
-
-
-
-
-
-
-
-
-// =====================================================
-// IMAGE LOADING EFFECT
-// =====================================================
-
-
-document.querySelectorAll("img")
-.forEach(img=>{
-
-
-img.addEventListener("load",()=>{
-
-
-img.classList.add("loaded");
-
-
-});
-
-
-});
-
-
-
-
-
-
-
-
-console.log(
-"Portfolio Website Loaded Successfully 🚀"
-);
