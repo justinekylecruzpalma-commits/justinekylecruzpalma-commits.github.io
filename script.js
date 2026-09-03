@@ -6,7 +6,7 @@ const navLinks = document.querySelector(".nav-links");
 
 if(menuBtn && navLinks){
 
-    menuBtn.addEventListener("click",()=>{
+    menuBtn.addEventListener("click", ()=>{
 
         navLinks.classList.toggle("active");
 
@@ -15,9 +15,10 @@ if(menuBtn && navLinks){
 }
 
 
+
 document.querySelectorAll(".nav-links a").forEach(link=>{
 
-    link.addEventListener("click",()=>{
+    link.addEventListener("click", ()=>{
 
         if(navLinks){
 
@@ -43,10 +44,11 @@ document.querySelectorAll(".nav-links a").forEach(link=>{
 const header = document.getElementById("header");
 
 
-window.addEventListener("scroll",()=>{
+window.addEventListener("scroll", ()=>{
 
 
     if(header){
+
 
         if(window.scrollY > 50){
 
@@ -59,6 +61,7 @@ window.addEventListener("scroll",()=>{
             header.classList.remove("sticky");
 
         }
+
 
     }
 
@@ -79,7 +82,7 @@ window.addEventListener("scroll",()=>{
 const revealElements = document.querySelectorAll(".reveal");
 
 
-const revealObserver = new IntersectionObserver((entries)=>{
+const observer = new IntersectionObserver((entries)=>{
 
 
     entries.forEach(entry=>{
@@ -96,14 +99,16 @@ const revealObserver = new IntersectionObserver((entries)=>{
 
 
 },{
+
     threshold:0.15
+
 });
 
 
 
 revealElements.forEach(element=>{
 
-    revealObserver.observe(element);
+    observer.observe(element);
 
 });
 
@@ -142,7 +147,7 @@ let currentIndex = 0;
 
 
 
-// OPEN MODAL
+// OPEN IMAGE MODAL
 
 
 function openModal(){
@@ -155,13 +160,28 @@ function openModal(){
     }
 
 
+
     modalImage.src = galleryImages[currentIndex];
+
+
+
+    modalImage.onerror = ()=>{
+
+
+        console.log(
+            "Image failed:",
+            modalImage.src
+        );
+
+
+    };
+
 
 
     projectModal.classList.add("active");
 
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow="hidden";
 
 
 }
@@ -182,12 +202,14 @@ function closeModal(){
 
     if(projectModal){
 
+
         projectModal.classList.remove("active");
+
 
     }
 
 
-    document.body.style.overflow = "auto";
+    document.body.style.overflow="auto";
 
 
 }
@@ -200,7 +222,7 @@ function closeModal(){
 
 
 
-// CLICK PROJECT / SAMPLE WORK
+// ================= PROJECT / SAMPLE CLICK =================
 
 
 const projectItems = document.querySelectorAll(".project-click");
@@ -210,7 +232,7 @@ const projectItems = document.querySelectorAll(".project-click");
 projectItems.forEach(item=>{
 
 
-    item.addEventListener("click",()=>{
+    item.addEventListener("click", ()=>{
 
 
         galleryImages = [];
@@ -218,11 +240,10 @@ projectItems.forEach(item=>{
 
 
         // MULTIPLE IMAGES
-        // Example:
-        // data-gallery="shirt1.png,shirt2.png"
-
+        // Graphic Design
 
         if(item.dataset.gallery){
+
 
 
             galleryImages = item.dataset.gallery
@@ -232,15 +253,17 @@ projectItems.forEach(item=>{
             .map(image=>image.trim());
 
 
+
         }
 
 
 
         // SINGLE IMAGE
-        // Existing projects
+        // Projects / Analytics
 
 
         else if(item.dataset.image){
+
 
 
             galleryImages.push(
@@ -250,7 +273,17 @@ projectItems.forEach(item=>{
             );
 
 
+
         }
+
+
+
+
+
+        console.log(
+            "Opening gallery:",
+            galleryImages
+        );
 
 
 
@@ -259,16 +292,16 @@ projectItems.forEach(item=>{
         if(galleryImages.length > 0){
 
 
+
             currentIndex = 0;
-
-
-            console.log("Gallery:", galleryImages);
 
 
             openModal();
 
 
+
         }
+
 
 
     });
@@ -284,69 +317,14 @@ projectItems.forEach(item=>{
 
 
 
-// CLOSE BUTTON
-
-
-if(modalClose){
-
-
-    modalClose.addEventListener("click",()=>{
-
-
-        closeModal();
-
-
-    });
-
-
-}
-
-
-
-
-
-
-
-
-
-// CLICK OUTSIDE MODAL
-
-
-if(projectModal){
-
-
-    projectModal.addEventListener("click",(event)=>{
-
-
-        if(event.target === projectModal){
-
-
-            closeModal();
-
-
-        }
-
-
-    });
-
-
-}
-
-
-
-
-
-
-
-
-
-// NEXT IMAGE
+// ================= NEXT BUTTON =================
 
 
 if(nextBtn){
 
 
-    nextBtn.addEventListener("click",()=>{
+    nextBtn.addEventListener("click", ()=>{
+
 
 
         if(galleryImages.length <= 1){
@@ -374,7 +352,9 @@ if(nextBtn){
         modalImage.src = galleryImages[currentIndex];
 
 
+
     });
+
 
 
 }
@@ -387,13 +367,14 @@ if(nextBtn){
 
 
 
-// PREVIOUS IMAGE
+// ================= PREVIOUS BUTTON =================
 
 
 if(prevBtn){
 
 
-    prevBtn.addEventListener("click",()=>{
+    prevBtn.addEventListener("click", ()=>{
+
 
 
         if(galleryImages.length <= 1){
@@ -419,6 +400,57 @@ if(prevBtn){
 
 
         modalImage.src = galleryImages[currentIndex];
+
+
+
+    });
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ================= CLOSE MODAL =================
+
+
+if(modalClose){
+
+
+    modalClose.addEventListener("click", ()=>{
+
+
+        closeModal();
+
+
+    });
+
+
+}
+
+
+
+
+
+if(projectModal){
+
+
+    projectModal.addEventListener("click",(e)=>{
+
+
+        if(e.target === projectModal){
+
+
+            closeModal();
+
+
+        }
 
 
     });
@@ -454,7 +486,7 @@ function sendMessage(event){
 
 
 
-    const mailBody = `
+    const body = `
 
 Name:
 ${name}
@@ -481,7 +513,7 @@ ${message}
 
     "&body=" +
 
-    encodeURIComponent(mailBody);
+    encodeURIComponent(body);
 
 
 
