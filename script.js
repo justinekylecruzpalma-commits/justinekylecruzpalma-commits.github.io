@@ -4,7 +4,7 @@ const menuBtn = document.querySelector(".menu-btn");
 const navLinks = document.querySelector(".nav-links");
 
 
-if(menuBtn){
+if(menuBtn && navLinks){
 
     menuBtn.addEventListener("click",()=>{
 
@@ -15,14 +15,15 @@ if(menuBtn){
 }
 
 
-
-// Close menu after clicking link
-
 document.querySelectorAll(".nav-links a").forEach(link=>{
 
     link.addEventListener("click",()=>{
 
-        navLinks.classList.remove("active");
+        if(navLinks){
+
+            navLinks.classList.remove("active");
+
+        }
 
     });
 
@@ -36,24 +37,28 @@ document.querySelectorAll(".nav-links a").forEach(link=>{
 
 
 
-// ================= SCROLL HEADER =================
+// ================= HEADER SCROLL =================
 
 
-const header = document.querySelector("#header");
+const header = document.getElementById("header");
 
 
 window.addEventListener("scroll",()=>{
 
 
-    if(window.scrollY > 50){
+    if(header){
 
-        header.classList.add("sticky");
+        if(window.scrollY > 50){
 
-    }
+            header.classList.add("sticky");
 
-    else{
+        }
 
-        header.classList.remove("sticky");
+        else{
+
+            header.classList.remove("sticky");
+
+        }
 
     }
 
@@ -91,22 +96,14 @@ const revealObserver = new IntersectionObserver((entries)=>{
 
 
 },{
-
-
-threshold:0.15
-
-
+    threshold:0.15
 });
 
 
 
+revealElements.forEach(element=>{
 
-
-revealElements.forEach(el=>{
-
-
-    revealObserver.observe(el);
-
+    revealObserver.observe(element);
 
 });
 
@@ -121,15 +118,15 @@ revealElements.forEach(el=>{
 // ================= IMAGE MODAL =================
 
 
-const modal = document.getElementById("projectModal");
+const projectModal = document.getElementById("projectModal");
 
 const modalImage = document.getElementById("modalImage");
 
-const closeModal = document.querySelector(".modal-close");
-
-const prevBtn = document.getElementById("prevProject");
+const modalClose = document.querySelector(".modal-close");
 
 const nextBtn = document.getElementById("nextProject");
+
+const prevBtn = document.getElementById("prevProject");
 
 
 
@@ -145,13 +142,13 @@ let currentIndex = 0;
 
 
 
-// ================= OPEN IMAGE =================
+// OPEN MODAL
 
 
-function openImageModal(){
+function openModal(){
 
 
-    if(!modal || !modalImage){
+    if(!projectModal || !modalImage){
 
         return;
 
@@ -161,10 +158,10 @@ function openImageModal(){
     modalImage.src = galleryImages[currentIndex];
 
 
-    modal.classList.add("active");
+    projectModal.classList.add("active");
 
 
-    document.body.style.overflow="hidden";
+    document.body.style.overflow = "hidden";
 
 
 }
@@ -177,14 +174,40 @@ function openImageModal(){
 
 
 
-// ================= PROJECT CLICK =================
+// CLOSE MODAL
 
 
-const clickableImages = document.querySelectorAll(".project-click");
+function closeModal(){
+
+
+    if(projectModal){
+
+        projectModal.classList.remove("active");
+
+    }
+
+
+    document.body.style.overflow = "auto";
+
+
+}
 
 
 
-clickableImages.forEach(item=>{
+
+
+
+
+
+
+// CLICK PROJECT / SAMPLE WORK
+
+
+const projectItems = document.querySelectorAll(".project-click");
+
+
+
+projectItems.forEach(item=>{
 
 
     item.addEventListener("click",()=>{
@@ -194,7 +217,10 @@ clickableImages.forEach(item=>{
 
 
 
-        // SAMPLE WORK MULTIPLE IMAGES
+        // MULTIPLE IMAGES
+        // Example:
+        // data-gallery="shirt1.png,shirt2.png"
+
 
         if(item.dataset.gallery){
 
@@ -210,7 +236,9 @@ clickableImages.forEach(item=>{
 
 
 
-        // NORMAL PROJECT IMAGE
+        // SINGLE IMAGE
+        // Existing projects
+
 
         else if(item.dataset.image){
 
@@ -234,7 +262,10 @@ clickableImages.forEach(item=>{
             currentIndex = 0;
 
 
-            openImageModal();
+            console.log("Gallery:", galleryImages);
+
+
+            openModal();
 
 
         }
@@ -253,19 +284,16 @@ clickableImages.forEach(item=>{
 
 
 
-// ================= CLOSE MODAL =================
+// CLOSE BUTTON
 
 
-if(closeModal){
+if(modalClose){
 
 
-    closeModal.addEventListener("click",()=>{
+    modalClose.addEventListener("click",()=>{
 
 
-        modal.classList.remove("active");
-
-
-        document.body.style.overflow="auto";
+        closeModal();
 
 
     });
@@ -281,22 +309,19 @@ if(closeModal){
 
 
 
-// Close clicking outside image
+// CLICK OUTSIDE MODAL
 
 
-if(modal){
+if(projectModal){
 
 
-    modal.addEventListener("click",(e)=>{
+    projectModal.addEventListener("click",(event)=>{
 
 
-        if(e.target === modal){
+        if(event.target === projectModal){
 
 
-            modal.classList.remove("active");
-
-
-            document.body.style.overflow="auto";
+            closeModal();
 
 
         }
@@ -315,7 +340,7 @@ if(modal){
 
 
 
-// ================= NEXT IMAGE =================
+// NEXT IMAGE
 
 
 if(nextBtn){
@@ -349,7 +374,6 @@ if(nextBtn){
         modalImage.src = galleryImages[currentIndex];
 
 
-
     });
 
 
@@ -363,7 +387,7 @@ if(nextBtn){
 
 
 
-// ================= PREVIOUS IMAGE =================
+// PREVIOUS IMAGE
 
 
 if(prevBtn){
@@ -395,7 +419,6 @@ if(prevBtn){
 
 
         modalImage.src = galleryImages[currentIndex];
-
 
 
     });
@@ -431,22 +454,34 @@ function sendMessage(event){
 
 
 
-    const body = 
+    const mailBody = `
 
-`Name: ${name}
+Name:
+${name}
 
-Email: ${email}
+
+Email:
+${email}
 
 
 Message:
+${message}
 
-${message}`;
+`;
 
 
 
-    window.location.href = 
+    window.location.href =
 
-`mailto:justinekylecruz.palma@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+    "mailto:justinekylecruz.palma@gmail.com" +
+
+    "?subject=" +
+
+    encodeURIComponent(subject) +
+
+    "&body=" +
+
+    encodeURIComponent(mailBody);
 
 
 
