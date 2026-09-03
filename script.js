@@ -1,6 +1,6 @@
 // =====================================================
-// PORTFOLIO JAVASCRIPT
-// NO HTML CHANGES REQUIRED
+// JUSTINE KYLE PALMA PORTFOLIO JAVASCRIPT
+// COMPLETE VERSION
 // =====================================================
 
 
@@ -11,6 +11,7 @@
 
 
 const menuBtn = document.querySelector(".menu-btn");
+
 const navLinks = document.querySelector(".nav-links");
 
 
@@ -18,13 +19,13 @@ const navLinks = document.querySelector(".nav-links");
 if(menuBtn && navLinks){
 
 
-    menuBtn.addEventListener("click",()=>{
+menuBtn.addEventListener("click",()=>{
 
 
-        navLinks.classList.toggle("active");
+    navLinks.classList.toggle("active");
 
 
-    });
+});
 
 
 }
@@ -34,7 +35,8 @@ if(menuBtn && navLinks){
 
 
 
-// Close menu after clicking navigation link
+
+// Close menu when clicking navigation links
 
 
 document
@@ -42,17 +44,17 @@ document
 .forEach(link=>{
 
 
-    link.addEventListener("click",()=>{
+link.addEventListener("click",()=>{
 
 
-        if(navLinks){
+    if(navLinks){
 
-            navLinks.classList.remove("active");
+        navLinks.classList.remove("active");
 
-        }
+    }
 
 
-    });
+});
 
 
 });
@@ -66,7 +68,58 @@ document
 
 
 // =====================================================
-// ACTIVE NAVIGATION
+// SMOOTH SCROLLING
+// =====================================================
+
+
+document
+.querySelectorAll('a[href^="#"]')
+.forEach(anchor=>{
+
+
+anchor.addEventListener("click",function(e){
+
+
+const target =
+document.querySelector(
+this.getAttribute("href")
+);
+
+
+
+if(target){
+
+
+e.preventDefault();
+
+
+
+target.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+
+}
+
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+
+
+// =====================================================
+// ACTIVE NAVBAR WHILE SCROLLING
 // =====================================================
 
 
@@ -74,22 +127,23 @@ const sections =
 document.querySelectorAll("section");
 
 
-const navLinksAll =
+const navItems =
 document.querySelectorAll(".nav-links a");
+
 
 
 
 window.addEventListener("scroll",()=>{
 
 
-let current = "";
+let current="";
 
 
 
 sections.forEach(section=>{
 
 
-const sectionTop =
+let sectionTop =
 section.offsetTop - 200;
 
 
@@ -104,14 +158,14 @@ section.getAttribute("id");
 }
 
 
-
 });
 
 
 
 
 
-navLinksAll.forEach(link=>{
+
+navItems.forEach(link=>{
 
 
 link.classList.remove("active");
@@ -122,6 +176,7 @@ if(
 link.getAttribute("href")
 ===
 "#"+current
+
 ){
 
 
@@ -146,17 +201,19 @@ link.classList.add("active");
 
 
 // =====================================================
-// SCROLL REVEAL
+// SCROLL REVEAL ANIMATION
 // =====================================================
 
 
-const reveal =
+const revealElements =
 document.querySelectorAll(".reveal");
 
 
 
-const observer =
-new IntersectionObserver((entries)=>{
+const revealObserver =
+new IntersectionObserver(
+
+(entries)=>{
 
 
 entries.forEach(entry=>{
@@ -178,9 +235,10 @@ entry.target.classList.add("active");
 
 {
 
-threshold:0.15
+threshold:.15
 
 }
+
 
 );
 
@@ -188,10 +246,10 @@ threshold:0.15
 
 
 
-reveal.forEach(item=>{
+revealElements.forEach(element=>{
 
 
-observer.observe(item);
+revealObserver.observe(element);
 
 
 });
@@ -205,7 +263,7 @@ observer.observe(item);
 
 
 // =====================================================
-// ANIMATED COUNTERS
+// COUNTER ANIMATION
 // =====================================================
 
 
@@ -214,8 +272,11 @@ document.querySelectorAll(".hero-stats strong");
 
 
 
+
 const counterObserver =
-new IntersectionObserver((entries)=>{
+new IntersectionObserver(
+
+(entries)=>{
 
 
 entries.forEach(entry=>{
@@ -229,12 +290,18 @@ let counter =
 entry.target;
 
 
+
 let target =
 parseInt(counter.innerText);
 
 
 
-let number = 0;
+let number=0;
+
+
+
+let speed =
+Math.ceil(target / 50);
 
 
 
@@ -242,15 +309,15 @@ let interval =
 setInterval(()=>{
 
 
-number++;
 
-
-counter.innerText =
-number+"+";
+number += speed;
 
 
 
 if(number >= target){
+
+
+number=target;
 
 
 clearInterval(interval);
@@ -260,13 +327,19 @@ clearInterval(interval);
 
 
 
-},120);
+counter.innerText =
+number + "+";
+
+
+
+},40);
 
 
 
 
 
 counterObserver.unobserve(counter);
+
 
 
 }
@@ -283,6 +356,7 @@ counterObserver.unobserve(counter);
 threshold:.7
 
 }
+
 
 );
 
@@ -307,70 +381,187 @@ counterObserver.observe(counter);
 
 
 // =====================================================
-// HERO TEXT TYPING
-// WORKS WITH YOUR CURRENT H3
+// PROJECT IMAGE GALLERY
 // =====================================================
 
 
-const heroTitle =
-document.querySelector(".hero h3");
+
+const projectImages = {
+
+
+graphic:[
+
+
+"images/shirt1.png",
+
+"images/shirt2.png",
+
+"images/shirt3.png",
+
+"images/shirt4.png",
+
+"images/logo1.png",
+
+"images/logo2.png"
+
+
+],
 
 
 
-if(heroTitle){
+analytics:[
 
 
-const text = [
+"images/analytics1.png",
 
-"Computer Engineering Graduate",
+"images/analytics2.png",
 
-"Virtual Assistant",
+"images/analytics3.png",
 
-"Social Media Manager",
-
-"Digital Support Specialist"
-
-];
+"images/analytics4.png"
 
 
-
-let index = 0;
-
+]
 
 
-setInterval(()=>{
-
-
-heroTitle.style.opacity = "0";
+};
 
 
 
-setTimeout(()=>{
-
-
-heroTitle.innerHTML = text[index];
-
-heroTitle.style.opacity = "1";
 
 
 
-index++;
+
+let currentProject="";
+
+let currentImage=0;
 
 
 
-if(index >= text.length){
 
-index=0;
+
+
+
+function openProject(project){
+
+
+
+const modal =
+document.getElementById(
+"projectModal"
+);
+
+
+
+const image =
+document.getElementById(
+"galleryImage"
+);
+
+
+
+
+if(!modal || !image)
+return;
+
+
+
+
+currentProject =
+project;
+
+
+
+currentImage=0;
+
+
+
+image.src =
+projectImages[project][currentImage];
+
+
+
+modal.style.display="flex";
+
+
+
+document.body.style.overflow="hidden";
+
 
 }
 
 
 
-},300);
 
 
 
-},2500);
+
+
+
+function closeProject(){
+
+
+
+const modal =
+document.getElementById(
+"projectModal"
+);
+
+
+
+if(modal){
+
+
+modal.style.display="none";
+
+
+}
+
+
+
+document.body.style.overflow="auto";
+
+
+}
+
+
+
+
+
+
+
+
+
+function nextImage(){
+
+
+
+if(!currentProject)
+return;
+
+
+
+if(
+currentImage <
+projectImages[currentProject].length - 1
+
+){
+
+
+
+currentImage++;
+
+
+
+document.getElementById(
+"galleryImage"
+).src =
+
+projectImages[currentProject][currentImage];
+
+
+
+}
 
 
 
@@ -384,25 +575,70 @@ index=0;
 
 
 
-// =====================================================
-// FOOTER AUTO YEAR
-// =====================================================
-
-
-const footerText =
-document.querySelector("footer p");
+function previousImage(){
 
 
 
-if(footerText){
+if(!currentProject)
+return;
 
 
-footerText.innerHTML =
 
-`© ${new Date().getFullYear()} Justine Kyle Palma. All Rights Reserved.`;
+if(currentImage > 0){
+
+
+
+currentImage--;
+
+
+
+document.getElementById(
+"galleryImage"
+).src =
+
+projectImages[currentProject][currentImage];
 
 
 }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// Close modal by clicking outside
+
+
+window.addEventListener(
+"click",
+(e)=>{
+
+
+const modal =
+document.getElementById(
+"projectModal"
+);
+
+
+
+if(e.target === modal){
+
+
+closeProject();
+
+
+}
+
+
+
+});
 
 
 
@@ -414,7 +650,6 @@ footerText.innerHTML =
 
 // =====================================================
 // CONTACT FORM
-// YOUR EXISTING HTML WORKS
 // =====================================================
 
 
@@ -425,27 +660,31 @@ event.preventDefault();
 
 
 
-const name =
+
+let name =
 document.getElementById("name").value;
 
 
 
-const email =
+let email =
 document.getElementById("email").value;
 
 
 
-const subject =
+let subject =
 document.getElementById("subject").value;
 
 
 
-const message =
+let message =
 document.getElementById("message").value;
 
 
 
-const mail =
+
+
+
+let mail =
 
 "mailto:justinekylecruz.palma@gmail.com"
 
@@ -465,17 +704,83 @@ encodeURIComponent(subject)
 
 encodeURIComponent(
 
-"Name: "+name+
+"Name: "
++name
 
-"\nEmail: "+email+
++
 
-"\n\nMessage:\n"+message
+"\nEmail: "
++email
+
++
+
+"\n\nMessage:\n"
++message
 
 );
 
 
 
-window.location.href = mail;
+
+
+window.location.href =
+mail;
 
 
 }
+
+
+
+
+
+
+
+
+
+// =====================================================
+// AUTO FOOTER YEAR
+// =====================================================
+
+
+const footer =
+document.querySelector("footer p");
+
+
+
+if(footer){
+
+
+footer.innerHTML =
+
+`
+© ${new Date().getFullYear()} Justine Kyle Palma.
+All Rights Reserved.
+`;
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================================
+// PAGE LOAD EFFECT
+// =====================================================
+
+
+window.addEventListener(
+"load",
+()=>{
+
+
+document.body.classList.add(
+"loaded"
+);
+
+
+});
