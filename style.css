@@ -7534,3 +7534,34 @@ section {
 
 
 }
+/* FIX EXPERIENCE HEADER TO CARD GAP */
+
+#experience .section-title {
+    margin-bottom: 30px;
+}
+
+
+#experience .experience-container {
+    margin-top: 0;
+}
+
+
+#experience .experience-card {
+    margin-top: 0;
+}
+
+
+/* reduce extra section spacing */
+#experience {
+    padding-top: 80px;
+}
+
+
+#experience .section-title h2 {
+    margin-bottom: 10px;
+}
+
+
+#experience .section-title p {
+    margin-bottom: 0;
+}
