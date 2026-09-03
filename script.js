@@ -1,55 +1,38 @@
 /* =====================================================
-JUSTINE KYLE PALMA PORTFOLIO
-COMPLETE SCRIPT.JS
+PORTFOLIO JAVASCRIPT
+JUSTINE KYLE PALMA
 ===================================================== */
 
 
-
-// =====================================================
-// MOBILE MENU
-// =====================================================
+/* =====================================================
+MOBILE NAVIGATION
+===================================================== */
 
 
 const menuBtn = document.querySelector(".menu-btn");
 const navLinks = document.querySelector(".nav-links");
 
 
-if(menuBtn && navLinks){
+if(menuBtn){
 
+menuBtn.addEventListener("click",()=>{
 
-    menuBtn.addEventListener("click",()=>{
+    navLinks.classList.toggle("active");
 
-
-        navLinks.classList.toggle("active");
-
-
-    });
-
+});
 
 }
 
 
 
-
-
-// Close mobile menu after clicking link
-
 document.querySelectorAll(".nav-links a")
 .forEach(link=>{
 
+link.addEventListener("click",()=>{
 
-    link.addEventListener("click",()=>{
+    navLinks.classList.remove("active");
 
-
-        if(navLinks){
-
-            navLinks.classList.remove("active");
-
-        }
-
-
-    });
-
+});
 
 });
 
@@ -58,381 +41,92 @@ document.querySelectorAll(".nav-links a")
 
 
 
-
-
-
-// =====================================================
-// SMOOTH SCROLL
-// =====================================================
-
-
-document.querySelectorAll('a[href^="#"]')
-.forEach(anchor=>{
-
-
-    anchor.addEventListener("click",function(e){
-
-
-        const target =
-        document.querySelector(
-            this.getAttribute("href")
-        );
-
-
-        if(target){
-
-
-            e.preventDefault();
-
-
-            target.scrollIntoView({
-
-                behavior:"smooth"
-
-            });
-
-
-        }
-
-
-    });
-
-
-});
-
-
-
-
-
-
-
-
-
-// =====================================================
-// ACTIVE NAVIGATION
-// =====================================================
-
-
-const sections =
-document.querySelectorAll("section");
-
-
-const navItems =
-document.querySelectorAll(".nav-links a");
-
-
-
-
-window.addEventListener("scroll",()=>{
-
-
-    let current="";
-
-
-
-    sections.forEach(section=>{
-
-
-        const sectionTop =
-        section.offsetTop - 200;
-
-
-
-        if(window.scrollY >= sectionTop){
-
-
-            current =
-            section.getAttribute("id");
-
-
-        }
-
-
-    });
-
-
-
-
-
-
-    navItems.forEach(link=>{
-
-
-        link.classList.remove("active");
-
-
-
-        if(
-            link.getAttribute("href")
-            ===
-            "#"+current
-        ){
-
-            link.classList.add("active");
-
-        }
-
-
-    });
-
-
-});
-
-
-
-
-
-
-
-
-
-// =====================================================
-// SCROLL REVEAL
-// =====================================================
-
-
-const revealElements =
-document.querySelectorAll(".reveal");
-
-
-
-const revealObserver =
-new IntersectionObserver((entries)=>{
-
-
-    entries.forEach(entry=>{
-
-
-        if(entry.isIntersecting){
-
-
-            entry.target.classList.add("active");
-
-
-        }
-
-
-    });
-
-
-},{
-
-    threshold:.15
-
-});
-
-
-
-
-
-revealElements.forEach(element=>{
-
-
-    revealObserver.observe(element);
-
-
-});
-
-
-
-
-
-
-
-
-
-// =====================================================
-// NUMBER COUNTER
-// =====================================================
-
-
-const counters =
-document.querySelectorAll(".hero-stats strong");
-
-
-
-const counterObserver =
-new IntersectionObserver((entries)=>{
-
-
-    entries.forEach(entry=>{
-
-
-        if(entry.isIntersecting){
-
-
-            let counter =
-            entry.target;
-
-
-            let target =
-            parseInt(counter.innerText);
-
-
-
-            let count=0;
-
-
-
-            let speed =
-            Math.ceil(target / 40);
-
-
-
-
-
-            let timer =
-            setInterval(()=>{
-
-
-                count += speed;
-
-
-
-                if(count >= target){
-
-
-                    count = target;
-
-
-                    clearInterval(timer);
-
-
-                }
-
-
-
-
-                counter.innerText =
-                count + "+";
-
-
-
-            },50);
-
-
-
-
-            counterObserver.unobserve(counter);
-
-
-        }
-
-
-
-    });
-
-
-},{
-
-threshold:.7
-
-});
-
-
-
-
-counters.forEach(counter=>{
-
-
-    counterObserver.observe(counter);
-
-
-});
-
-
-
-
-
-
-
-
-
-// =====================================================
-// PROJECT GALLERY
-// =====================================================
+/* =====================================================
+PROJECT GALLERY DATA
+===================================================== */
 
 
 const projectImages = {
 
 
-    // Graphic Design
+/* TECH PROJECTS */
 
-    graphic:[
+sk:[
 
-        "images/shirt1.png",
+"sk-management.png"
 
-        "images/shirt2.png",
-
-        "images/shirt3.png",
-
-        "images/shirt4.png",
-
-        "images/logo1.png",
-
-        "images/logo2.png"
-
-    ],
+],
 
 
 
+kk:[
+
+"kk-profiling.png"
+
+],
 
 
-    // Analytics
 
-    analytics:[
+sgyg:[
 
-        "images/analytics1.png",
+"sgyg-system.png"
 
-        "images/analytics2.png",
+],
 
-        "images/analytics3.png",
 
-        "images/analytics4.png"
 
-    ],
+drone:[
+
+"drone-project.png"
+
+],
 
 
 
 
 
-    // Projects
+
+/* SAMPLE WORK */
 
 
-    sk:[
-
-        "images/sk-management.png"
-
-    ],
+graphic:[
 
 
+"graphic-design-collage.png",
 
 
-    kk:[
+"shirt1.png",
 
-        "images/kk-profiling.png"
+"shirt2.png",
 
-    ],
+"shirt3.png",
+
+"shirt4.png",
+
+"shirt5.png"
 
 
-
-
-
-    sgyg:[
-
-        "images/sgyg-system.png"
-
-    ],
+],
 
 
 
 
+analytics:[
 
-    drone:[
 
-        "images/drone-project.png"
+"analytics-collage.png",
 
-    ]
+"analytics1.png",
+
+"analytics2.png",
+
+"analytics3.png",
+
+"analytics4.png"
+
+
+]
+
 
 };
 
@@ -442,11 +136,9 @@ const projectImages = {
 
 
 
-
-
 let currentProject = "";
 
-let currentImage = 0;
+let currentImageIndex = 0;
 
 
 
@@ -455,61 +147,59 @@ let currentImage = 0;
 
 
 
-
-// OPEN PROJECT
+/* =====================================================
+OPEN PROJECT MODAL
+===================================================== */
 
 
 function openProject(project){
 
 
-
-    const modal =
-    document.getElementById(
-        "projectModal"
-    );
+const modal =
+document.getElementById("projectModal");
 
 
-
-    const image =
-    document.getElementById(
-        "galleryImage"
-    );
+const image =
+document.getElementById("galleryImage");
 
 
 
+currentProject = project;
 
-    if(!modal || !image){
-
-        return;
-
-    }
+currentImageIndex = 0;
 
 
 
+image.style.opacity="0";
 
 
-    currentProject = project;
+
+setTimeout(()=>{
 
 
-    currentImage = 0;
+image.src =
+projectImages[project][0];
 
+image.style.opacity="1";
+
+
+},200);
 
 
 
 
-    image.src =
-    projectImages[project][0];
+
+modal.style.display="flex";
 
 
 
-
-    modal.style.display =
-    "flex";
+setTimeout(()=>{
 
 
+modal.classList.add("show");
 
-    document.body.style.overflow =
-    "hidden";
+
+},10);
 
 
 
@@ -522,35 +212,29 @@ function openProject(project){
 
 
 
-
-// CLOSE PROJECT
+/* =====================================================
+CLOSE MODAL
+===================================================== */
 
 
 function closeProject(){
 
 
-
-    const modal =
-    document.getElementById(
-        "projectModal"
-    );
+const modal =
+document.getElementById("projectModal");
 
 
-
-    if(modal){
-
-
-        modal.style.display =
-        "none";
-
-
-    }
+modal.classList.remove("show");
 
 
 
+setTimeout(()=>{
 
-    document.body.style.overflow =
-    "auto";
+
+modal.style.display="none";
+
+
+},300);
 
 
 
@@ -563,46 +247,31 @@ function closeProject(){
 
 
 
-
-// NEXT IMAGE
+/* =====================================================
+NEXT IMAGE
+===================================================== */
 
 
 function nextImage(){
 
 
-
-    if(!currentProject){
-
-        return;
-
-    }
+let gallery =
+projectImages[currentProject];
 
 
 
+if(currentImageIndex <
+gallery.length - 1){
 
 
-    if(
-        currentImage <
-        projectImages[currentProject].length - 1
-    ){
-
-
-
-        currentImage++;
+currentImageIndex++;
 
 
 
-
-        document.getElementById(
-            "galleryImage"
-        ).src =
-
-        projectImages[currentProject]
-        [currentImage];
+changeGalleryImage();
 
 
-
-    }
+}
 
 
 
@@ -614,45 +283,74 @@ function nextImage(){
 
 
 
-
-
-// PREVIOUS IMAGE
+/* =====================================================
+PREVIOUS IMAGE
+===================================================== */
 
 
 function previousImage(){
 
 
 
-    if(!currentProject){
+if(currentImageIndex > 0){
 
-        return;
 
-    }
-
+currentImageIndex--;
 
 
 
-
-    if(currentImage > 0){
-
+changeGalleryImage();
 
 
-        currentImage--;
+}
 
 
 
-
-
-        document.getElementById(
-            "galleryImage"
-        ).src =
-
-        projectImages[currentProject]
-        [currentImage];
+}
 
 
 
-    }
+
+
+
+
+/* =====================================================
+CHANGE IMAGE ANIMATION
+===================================================== */
+
+
+function changeGalleryImage(){
+
+
+const image =
+document.getElementById("galleryImage");
+
+
+
+image.style.opacity="0";
+
+image.style.transform=
+"scale(.95)";
+
+
+
+setTimeout(()=>{
+
+
+image.src =
+projectImages[currentProject]
+[currentImageIndex];
+
+
+
+image.style.opacity="1";
+
+image.style.transform=
+"scale(1)";
+
+
+
+},200);
 
 
 
@@ -665,27 +363,24 @@ function previousImage(){
 
 
 
-
-// CLICK OUTSIDE MODAL TO CLOSE
+/* =====================================================
+CLICK OUTSIDE MODAL CLOSE
+===================================================== */
 
 
 window.addEventListener("click",(e)=>{
 
 
-    const modal =
-    document.getElementById(
-        "projectModal"
-    );
+const modal =
+document.getElementById("projectModal");
 
 
 
-    if(e.target === modal){
+if(e.target === modal){
 
+closeProject();
 
-        closeProject();
-
-
-    }
+}
 
 
 
@@ -698,20 +393,50 @@ window.addEventListener("click",(e)=>{
 
 
 
-
-// ESC BUTTON CLOSE
-
-
-document.addEventListener("keydown",(e)=>{
+/* =====================================================
+SCROLL REVEAL ANIMATION
+===================================================== */
 
 
-    if(e.key === "Escape"){
+const observer =
+new IntersectionObserver(
+(entries)=>{
 
 
-        closeProject();
+entries.forEach(entry=>{
 
 
-    }
+if(entry.isIntersecting){
+
+
+entry.target.classList.add("active");
+
+
+}
+
+
+});
+
+
+},
+
+{
+
+threshold:0.15
+
+}
+
+);
+
+
+
+
+
+document.querySelectorAll(".reveal")
+.forEach((element)=>{
+
+
+observer.observe(element);
 
 
 });
@@ -724,84 +449,116 @@ document.addEventListener("keydown",(e)=>{
 
 
 
-// =====================================================
-// CONTACT FORM
-// =====================================================
+/* =====================================================
+SMOOTH SCROLL
+===================================================== */
+
+
+document.querySelectorAll(
+'a[href^="#"]'
+)
+
+.forEach(anchor=>{
+
+
+anchor.addEventListener(
+"click",
+
+function(e){
+
+
+let target =
+document.querySelector(
+this.getAttribute("href")
+);
+
+
+
+if(target){
+
+
+e.preventDefault();
+
+
+
+target.scrollIntoView({
+
+behavior:"smooth",
+
+block:"start"
+
+});
+
+
+}
+
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+
+
+/* =====================================================
+CONTACT FORM
+===================================================== */
 
 
 function sendMessage(event){
 
 
-    event.preventDefault();
+event.preventDefault();
+
+
+
+let name =
+document.getElementById("name").value;
+
+
+
+let email =
+document.getElementById("email").value;
+
+
+
+let subject =
+document.getElementById("subject").value;
+
+
+
+let message =
+document.getElementById("message").value;
 
 
 
 
-    const name =
-    document.getElementById("name").value;
+let mail =
+`mailto:justinekylecruz.palma@gmail.com?
+subject=${subject}
+&body=
+
+Name:
+${name}
+
+Email:
+${email}
+
+Message:
+${message}
+`;
 
 
 
-    const email =
-    document.getElementById("email").value;
-
-
-
-    const subject =
-    document.getElementById("subject").value;
-
-
-
-    const message =
-    document.getElementById("message").value;
-
-
-
-
-
-
-    const mailLink =
-
-
-    "mailto:justinekylecruz.palma@gmail.com"
-
-    +
-
-    "?subject="
-
-    +
-
-    encodeURIComponent(subject)
-
-    +
-
-    "&body="
-
-    +
-
-    encodeURIComponent(
-
-        "Name: "
-        + name
-
-        +
-
-        "\nEmail: "
-        + email
-
-        +
-
-        "\n\nMessage:\n"
-        + message
-
-    );
-
-
-
-
-
-    window.location.href =
-    mailLink;
+window.location.href =
+mail;
 
 
 
@@ -815,44 +572,79 @@ function sendMessage(event){
 
 
 
-// =====================================================
-// FOOTER YEAR
-// =====================================================
+/* =====================================================
+NAVBAR SCROLL EFFECT
+===================================================== */
 
 
-const footerYear =
-document.querySelector("footer p");
+window.addEventListener(
+"scroll",
+
+()=>{
+
+
+const header =
+document.querySelector("header");
 
 
 
-if(footerYear){
+if(window.scrollY > 50){
 
 
-    footerYear.innerHTML =
-
-    `© ${new Date().getFullYear()} Justine Kyle Palma. All Rights Reserved.`;
-
+header.classList.add("scrolled");
 
 
 }
 
+else{
 
 
+header.classList.remove("scrolled");
 
 
+}
 
-
-
-
-// =====================================================
-// PAGE LOADED
-// =====================================================
-
-
-window.addEventListener("load",()=>{
-
-
-    document.body.classList.add("loaded");
 
 
 });
+
+
+
+
+
+
+
+
+/* =====================================================
+IMAGE LOADING EFFECT
+===================================================== */
+
+
+document.querySelectorAll("img")
+.forEach(img=>{
+
+
+img.addEventListener(
+"load",
+
+()=>{
+
+
+img.classList.add("loaded");
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+
+console.log(
+"Portfolio Loaded Successfully 🚀"
+);
