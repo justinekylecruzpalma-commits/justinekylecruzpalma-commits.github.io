@@ -4180,3 +4180,29 @@ padding:35px 20px;
 
 
 }
+/* =====================================================
+CLICKABLE IMAGE FIX
+===================================================== */
+
+
+.project-click {
+    cursor: pointer;
+}
+
+
+.project-click img {
+    transition: transform .4s ease, filter .4s ease;
+}
+
+
+.project-click:hover img {
+    transform: scale(1.08);
+    filter: brightness(1.1);
+}
+
+
+/* Prevent modal image from inheriting hover zoom */
+
+.modal-content img {
+    transform: none !important;
+}
