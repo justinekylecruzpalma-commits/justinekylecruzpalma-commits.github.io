@@ -341,6 +341,56 @@ clickableImages.forEach(item=>{
 item.addEventListener("click",()=>{
 
 
+galleryImages = [];
+
+
+
+if(item.hasAttribute("data-gallery")){
+
+
+galleryImages = item
+.getAttribute("data-gallery")
+.split(",");
+
+
+
+}
+
+
+
+else if(item.hasAttribute("data-image")){
+
+
+galleryImages.push(
+
+item.getAttribute("data-image")
+
+);
+
+
+}
+
+
+
+
+
+console.log("Gallery:", galleryImages);
+
+
+
+currentIndex = 0;
+
+
+openImageModal();
+
+
+
+});
+
+
+});
+
+
 
 
 
