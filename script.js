@@ -6,7 +6,7 @@ const navLinks = document.querySelector(".nav-links");
 
 if(menuBtn && navLinks){
 
-    menuBtn.addEventListener("click", ()=>{
+    menuBtn.addEventListener("click", () => {
 
         navLinks.classList.toggle("active");
 
@@ -15,10 +15,9 @@ if(menuBtn && navLinks){
 }
 
 
+document.querySelectorAll(".nav-links a").forEach(link => {
 
-document.querySelectorAll(".nav-links a").forEach(link=>{
-
-    link.addEventListener("click", ()=>{
+    link.addEventListener("click", () => {
 
         if(navLinks){
 
@@ -40,11 +39,10 @@ document.querySelectorAll(".nav-links a").forEach(link=>{
 
 // ================= HEADER SCROLL =================
 
-
 const header = document.getElementById("header");
 
 
-window.addEventListener("scroll", ()=>{
+window.addEventListener("scroll", () => {
 
 
     if(header){
@@ -76,13 +74,13 @@ window.addEventListener("scroll", ()=>{
 
 
 
-// ================= REVEAL ANIMATION =================
+// ================= SCROLL REVEAL =================
 
 
 const revealElements = document.querySelectorAll(".reveal");
 
 
-const observer = new IntersectionObserver((entries)=>{
+const revealObserver = new IntersectionObserver((entries)=>{
 
 
     entries.forEach(entry=>{
@@ -108,7 +106,9 @@ const observer = new IntersectionObserver((entries)=>{
 
 revealElements.forEach(element=>{
 
-    observer.observe(element);
+
+    revealObserver.observe(element);
+
 
 });
 
@@ -120,14 +120,14 @@ revealElements.forEach(element=>{
 
 
 
-// ================= IMAGE MODAL =================
+// ================= IMAGE MODAL SYSTEM =================
 
 
-const projectModal = document.getElementById("projectModal");
+const modal = document.getElementById("projectModal");
 
 const modalImage = document.getElementById("modalImage");
 
-const modalClose = document.querySelector(".modal-close");
+const closeBtn = document.querySelector(".modal-close");
 
 const nextBtn = document.getElementById("nextProject");
 
@@ -147,13 +147,13 @@ let currentIndex = 0;
 
 
 
-// OPEN IMAGE MODAL
+// LOAD IMAGE
 
 
-function openModal(){
+function loadImage(){
 
 
-    if(!projectModal || !modalImage){
+    if(!modalImage){
 
         return;
 
@@ -161,24 +161,67 @@ function openModal(){
 
 
 
-    modalImage.src = galleryImages[currentIndex];
+    const image = galleryImages[currentIndex];
 
 
 
-    modalImage.onerror = ()=>{
+    console.log("Loading:", image);
 
 
-        console.log(
-            "Image failed:",
-            modalImage.src
-        );
+
+    modalImage.src = image;
+
+
+
+    modalImage.onload = ()=>{
+
+
+        console.log("Image loaded:", image);
 
 
     };
 
 
 
-    projectModal.classList.add("active");
+    modalImage.onerror = ()=>{
+
+
+        console.log("Image failed:", image);
+
+
+    };
+
+
+}
+
+
+
+
+
+
+
+
+
+// OPEN MODAL
+
+
+function openModal(){
+
+
+    if(!modal){
+
+        return;
+
+    }
+
+
+
+    loadImage();
+
+
+
+    modal.classList.add("active");
+
 
 
     document.body.style.overflow="hidden";
@@ -200,13 +243,14 @@ function openModal(){
 function closeModal(){
 
 
-    if(projectModal){
+    if(modal){
 
 
-        projectModal.classList.remove("active");
+        modal.classList.remove("active");
 
 
     }
+
 
 
     document.body.style.overflow="auto";
@@ -222,7 +266,7 @@ function closeModal(){
 
 
 
-// ================= PROJECT / SAMPLE CLICK =================
+// CLICK PROJECT / SAMPLE WORK
 
 
 const projectItems = document.querySelectorAll(".project-click");
@@ -232,7 +276,7 @@ const projectItems = document.querySelectorAll(".project-click");
 projectItems.forEach(item=>{
 
 
-    item.addEventListener("click", ()=>{
+    item.addEventListener("click",()=>{
 
 
         galleryImages = [];
@@ -240,18 +284,22 @@ projectItems.forEach(item=>{
 
 
         // MULTIPLE IMAGES
-        // Graphic Design
-
-        if(item.dataset.gallery){
-
+        // Example:
+        // shirt1.png,shirt2.png...
 
 
-            galleryImages = item.dataset.gallery
+        const gallery = item.getAttribute("data-gallery");
+
+
+
+        if(gallery){
+
+
+            galleryImages = gallery
 
             .split(",")
 
             .map(image=>image.trim());
-
 
 
         }
@@ -259,45 +307,36 @@ projectItems.forEach(item=>{
 
 
         // SINGLE IMAGE
-        // Projects / Analytics
 
 
-        else if(item.dataset.image){
+        const image = item.getAttribute("data-image");
 
 
 
-            galleryImages.push(
+        if(image && galleryImages.length === 0){
 
-                item.dataset.image
 
-            );
-
+            galleryImages.push(image);
 
 
         }
 
 
 
-
-
         console.log(
-            "Opening gallery:",
+            "Gallery:",
             galleryImages
         );
-
-
 
 
 
         if(galleryImages.length > 0){
 
 
-
             currentIndex = 0;
 
 
             openModal();
-
 
 
         }
@@ -317,14 +356,13 @@ projectItems.forEach(item=>{
 
 
 
-// ================= NEXT BUTTON =================
+// NEXT BUTTON
 
 
 if(nextBtn){
 
 
-    nextBtn.addEventListener("click", ()=>{
-
+    nextBtn.addEventListener("click",()=>{
 
 
         if(galleryImages.length <= 1){
@@ -349,12 +387,11 @@ if(nextBtn){
 
 
 
-        modalImage.src = galleryImages[currentIndex];
+        loadImage();
 
 
 
     });
-
 
 
 }
@@ -367,14 +404,13 @@ if(nextBtn){
 
 
 
-// ================= PREVIOUS BUTTON =================
+// PREVIOUS BUTTON
 
 
 if(prevBtn){
 
 
-    prevBtn.addEventListener("click", ()=>{
-
+    prevBtn.addEventListener("click",()=>{
 
 
         if(galleryImages.length <= 1){
@@ -399,12 +435,11 @@ if(prevBtn){
 
 
 
-        modalImage.src = galleryImages[currentIndex];
+        loadImage();
 
 
 
     });
-
 
 
 }
@@ -417,13 +452,13 @@ if(prevBtn){
 
 
 
-// ================= CLOSE MODAL =================
+// CLOSE BUTTON
 
 
-if(modalClose){
+if(closeBtn){
 
 
-    modalClose.addEventListener("click", ()=>{
+    closeBtn.addEventListener("click",()=>{
 
 
         closeModal();
@@ -438,13 +473,20 @@ if(modalClose){
 
 
 
-if(projectModal){
 
 
-    projectModal.addEventListener("click",(e)=>{
 
 
-        if(e.target === projectModal){
+// CLICK OUTSIDE MODAL
+
+
+if(modal){
+
+
+    modal.addEventListener("click",(event)=>{
+
+
+        if(event.target === modal){
 
 
             closeModal();
@@ -514,7 +556,6 @@ ${message}
     "&body=" +
 
     encodeURIComponent(body);
-
 
 
 }
