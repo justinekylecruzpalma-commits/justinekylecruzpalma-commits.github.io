@@ -7655,3 +7655,13 @@ section {
     margin-left: 0;
 
 }
+/* Align Experience subtitle to the left */
+
+#experience .section-title {
+    text-align: left;
+}
+
+#experience .section-title p {
+    text-align: left;
+    margin-left: 0;
+}
